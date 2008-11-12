@@ -1,5 +1,5 @@
 package struttureDati.sequence;
-import arrayList.IndexOutOfBoundsException;
+import struttureDati.arrayList.IndexOutOfBoundsException;
 import struttureDati.nodeList.*;
 import struttureDati.nodes.DNode;
 

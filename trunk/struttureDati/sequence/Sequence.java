@@ -1,6 +1,7 @@
 package struttureDati.sequence;
+import struttureDati.arrayList.IndexList;
 import struttureDati.nodeList.*;
-import arrayList.*;
+import struttureDati.arrayList.*;
 import struttureDati.iterator.Iterable;
 
 /**
