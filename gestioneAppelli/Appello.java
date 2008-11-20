@@ -76,6 +76,16 @@ public class Appello {
         this.vincoli = vincoli;
     }
     
+    public String getTipologia(){
+        String toReturn="";
+        switch(tipologia){
+            case SCRITTO: toReturn = "Scritto";
+            case ORALE: toReturn = "Orale";
+            case PRATICO: toReturn = "Pratico";
+        }
+        
+        return toReturn;
+    }
     
 
 }
