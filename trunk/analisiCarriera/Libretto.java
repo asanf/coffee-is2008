@@ -3,7 +3,7 @@ package analisiCarriera;
 import gestionePropriAppelli.RisultatoEsame;
 import struttureDati.sequence.NodeSequence;
 import struttureDati.sequence.Sequence;
-import struttureDati.iterator.*;
+import struttureDati.iterator.Iterator;
 /**
  * Classe che modella il libretto di uno studente.
  * E' una vista dell'entità libretto presente nel database.
@@ -17,15 +17,12 @@ public class Libretto {
         listaEsami = new NodeSequence<RisultatoEsame>();
     }
     
-    public float getMediaAritmetica(){
-        int sumVoti;
-        sumVoti = 0;
-        RisultatoEsame tmp;
-        for(Iterator<RisultatoEsame> it = listaEsami.iterator(); it.hasNext();){
-            tmp = it.next();
-            sumVoti+=tmp.getVoto();
-        }
-        return (float)sumVoti/listaEsami.size();
+    public Iterator<RisultatoEsame> iterator(){ 
+        return listaEsami.iterator();
+    }
+    
+    public int getNumEsami(){
+        return listaEsami.size();
     }
     
     
