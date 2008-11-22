@@ -53,4 +53,8 @@ public class LibrettoControl {
     public byte getVotoDiLaureaStimato(Libretto libretto){
         return (byte)((getMediaAritmetica(libretto) * 110) / 30);
     }
+    
+    public void visualizzaLibretto(Libretto libretto){
+        
+    }
 }
