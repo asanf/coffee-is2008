@@ -1,4 +1,4 @@
-package gestioneUtenti;
+package operatore.gestioneUtenti;
 
 /**
  *

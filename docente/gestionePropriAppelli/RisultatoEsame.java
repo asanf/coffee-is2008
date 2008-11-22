@@ -1,6 +1,6 @@
-package gestionePropriAppelli;
+package docente.gestionePropriAppelli;
 
-import gestioneAppelli.Appello;
+import operatore.gestioneAppelli.Appello;
 
 
 /**

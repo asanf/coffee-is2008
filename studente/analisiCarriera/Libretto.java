@@ -1,6 +1,6 @@
-package analisiCarriera;
+package studente.analisiCarriera;
 
-import gestionePropriAppelli.RisultatoEsame;
+import docente.gestionePropriAppelli.RisultatoEsame;
 import struttureDati.sequence.NodeSequence;
 import struttureDati.sequence.Sequence;
 import struttureDati.iterator.Iterator;

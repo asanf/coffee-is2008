@@ -1,5 +1,5 @@
-package analisiCarriera;
-import gestionePropriAppelli.RisultatoEsame;
+package studente.analisiCarriera;
+import docente.gestionePropriAppelli.RisultatoEsame;
 import struttureDati.iterator.Iterator;
 
 /**
