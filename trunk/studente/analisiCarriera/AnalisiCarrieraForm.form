@@ -24,7 +24,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AnalisiCarrieraTitleLabel" alignment="0" pref="287" max="32767" attributes="0"/>
+                  <Component id="AnalisiCarrieraTitleLabel" alignment="0" pref="293" max="32767" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" alignment="0" attributes="1">
                           <Component id="matricolaLabel" min="-2" max="-2" attributes="0"/>
@@ -39,7 +39,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="visualizzaLibrettoButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="visualizzaStatisticheButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -102,13 +102,10 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="visualizzaLibrettoButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="visualizzaStatisticheButton">
+    <Component class="javax.swing.JButton" name="visualizzaStatisticheButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Visualizza Statistiche"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="visualizzaStatisticheButtonActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
