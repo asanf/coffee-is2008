@@ -31,7 +31,7 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
         matricolaLabel = new javax.swing.JLabel();
         matricolaStudenteLabel = new javax.swing.JLabel();
         visualizzaLibrettoButton = new javax.swing.JButton();
-        visualizzaStatisticheButton = new javax.swing.JToggleButton();
+        visualizzaStatisticheButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,11 +50,6 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
         });
 
         visualizzaStatisticheButton.setText("Visualizza Statistiche");
-        visualizzaStatisticheButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visualizzaStatisticheButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,7 +58,7 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AnalisiCarrieraTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                    .addComponent(AnalisiCarrieraTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(matricolaLabel)
@@ -75,7 +70,7 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
                             .addComponent(nomeStudentelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(visualizzaLibrettoButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(visualizzaStatisticheButton)))
                 .addContainerGap())
         );
@@ -104,10 +99,6 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
     private void visualizzaLibrettoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizzaLibrettoButtonActionPerformed
         // TODO add your handling code here:
 }//GEN-LAST:event_visualizzaLibrettoButtonActionPerformed
-
-    private void visualizzaStatisticheButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizzaStatisticheButtonActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_visualizzaStatisticheButtonActionPerformed
     
     /**
      * @param args the command line arguments
@@ -127,7 +118,7 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
     private javax.swing.JLabel nomeStudentelabel;
     private javax.swing.JLabel studenteLabel;
     private javax.swing.JButton visualizzaLibrettoButton;
-    private javax.swing.JToggleButton visualizzaStatisticheButton;
+    private javax.swing.JButton visualizzaStatisticheButton;
     // End of variables declaration//GEN-END:variables
     
 }
