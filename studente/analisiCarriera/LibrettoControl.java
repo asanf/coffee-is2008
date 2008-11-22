@@ -1,6 +1,6 @@
 package studente.analisiCarriera;
 import docente.gestionePropriAppelli.RisultatoEsame;
-import struttureDati.iterator.Iterator;
+import java.util.Iterator;
 
 /**
  * Oggetto control che si occupa di recuperare dati dall'entity Libretto
