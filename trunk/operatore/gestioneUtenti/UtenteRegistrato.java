@@ -1,6 +1,6 @@
 
 
-package gestioneUtenti;
+package operatore.gestioneUtenti;
 
 /**
  * Classe che modella l'utente generico per il sistema

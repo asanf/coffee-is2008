@@ -1,4 +1,4 @@
-package gestioneEsami;
+package operatore.gestioneEsami;
 
 /**
  * 

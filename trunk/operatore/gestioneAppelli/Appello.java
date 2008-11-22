@@ -1,7 +1,7 @@
-package gestioneAppelli;
+package operatore.gestioneAppelli;
 
-import gestioneEsami.Esame;
-import gestioneUtenti.Docente;
+import operatore.gestioneEsami.Esame;
+import operatore.gestioneUtenti.Docente;
 
 /**
  *

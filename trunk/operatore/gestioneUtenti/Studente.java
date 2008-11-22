@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 
-package gestioneUtenti;
+package operatore.gestioneUtenti;
 
-import analisiCarriera.Libretto;
+import studente.analisiCarriera.Libretto;
 
 /**
  * Classe che modella l'entità studente
