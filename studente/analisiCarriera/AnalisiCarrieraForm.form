@@ -25,18 +25,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="AnalisiCarrieraTitleLabel" alignment="0" pref="293" max="32767" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="1">
-                          <Component id="matricolaLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="matricolaStudenteLabel" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="studenteLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="nomeStudentelabel" min="-2" pref="144" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="matricolaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="studenteLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="visualizzaLibrettoButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -52,15 +42,9 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="AnalisiCarrieraTitleLabel" min="-2" pref="47" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="studenteLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nomeStudentelabel" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
-              </Group>
+              <Component id="studenteLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="matricolaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="matricolaStudenteLabel" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
-              </Group>
+              <Component id="matricolaLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="visualizzaLibrettoButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -85,14 +69,10 @@
         <Property name="text" type="java.lang.String" value="Studente: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="nomeStudentelabel">
-    </Component>
     <Component class="javax.swing.JLabel" name="matricolaLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Matricola: "/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="matricolaStudenteLabel">
     </Component>
     <Component class="javax.swing.JButton" name="visualizzaLibrettoButton">
       <Properties>

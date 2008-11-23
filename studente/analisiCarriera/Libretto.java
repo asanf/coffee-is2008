@@ -4,6 +4,8 @@ import docente.gestionePropriAppelli.RisultatoEsame;
 import javax.swing.table.AbstractTableModel;
 import java.util.Vector;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
+import java.sql.*;
 /**
  * Classe che modella il libretto di uno studente.
  * E' una vista dell'entità libretto presente nel database.
@@ -13,8 +15,27 @@ public class Libretto extends AbstractTableModel {
 
     Vector<RisultatoEsame> listaEsami;
 
-    public Libretto() {
-        listaEsami = new Vector<RisultatoEsame>();
+    public Libretto(String matricola) {
+        
+    }
+    
+    private void loadDataFromDataBase(String matricola) throws SQLException{
+        Connection con;
+        Statement query;
+        ResultSet result;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        }catch(ClassNotFoundException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
+        query = con.createStatement();
+        //TODO esplicitare la query che recupera nome esame, crediti esami, data appello, voto, lode
+        result = query.executeQuery("SELECT nome, voto, lode, crediti, data From ...");
+        
+        while(result.next()){
+            //TODO qui va riempito il vector con i dati della result
+        }
     }
     
     public Iterator<RisultatoEsame> iterator(){ 
