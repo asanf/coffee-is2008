@@ -20,11 +20,7 @@ public class Studente extends UtenteRegistrato{
     public Studente(String nome, String cognome, String dataNascita, String indirizzo, String matricola, String login, String password, int annoImmatricolazione) {
         super(nome, cognome, dataNascita, indirizzo, matricola, login, password);
         this.annoImmatricolazione = annoImmatricolazione;
-        this.esamiSostenuti = new Libretto();
-    }
-    
-    public float getMediaVoti(){
-        return 0.0f;
+        this.esamiSostenuti = new Libretto(matricola);
     }
     
     public int getAnnoImmatricolazione(){ return annoImmatricolazione; };

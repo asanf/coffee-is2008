@@ -27,9 +27,7 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
 
         AnalisiCarrieraTitleLabel = new javax.swing.JLabel();
         studenteLabel = new javax.swing.JLabel();
-        nomeStudentelabel = new javax.swing.JLabel();
         matricolaLabel = new javax.swing.JLabel();
-        matricolaStudenteLabel = new javax.swing.JLabel();
         visualizzaLibrettoButton = new javax.swing.JButton();
         visualizzaStatisticheButton = new javax.swing.JButton();
 
@@ -59,15 +57,8 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(AnalisiCarrieraTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(matricolaLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(matricolaStudenteLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(studenteLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(nomeStudentelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(matricolaLabel)
+                    .addComponent(studenteLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(visualizzaLibrettoButton)
                         .addGap(18, 18, 18)
@@ -79,13 +70,9 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(AnalisiCarrieraTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(studenteLabel)
-                    .addComponent(nomeStudentelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(studenteLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(matricolaLabel)
-                    .addComponent(matricolaStudenteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(matricolaLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(visualizzaLibrettoButton)
@@ -97,7 +84,8 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void visualizzaLibrettoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizzaLibrettoButtonActionPerformed
-        // TODO add your handling code here:
+        VisualizzaLibrettoForm librettoForm= new VisualizzaLibrettoForm();
+        librettoForm.setVisible(true);
 }//GEN-LAST:event_visualizzaLibrettoButtonActionPerformed
     
     /**
@@ -114,8 +102,6 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AnalisiCarrieraTitleLabel;
     private javax.swing.JLabel matricolaLabel;
-    private javax.swing.JLabel matricolaStudenteLabel;
-    private javax.swing.JLabel nomeStudentelabel;
     private javax.swing.JLabel studenteLabel;
     private javax.swing.JButton visualizzaLibrettoButton;
     private javax.swing.JButton visualizzaStatisticheButton;
