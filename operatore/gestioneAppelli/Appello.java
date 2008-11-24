@@ -1,5 +1,6 @@
 package operatore.gestioneAppelli;
 
+import java.util.Date;
 import operatore.gestioneEsami.Esame;
 import operatore.gestioneUtenti.Docente;
 
@@ -11,14 +12,14 @@ public class Appello {
     public enum Tipologia {SCRITTO,ORALE,PRATICO};
     
     private Esame esame;
-    private String data;
+    private Date data;
     private Docente docente;
     private Tipologia tipologia;
     private String oraInizio;
     private byte durata;
     private String vincoli;
 
-    public Appello(Esame esame, String data, Docente docente, String oraInizio, byte durata, String vincoli, Tipologia tipo) {
+    public Appello(Esame esame, Date data, Docente docente, String oraInizio, byte durata, String vincoli, Tipologia tipo) {
         this.esame = esame;
         this.data = data;
         this.docente = docente;
@@ -28,11 +29,11 @@ public class Appello {
         tipologia = tipo;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 

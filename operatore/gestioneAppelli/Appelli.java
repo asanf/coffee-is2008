@@ -5,8 +5,11 @@
 
 package operatore.gestioneAppelli;
 
+import java.util.Date;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
+import operatore.gestioneEsami.Esame;
+import operatore.gestioneUtenti.Docente;
 
 /**
  * Classe che modella una lista di appelli, visualizzabile tramite una JTable
@@ -19,6 +22,15 @@ public class Appelli extends AbstractTableModel{
     public Appelli()
     {
         appelli = new Vector<Appello>();
+        byte a,b;
+        a = 2;
+        b = 6;
+        Date data = new Date();
+        data.setDate(11);
+        data.setMonth(7);
+        data.setYear(2008);
+        Appello appello = new Appello(new Esame("ASD",a,b,false,"happy","Dijkstra"),data,new Docente("Alf","Des","boh","boh","boh","boh","boh",Docente.Tipo.ASSOCIATO),"2",a,"boh",Appello.Tipologia.ORALE);
+        appelli.add(appello);
     }
 
     public int getColumnCount() {
@@ -58,5 +70,8 @@ public class Appelli extends AbstractTableModel{
         return false;
     }
     
+    public Appello get(int row){
+        return appelli.get(row);
+    }
     
 }

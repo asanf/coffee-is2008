@@ -1,6 +1,5 @@
 package studente.analisiCarriera;
 
-import docente.gestionePropriAppelli.RisultatoEsame;
 import javax.swing.table.AbstractTableModel;
 import java.util.Vector;
 import java.util.Iterator;
@@ -22,9 +21,10 @@ public class Libretto extends AbstractTableModel {
         listaEsami = new Vector<RisultatoEsame>();
         byte a = 2;
         byte b = 6;
+        byte voto = 30;
 
-        Appello appello = new Appello(new Esame("ASD",a,b,false,"happy","Dijkstra"),"2 nov",new Docente("Alf","Des","boh","boh","boh","boh","boh",Docente.Tipo.ASSOCIATO),"2",a,"boh",Appello.Tipologia.ORALE);
-        listaEsami.add(new RisultatoEsame(appello,b,true));
+        Appello appello = new Appello(new Esame("ASD",a,b,false,"happy","Dijkstra"),new Date(11,11,1111),new Docente("Alf","Des","boh","boh","boh","boh","boh",Docente.Tipo.ASSOCIATO),"2",a,"boh",Appello.Tipologia.ORALE);
+        listaEsami.add(new RisultatoEsame(appello,voto,true));
     }
     
     private void loadDataFromDataBase(String matricola) throws SQLException{
@@ -45,6 +45,10 @@ public class Libretto extends AbstractTableModel {
             //TODO qui va riempito il vector con i dati della result
         }
        */
+    }
+    
+    private void saveDataOnDataBase() throws SQLException{
+        //TODO implementare update
     }
     
     
@@ -97,8 +101,6 @@ public class Libretto extends AbstractTableModel {
     public boolean isCellEditable(int arg0, int arg1) {
         return false;
     }
-    
-    
     
     
     

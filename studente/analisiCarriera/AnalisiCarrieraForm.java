@@ -104,8 +104,8 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
 }//GEN-LAST:event_visualizzaLibrettoButtonActionPerformed
 
     private void visualizzaLibrettoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaLibrettoButtonMouseClicked
-        VisualizzaLibrettoForm lib = new VisualizzaLibrettoForm(studente);
-        lib.setVisible(true);
+        LibrettoControl libcont = new LibrettoControl();
+        libcont.visualizzaLibretto(studente);
     }//GEN-LAST:event_visualizzaLibrettoButtonMouseClicked
 
     private void visualizzaStatisticheButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaStatisticheButtonMouseClicked
