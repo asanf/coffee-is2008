@@ -19,6 +19,7 @@ public class VisualizzaLibrettoForm extends javax.swing.JFrame {
         initComponents();
         titleLabel.setText("Libretto di " + studente.getCognome() +" " +studente.getNome());
         this.setTitle("Coffee - Libretto");
+        this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
     }
     
     /** This method is called from within the constructor to

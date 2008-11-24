@@ -20,6 +20,7 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
         this.studente = studente;
         matricolaLabel.setText("Matricola: " + studente.getMatricola());
         studenteLabel.setText("Studente: " + studente.getCognome() + " " + studente.getNome());
+        this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
     }
     
     /** This method is called from within the constructor to
@@ -58,6 +59,11 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
         });
 
         visualizzaStatisticheButton.setText("Visualizza Statistiche");
+        visualizzaStatisticheButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visualizzaStatisticheButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,6 +107,11 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
         VisualizzaLibrettoForm lib = new VisualizzaLibrettoForm(studente);
         lib.setVisible(true);
     }//GEN-LAST:event_visualizzaLibrettoButtonMouseClicked
+
+    private void visualizzaStatisticheButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaStatisticheButtonMouseClicked
+        VisualizzaStatisticheForm statForm = new VisualizzaStatisticheForm();
+        statForm.setVisible(true);
+    }//GEN-LAST:event_visualizzaStatisticheButtonMouseClicked
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
