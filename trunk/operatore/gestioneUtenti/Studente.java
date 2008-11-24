@@ -22,10 +22,12 @@ public class Studente extends UtenteRegistrato{
         this.annoImmatricolazione = annoImmatricolazione;
         this.esamiSostenuti = new Libretto(matricola);
     }
+    public Studente(String nome, String cognome, String matricola){
+        this(nome,cognome,null,null,matricola,null,null,0);
+    }
     
     public int getAnnoImmatricolazione(){ return annoImmatricolazione; };
     
-    public void addEsame(){};
     
     
     

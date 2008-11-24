@@ -6,6 +6,8 @@
 
 package studente.analisiCarriera;
 
+import operatore.gestioneUtenti.Studente;
+
 /**
  *
  * @author  e-vampire
@@ -13,8 +15,11 @@ package studente.analisiCarriera;
 public class AnalisiCarrieraForm extends javax.swing.JFrame {
     
     /** Creates new form AnalisiCarrieraForm */
-    public AnalisiCarrieraForm() {
+    public AnalisiCarrieraForm(Studente studente) {
         initComponents();
+        this.studente = studente;
+        matricolaLabel.setText("Matricola: " + studente.getMatricola());
+        studenteLabel.setText("Studente: " + studente.getCognome() + " " + studente.getNome());
     }
     
     /** This method is called from within the constructor to
@@ -41,6 +46,11 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
         matricolaLabel.setText("Matricola: ");
 
         visualizzaLibrettoButton.setText("Visualizza Libretto");
+        visualizzaLibrettoButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visualizzaLibrettoButtonMouseClicked(evt);
+            }
+        });
         visualizzaLibrettoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 visualizzaLibrettoButtonActionPerformed(evt);
@@ -84,20 +94,14 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void visualizzaLibrettoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizzaLibrettoButtonActionPerformed
-        VisualizzaLibrettoForm librettoForm= new VisualizzaLibrettoForm();
-        librettoForm.setVisible(true);
+        //librettoForm.setVisible(true);
 }//GEN-LAST:event_visualizzaLibrettoButtonActionPerformed
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AnalisiCarrieraForm().setVisible(true);
-            }
-        });
-    }
+
+    private void visualizzaLibrettoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaLibrettoButtonMouseClicked
+        VisualizzaLibrettoForm lib = new VisualizzaLibrettoForm(studente);
+        lib.setVisible(true);
+    }//GEN-LAST:event_visualizzaLibrettoButtonMouseClicked
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AnalisiCarrieraTitleLabel;
@@ -106,5 +110,5 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
     private javax.swing.JButton visualizzaLibrettoButton;
     private javax.swing.JButton visualizzaStatisticheButton;
     // End of variables declaration//GEN-END:variables
-    
+    private Studente studente;
 }
