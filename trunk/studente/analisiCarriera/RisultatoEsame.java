@@ -1,5 +1,6 @@
-package docente.gestionePropriAppelli;
+package studente.analisiCarriera;
 
+import java.util.Date;
 import operatore.gestioneAppelli.Appello;
 
 
@@ -12,6 +13,7 @@ public class RisultatoEsame {
     private Appello appello;
     private byte voto;
     private boolean lode;
+    private Date data;
 
     public RisultatoEsame(Appello appello, byte voto, boolean lode) {
         this.appello = appello;
@@ -42,5 +44,14 @@ public class RisultatoEsame {
     public void setVoto(byte voto) {
         this.voto = voto;
     }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+    
     
 }

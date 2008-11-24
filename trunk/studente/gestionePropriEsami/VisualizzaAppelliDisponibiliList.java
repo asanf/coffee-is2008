@@ -6,7 +6,9 @@
 
 package studente.gestionePropriEsami;
 
+import javax.swing.JOptionPane;
 import operatore.gestioneAppelli.Appelli;
+import operatore.gestioneAppelli.Appello;
 
 /**
  *
@@ -17,6 +19,7 @@ public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
     /** Creates new form VisualizzaAppelliDisponibiliList */
     public VisualizzaAppelliDisponibiliList() {
         initComponents();
+        this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
     }
     
     /** This method is called from within the constructor to
@@ -41,6 +44,11 @@ public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         richiediPrenotazioneAppelloButton.setText("Richiedi Prenotazione Appello");
+        richiediPrenotazioneAppelloButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                richiediPrenotazioneAppelloButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,17 +80,16 @@ public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void richiediPrenotazioneAppelloButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_richiediPrenotazioneAppelloButtonMouseClicked
+
+        int selectedRow = jTable1.getSelectedRow();
+        if(selectedRow<0) JOptionPane.showMessageDialog(null, "Nessun appello selezionato");
+        Appelli appelli = new Appelli();
+        Appello selezionato = appelli.get(selectedRow);
+        
+    }//GEN-LAST:event_richiediPrenotazioneAppelloButtonMouseClicked
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VisualizzaAppelliDisponibiliList().setVisible(true);
-            }
-        });
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -90,5 +97,5 @@ public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JButton richiediPrenotazioneAppelloButton;
     // End of variables declaration//GEN-END:variables
-    private Appelli appelli;
+
 }

@@ -18,6 +18,7 @@ public class GestionePropriEsamiForm extends javax.swing.JFrame {
     public GestionePropriEsamiForm() {
         initComponents();
         this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
+        this.setResizable(false);
     }
     
     /** This method is called from within the constructor to
@@ -38,6 +39,11 @@ public class GestionePropriEsamiForm extends javax.swing.JFrame {
         jLabel1.setText("Gestione Propri Esami");
 
         visualizzaAppelliDisponibiliButton.setText("Visualizza Appelli Disponibili");
+        visualizzaAppelliDisponibiliButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visualizzaAppelliDisponibiliButtonMouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Visualizza Disclaimer");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -78,17 +84,12 @@ public class GestionePropriEsamiForm extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         JOptionPane.showMessageDialog(null, "No, non siamo pazzi. \nC'è un solo pulsante perchè le altre funzioni devono essere ancora implementate. \nDio benedica i requisiti a bassa priorità");
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void visualizzaAppelliDisponibiliButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaAppelliDisponibiliButtonMouseClicked
+        GestionePropriEsamiControl gpec = new GestionePropriEsamiControl();
+        gpec.visualizzaAppelliDisponibili();
+    }//GEN-LAST:event_visualizzaAppelliDisponibiliButtonMouseClicked
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GestionePropriEsamiForm().setVisible(true);
-            }
-        });
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;

@@ -63,6 +63,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Visualizza Appelli Disponibili"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="visualizzaAppelliDisponibiliButtonMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>

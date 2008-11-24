@@ -1,6 +1,6 @@
 package studente.analisiCarriera;
-import docente.gestionePropriAppelli.RisultatoEsame;
 import java.util.Iterator;
+import operatore.gestioneUtenti.Studente;
 
 /**
  * Oggetto control che si occupa di recuperare dati dall'entity Libretto
@@ -54,7 +54,8 @@ public class LibrettoControl {
         return (byte)((getMediaAritmetica(libretto) * 110) / 30);
     }
     
-    public void visualizzaLibretto(Libretto libretto){
-        
+    public void visualizzaLibretto(Studente studente){
+        VisualizzaLibrettoForm lib = new VisualizzaLibrettoForm(studente);
+        lib.setVisible(true);
     }
 }
