@@ -5,7 +5,7 @@
  */
 
 package studente.analisiCarriera;
-import studente.analisiCarriera.LibrettoControl;
+import operatore.gestioneUtenti.Studente;
 
 /**
  *
@@ -14,8 +14,11 @@ import studente.analisiCarriera.LibrettoControl;
 public class VisualizzaLibrettoForm extends javax.swing.JFrame {
     
     /** Creates new form VisualizzaLibrettoForm */
-    public VisualizzaLibrettoForm() {
+    public VisualizzaLibrettoForm(Studente studente) {
+        libretto = new Libretto(studente.getMatricola());
         initComponents();
+        titleLabel.setText("Libretto di " + studente.getCognome() +" " +studente.getNome());
+        this.setTitle("Coffee - Libretto");
     }
     
     /** This method is called from within the constructor to
@@ -26,15 +29,16 @@ public class VisualizzaLibrettoForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TitleLabel = new javax.swing.JLabel();
+        titleLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaEsami = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TitleLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
-        TitleLabel.setText("LIbretto di");
+        titleLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
+        titleLabel.setText("LIbretto di");
 
+        listaEsami.setModel(libretto);
         listaEsami.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(listaEsami);
         listaEsami.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -44,14 +48,14 @@ public class VisualizzaLibrettoForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -59,21 +63,11 @@ public class VisualizzaLibrettoForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VisualizzaLibrettoForm().setVisible(true);
-            }
-        });
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel TitleLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable listaEsami;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
-    private LibrettoControl libretto;
+    private Libretto libretto;
 }

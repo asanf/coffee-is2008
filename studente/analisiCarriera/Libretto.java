@@ -4,8 +4,10 @@ import docente.gestionePropriAppelli.RisultatoEsame;
 import javax.swing.table.AbstractTableModel;
 import java.util.Vector;
 import java.util.Iterator;
-import javax.swing.JOptionPane;
 import java.sql.*;
+import operatore.gestioneAppelli.Appello;
+import operatore.gestioneEsami.Esame;
+import operatore.gestioneUtenti.Docente;
 /**
  * Classe che modella il libretto di uno studente.
  * E' una vista dell'entità libretto presente nel database.
@@ -17,10 +19,16 @@ public class Libretto extends AbstractTableModel {
 
     public Libretto(String matricola) {
         
+        listaEsami = new Vector<RisultatoEsame>();
+        byte a = 2;
+        byte b = 6;
+
+        Appello appello = new Appello(new Esame("ASD",a,b,false,"happy","Dijkstra"),"2 nov",new Docente("Alf","Des","boh","boh","boh","boh","boh",Docente.Tipo.ASSOCIATO),"2",a,"boh",Appello.Tipologia.ORALE);
+        listaEsami.add(new RisultatoEsame(appello,b,true));
     }
     
     private void loadDataFromDataBase(String matricola) throws SQLException{
-        Connection con;
+      /*  Connection con;
         Statement query;
         ResultSet result;
         try{
@@ -36,11 +44,9 @@ public class Libretto extends AbstractTableModel {
         while(result.next()){
             //TODO qui va riempito il vector con i dati della result
         }
+       */
     }
     
-    public Iterator<RisultatoEsame> iterator(){ 
-        return listaEsami.iterator();
-    }
     
     public int getNumEsami(){
         return listaEsami.size();
@@ -70,6 +76,10 @@ public class Libretto extends AbstractTableModel {
         }
     }
     
+    public Iterator<RisultatoEsame> iterator(){
+        return listaEsami.iterator();
+    }
+    
     public Object getValueAt(int row, int columns) {
         
         RisultatoEsame tmp = listaEsami.get(row);
@@ -79,7 +89,7 @@ public class Libretto extends AbstractTableModel {
             case 1: return tmp.getVoto();
             case 2: return tmp.isLode();
             case 3: return tmp.getAppello().getData();
-            default: return null;
+            default: return "";
         }
     }
 
