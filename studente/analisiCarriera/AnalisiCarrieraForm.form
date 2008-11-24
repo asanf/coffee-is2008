@@ -87,6 +87,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Visualizza Statistiche"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="visualizzaStatisticheButtonMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

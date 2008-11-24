@@ -6,7 +6,6 @@
 
 package studente.gestionePropriEsami;
 
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +17,7 @@ public class GestionePropriEsamiForm extends javax.swing.JFrame {
     /** Creates new form GestionePropriEsamiForm */
     public GestionePropriEsamiForm() {
         initComponents();
+        this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
     }
     
     /** This method is called from within the constructor to
@@ -76,7 +76,7 @@ public class GestionePropriEsamiForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        JOptionPane.showMessageDialog(new JLabel("No, non siamo pazzi. \nC'è un solo pulsante solo perchè le altre funzioni devono essere ancora implementate. \nDio benedica i requisiti a bassa priorità"), evt);
+        JOptionPane.showMessageDialog(null, "No, non siamo pazzi. \nC'è un solo pulsante perchè le altre funzioni devono essere ancora implementate. \nDio benedica i requisiti a bassa priorità");
     }//GEN-LAST:event_jButton2MouseClicked
     
     /**

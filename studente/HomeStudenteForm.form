@@ -73,6 +73,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Gestione Propri Esami"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
