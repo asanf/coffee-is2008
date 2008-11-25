@@ -6,6 +6,8 @@
 
 package studente.gestionePropriEsami;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +21,8 @@ public class GestionePropriEsamiForm extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
         this.setResizable(false);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
     }
     
     /** This method is called from within the constructor to

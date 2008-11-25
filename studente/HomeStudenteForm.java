@@ -6,6 +6,8 @@
 
 package studente;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import operatore.gestioneUtenti.Studente;
 import studente.analisiCarriera.AnalisiCarrieraForm;
 import studente.gestionePropriEsami.GestionePropriEsamiForm;
@@ -22,6 +24,9 @@ public class HomeStudenteForm extends javax.swing.JFrame {
         this.studente = studente;
         initComponents();
         homeTitle.setText("Benvenuto " + studente.getNome());
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
+        
     }
     
     /** This method is called from within the constructor to
@@ -33,33 +38,33 @@ public class HomeStudenteForm extends javax.swing.JFrame {
     private void initComponents() {
 
         homeTitle = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        analisiCarrieraButton = new javax.swing.JButton();
+        gestionePropriEsamiButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         homeTitle.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
         homeTitle.setText("Benvenuto ");
 
-        jButton1.setText("Analisi Carriera");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        analisiCarrieraButton.setText("Analisi Carriera");
+        analisiCarrieraButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                analisiCarrieraButtonMouseClicked(evt);
             }
         });
 
-        jButton2.setText("Gestione Propri Esami");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        gestionePropriEsamiButton.setText("Gestione Propri Esami");
+        gestionePropriEsamiButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                gestionePropriEsamiButtonMouseClicked(evt);
             }
         });
 
-        jButton3.setText("Logout");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        logoutButton.setText("Logout");
+        logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                logoutButtonMouseClicked(evt);
             }
         });
 
@@ -71,13 +76,13 @@ public class HomeStudenteForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(analisiCarrieraButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3))
+                        .addComponent(gestionePropriEsamiButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(logoutButton))
                     .addComponent(homeTitle))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,37 +91,37 @@ public class HomeStudenteForm extends javax.swing.JFrame {
                 .addComponent(homeTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(analisiCarrieraButton)
+                    .addComponent(gestionePropriEsamiButton)
+                    .addComponent(logoutButton))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void analisiCarrieraButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_analisiCarrieraButtonMouseClicked
         AnalisiCarrieraForm form = new AnalisiCarrieraForm(studente);
         form.setVisible(true);
-    }//GEN-LAST:event_jButton1MouseClicked
+}//GEN-LAST:event_analisiCarrieraButtonMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void gestionePropriEsamiButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionePropriEsamiButtonMouseClicked
         GestionePropriEsamiForm exForm = new GestionePropriEsamiForm();
         exForm.setVisible(true);
-    }//GEN-LAST:event_jButton2MouseClicked
+}//GEN-LAST:event_gestionePropriEsamiButtonMouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
         //TODO exit alla schermata di login
         System.exit(0);
-    }//GEN-LAST:event_jButton3MouseClicked
+}//GEN-LAST:event_logoutButtonMouseClicked
     
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton analisiCarrieraButton;
+    private javax.swing.JButton gestionePropriEsamiButton;
     private javax.swing.JLabel homeTitle;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton logoutButton;
     // End of variables declaration//GEN-END:variables
     private Studente studente;
 }

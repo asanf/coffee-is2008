@@ -1,63 +1,70 @@
 package operatore.gestioneAppelli;
 
-import java.util.Date;
-import operatore.gestioneEsami.Esame;
-import operatore.gestioneUtenti.Docente;
-
 /**
  *
  * @author 
  */
 public class Appello {
-    public enum Tipologia {SCRITTO,ORALE,PRATICO};
-    
-    private Esame esame;
-    private Date data;
-    private Docente docente;
-    private Tipologia tipologia;
+   
+    private String esame;
+    private String data;
+    private String docente;
+    private String tipologia;
     private String oraInizio;
-    private byte durata;
+    private int durata;
     private String vincoli;
+    private String aula;
 
-    public Appello(Esame esame, Date data, Docente docente, String oraInizio, byte durata, String vincoli, Tipologia tipo) {
+    public Appello(String esame, String data, String docente, String tipologia, String oraInizio, int durata, String vincoli, String aula) {
         this.esame = esame;
         this.data = data;
         this.docente = docente;
+        this.tipologia = tipologia;
         this.oraInizio = oraInizio;
         this.durata = durata;
         this.vincoli = vincoli;
-        tipologia = tipo;
+        this.aula = aula;
     }
 
-    public Date getData() {
+    public String getAula() {
+        return aula;
+    }
+
+    public void setAula(String aula) {
+        this.aula = aula;
+    }
+
+    
+    
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
-    public Docente getDocente() {
+    public String getDocente() {
         return docente;
     }
 
-    public void setDocente(Docente docente) {
+    public void setDocente(String docente) {
         this.docente = docente;
     }
 
-    public byte getDurata() {
+    public int getDurata() {
         return durata;
     }
 
-    public void setDurata(byte durata) {
+    public void setDurata(int durata) {
         this.durata = durata;
     }
 
-    public Esame getEsame() {
+    public String getEsame() {
         return esame;
     }
 
-    public void setEsame(Esame esame) {
+    public void setEsame(String esame) {
         this.esame = esame;
     }
 
@@ -69,6 +76,10 @@ public class Appello {
         this.oraInizio = oraInizio;
     }
 
+    public void setTipologia(String tipologia) {
+        this.tipologia = tipologia;
+    }
+
     public String getVincoli() {
         return vincoli;
     }
@@ -78,15 +89,7 @@ public class Appello {
     }
     
     public String getTipologia(){
-        String toReturn="";
-        switch(tipologia){
-            case SCRITTO: toReturn = "Scritto";
-            case ORALE: toReturn = "Orale";
-            case PRATICO: toReturn = "Pratico";
-        }
-        
-        return toReturn;
+        return tipologia;
     }
     
-
 }

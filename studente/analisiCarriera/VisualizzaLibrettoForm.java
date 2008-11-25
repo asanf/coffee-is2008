@@ -5,6 +5,8 @@
  */
 
 package studente.analisiCarriera;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import operatore.gestioneUtenti.Studente;
 
 /**
@@ -15,11 +17,13 @@ public class VisualizzaLibrettoForm extends javax.swing.JFrame {
     
     /** Creates new form VisualizzaLibrettoForm */
     public VisualizzaLibrettoForm(Studente studente) {
-        libretto = new Libretto(studente.getMatricola());
+        libretto = new Libretto(studente);
         initComponents();
         titleLabel.setText("Libretto di " + studente.getCognome() +" " +studente.getNome());
         this.setTitle("Coffee - Libretto");
         this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
     }
     
     /** This method is called from within the constructor to

@@ -1,4 +1,5 @@
 package studente.analisiCarriera;
+import java.sql.*;
 import java.util.Iterator;
 import operatore.gestioneUtenti.Studente;
 
@@ -13,36 +14,16 @@ public class LibrettoControl {
       * @param libretto Il libretto per cui si vuol calcolare la media
       * @return La media aritmetica
       */
-    public float getMediaAritmetica(Libretto libretto){
-        int sumVoti;
-        sumVoti = 0;
-        RisultatoEsame tmp;
-        for(Iterator<RisultatoEsame> it = libretto.iterator(); it.hasNext();){
-            tmp = it.next();
-            sumVoti+=tmp.getVoto();
+    public float getMediaAritmetica(String matricola){
+        
+        int sumVoti = 0;
+              
+        Libretto lib = new Libretto(matricola);
+        Iterator<RisultatoEsame> esami = lib.iterator();
+        while(esami.hasNext()){
+            sumVoti += esami.next().getVoto();
         }
-        return (float)sumVoti/libretto.getNumEsami();
-    }
-    
-    /**
-     * Metodo che calcola la media pesata per un dato libretto
-     * @param libretto Il libretto per cui si vuol calcolare la media
-     * @return La media ponderata
-     */
-    public float getMediaPonderata(Libretto libretto){
-        int sumVotiPesati, sumCrediti;
-        sumVotiPesati = 0;
-        sumCrediti = 1;
-        RisultatoEsame tmp;
-        for(Iterator<RisultatoEsame> it = libretto.iterator(); it.hasNext();)
-        {
-            tmp = it.next();
-            int crediti = tmp.getAppello().getEsame().getCrediti();
-            int votoPesato = tmp.getVoto() * crediti;
-            sumVotiPesati += votoPesato;
-            sumCrediti *= crediti;
-        }
-        return (float)sumVotiPesati/sumCrediti;
+        return sumVoti/lib.getNumEsami();
     }
     
     /**
@@ -50,8 +31,8 @@ public class LibrettoControl {
      * @param libretto Il libretto contenente gli esami sostenuto
      * @return Il voto di laurea in centodecimi
      */
-    public byte getVotoDiLaureaStimato(Libretto libretto){
-        return (byte)((getMediaAritmetica(libretto) * 110) / 30);
+    public int getVotoDiLaureaStimato(String matricola){
+        return (int)(getMediaAritmetica(matricola)*110)/30;
     }
     
     public void visualizzaLibretto(Studente studente){
