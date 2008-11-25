@@ -6,6 +6,8 @@
 
 package studente.analisiCarriera;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import operatore.gestioneUtenti.Studente;
 
 /**
@@ -21,6 +23,8 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
         matricolaLabel.setText("Matricola: " + studente.getMatricola());
         studenteLabel.setText("Studente: " + studente.getCognome() + " " + studente.getNome());
         this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
     }
     
     /** This method is called from within the constructor to
@@ -109,7 +113,7 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
     }//GEN-LAST:event_visualizzaLibrettoButtonMouseClicked
 
     private void visualizzaStatisticheButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaStatisticheButtonMouseClicked
-        VisualizzaStatisticheForm statForm = new VisualizzaStatisticheForm();
+        VisualizzaStatisticheForm statForm = new VisualizzaStatisticheForm(studente.getMatricola());
         statForm.setVisible(true);
     }//GEN-LAST:event_visualizzaStatisticheButtonMouseClicked
 

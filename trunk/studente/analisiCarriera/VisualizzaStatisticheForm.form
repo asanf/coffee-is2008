@@ -28,14 +28,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="promptMediaAritmetica" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="promptMediaPonderata" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="promptVotoLaurea" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="votoLaureaStimatoLabel" max="32767" attributes="1"/>
-                          <Component id="mediaPonderataLabel" max="32767" attributes="1"/>
-                          <Component id="mediaAritmeticaLabel" alignment="0" pref="30" max="32767" attributes="1"/>
+                          <Component id="mediaAritmeticaLabel" alignment="1" pref="30" max="32767" attributes="1"/>
                       </Group>
                   </Group>
               </Group>
@@ -54,14 +52,9 @@
                   <Component id="mediaAritmeticaLabel" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="promptMediaPonderata" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="mediaPonderataLabel" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="promptVotoLaurea" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="votoLaureaStimatoLabel" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="promptVotoLaurea" min="-2" max="-2" attributes="0"/>
+                  <Component id="votoLaureaStimatoLabel" min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -82,19 +75,12 @@
         <Property name="text" type="java.lang.String" value="Media Aritmetica: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="promptMediaPonderata">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Media Ponderata: "/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="promptVotoLaurea">
       <Properties>
         <Property name="text" type="java.lang.String" value="Voto di laurea atteso: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="mediaAritmeticaLabel">
-    </Component>
-    <Component class="javax.swing.JLabel" name="mediaPonderataLabel">
     </Component>
     <Component class="javax.swing.JLabel" name="votoLaureaStimatoLabel">
     </Component>

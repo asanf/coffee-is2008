@@ -10,23 +10,32 @@ import operatore.gestioneAppelli.Appello;
  */
 public class RisultatoEsame {
 
-    private Appello appello;
-    private byte voto;
+    private String esame;
+    private int voto;
     private boolean lode;
-    private Date data;
+    private String data;
 
-    public RisultatoEsame(Appello appello, byte voto, boolean lode) {
-        this.appello = appello;
+    public RisultatoEsame(String esame, int voto, boolean lode, String data) {
+        this.esame = esame;
         this.voto = voto;
         this.lode = lode;
+        this.data = data;
     }
 
-    public Appello getAppello() {
-        return appello;
+    public String getData() {
+        return data;
     }
 
-    public void setAppello(Appello appello) {
-        this.appello = appello;
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getEsame() {
+        return esame;
+    }
+
+    public void setEsame(String esame) {
+        this.esame = esame;
     }
 
     public boolean isLode() {
@@ -37,20 +46,12 @@ public class RisultatoEsame {
         this.lode = lode;
     }
 
-    public byte getVoto() {
+    public int getVoto() {
         return voto;
     }
 
-    public void setVoto(byte voto) {
+    public void setVoto(int voto) {
         this.voto = voto;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
     }
     
     

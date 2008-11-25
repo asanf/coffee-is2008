@@ -5,11 +5,10 @@
 
 package operatore.gestioneAppelli;
 
-import java.util.Date;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
-import operatore.gestioneEsami.Esame;
-import operatore.gestioneUtenti.Docente;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  * Classe che modella una lista di appelli, visualizzabile tramite una JTable
@@ -22,19 +21,47 @@ public class Appelli extends AbstractTableModel{
     public Appelli()
     {
         appelli = new Vector<Appello>();
-        byte a,b;
-        a = 2;
-        b = 6;
-        Date data = new Date();
-        data.setDate(11);
-        data.setMonth(7);
-        data.setYear(2008);
-        Appello appello = new Appello(new Esame("ASD",a,b,false,"happy","Dijkstra"),data,new Docente("Alf","Des","boh","boh","boh","boh","boh",Docente.Tipo.ASSOCIATO),"2",a,"boh",Appello.Tipologia.ORALE);
-        appelli.add(appello);
+        ResultSet result = null;
+        try{
+            result = loadDataFromDataBase();
+            while(result.next())
+            {
+                    Appello tmp = new Appello(
+                    result.getString("esame"),
+                    result.getString("data"),
+                    result.getString("docente"),
+                    result.getString("tipologia"),
+                    result.getString("ora_inizio"),
+                    result.getInt("durata"),
+                    result.getString("vincoli"),
+                    result.getString("aula"));
+                    
+                    appelli.add(tmp);
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
+    public ResultSet loadDataFromDataBase() throws SQLException{
+        Connection con;
+        Statement query;
+        ResultSet result;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        }catch(ClassNotFoundException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
+        query = con.createStatement();
+        
+        result = query.executeQuery("SELECT * FROM appello");
+       
+        return result;     
+    }
+    
     public int getColumnCount() {
-        return 5;
+        return 7;
     }
 
     public int getRowCount() {
@@ -44,11 +71,13 @@ public class Appelli extends AbstractTableModel{
     public Object getValueAt(int row, int column) {
         Appello tmp = appelli.get(row);
         switch(column){
-            case 0: return tmp.getEsame().getNome();
+            case 0: return tmp.getEsame();
             case 1: return tmp.getData();
             case 2: return tmp.getOraInizio();
             case 3: return tmp.getTipologia();
-            case 4: return tmp.getDocente().getCognome() + " " + tmp.getDocente().getNome().charAt(0) + ".";
+            case 4: return tmp.getDocente();
+            case 5: return tmp.getVincoli();
+            case 6: return tmp.getAula();
             default: return null;
         }
     }
@@ -61,6 +90,8 @@ public class Appelli extends AbstractTableModel{
             case 2: return "Ore";
             case 3: return "Tipo";
             case 4: return "Docente";
+            case 5: return "Vincoli";
+            case 6: return "Aula";
             default: return null;
         }
     }

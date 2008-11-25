@@ -1,12 +1,11 @@
 package studente.analisiCarriera;
-
-import javax.swing.table.AbstractTableModel;
 import java.util.Vector;
 import java.util.Iterator;
 import java.sql.*;
-import operatore.gestioneAppelli.Appello;
-import operatore.gestioneEsami.Esame;
-import operatore.gestioneUtenti.Docente;
+import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
+import operatore.gestioneUtenti.Studente;
+
 /**
  * Classe che modella il libretto di uno studente.
  * E' una vista dell'entità libretto presente nel database.
@@ -14,21 +13,30 @@ import operatore.gestioneUtenti.Docente;
  */
 public class Libretto extends AbstractTableModel {
 
-    Vector<RisultatoEsame> listaEsami;
+    private Vector<RisultatoEsame> listaEsami;
 
     public Libretto(String matricola) {
-        
+        ResultSet result = null;
         listaEsami = new Vector<RisultatoEsame>();
-        byte a = 2;
-        byte b = 6;
-        byte voto = 30;
-
-        Appello appello = new Appello(new Esame("ASD",a,b,false,"happy","Dijkstra"),new Date(11,11,1111),new Docente("Alf","Des","boh","boh","boh","boh","boh",Docente.Tipo.ASSOCIATO),"2",a,"boh",Appello.Tipologia.ORALE);
-        listaEsami.add(new RisultatoEsame(appello,voto,true));
+        try{
+            result = loadDataFromDataBase(matricola);
+            while(result.next()){
+                RisultatoEsame tmp = new RisultatoEsame(
+                        result.getString("esame"),
+                        result.getInt("voto"),
+                        result.getBoolean("lode"),
+                        result.getString("data"));
+                listaEsami.add(tmp);
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
     }
     
-    private void loadDataFromDataBase(String matricola) throws SQLException{
-      /*  Connection con;
+    public ResultSet loadDataFromDataBase(String matricola) throws SQLException{
+        Connection con;
         Statement query;
         ResultSet result;
         try{
@@ -38,16 +46,13 @@ public class Libretto extends AbstractTableModel {
         }
         con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
         query = con.createStatement();
-        //TODO esplicitare la query che recupera nome esame, crediti esami, data appello, voto, lode
-        result = query.executeQuery("SELECT nome, voto, lode, crediti, data From ...");
         
-        while(result.next()){
-            //TODO qui va riempito il vector con i dati della result
-        }
-       */
+        result = query.executeQuery("SELECT * FROM libretto");
+        
+        return result;
     }
     
-    private void saveDataOnDataBase() throws SQLException{
+    public void saveDataOnDataBase() throws SQLException{
         //TODO implementare update
     }
     
@@ -89,10 +94,10 @@ public class Libretto extends AbstractTableModel {
         RisultatoEsame tmp = listaEsami.get(row);
         
         switch(columns){
-            case 0: return tmp.getAppello().getEsame().getNome();
+            case 0: return tmp.getEsame();
             case 1: return tmp.getVoto();
             case 2: return tmp.isLode();
-            case 3: return tmp.getAppello().getData();
+            case 3: return tmp.getData();
             default: return "";
         }
     }

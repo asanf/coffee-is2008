@@ -6,6 +6,8 @@
 
 package studente.gestionePropriEsami;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import operatore.gestioneAppelli.Appelli;
 import operatore.gestioneAppelli.Appello;
@@ -19,7 +21,10 @@ public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
     /** Creates new form VisualizzaAppelliDisponibiliList */
     public VisualizzaAppelliDisponibiliList() {
         initComponents();
+        this.setResizable(false);
         this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
     }
     
     /** This method is called from within the constructor to
@@ -56,25 +61,20 @@ public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(230, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(richiediPrenotazioneAppelloButton))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(richiediPrenotazioneAppelloButton)
-                .addContainerGap(188, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(richiediPrenotazioneAppelloButton))
         );
 
@@ -84,10 +84,13 @@ public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
     private void richiediPrenotazioneAppelloButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_richiediPrenotazioneAppelloButtonMouseClicked
 
         int selectedRow = jTable1.getSelectedRow();
-        if(selectedRow<0) JOptionPane.showMessageDialog(null, "Nessun appello selezionato");
-        Appelli appelli = new Appelli();
-        Appello selezionato = appelli.get(selectedRow);
-        
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Nessun appello selezionato");
+        } else {
+            Appelli appelli = new Appelli();
+            Appello selezionato = appelli.get(selectedRow);
+            JOptionPane.showMessageDialog(null, "Ti sei prenotato all'esame di " + selezionato.getEsame() + "\n del Prof. " + selezionato.getDocente());
+        }
     }//GEN-LAST:event_richiediPrenotazioneAppelloButtonMouseClicked
     
     
