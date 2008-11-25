@@ -17,7 +17,7 @@ public class VisualizzaLibrettoForm extends javax.swing.JFrame {
     
     /** Creates new form VisualizzaLibrettoForm */
     public VisualizzaLibrettoForm(Studente studente) {
-        libretto = new Libretto(studente);
+        libretto = new Libretto(studente.getMatricola());
         initComponents();
         titleLabel.setText("Libretto di " + studente.getCognome() +" " +studente.getNome());
         this.setTitle("Coffee - Libretto");
