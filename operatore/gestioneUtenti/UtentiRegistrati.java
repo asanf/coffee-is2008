@@ -84,6 +84,20 @@ public class UtentiRegistrati extends AbstractTableModel{
                 docente.setDataNascita(result.getString("data_nascita"));
                 docente.setTipo(result.getString("tipo_contratto"));
                 return docente;
+            }else{
+                result = query.executeQuery("SELECT * FROM operatore as O, utente_registrato as U WHERE O.matricola=U.matricola AND username='"+username+"' AND password='"+password+"'");
+                if(result.next()){
+                    Operatore operatore = new Operatore();
+                    operatore.setCognome(result.getString("cognome"));
+                    operatore.setNome(result.getString("nome"));
+                    operatore.setMatricola(result.getString("matricola"));
+                    operatore.setIndirizzo(result.getString("indirizzo"));
+                    operatore.setLogin(username);
+                    operatore.setPassword(password);
+                    operatore.setDataNascita(result.getString("data_nascita"));
+                    operatore.setAnnoRegistrazione(result.getInt("data_registrazione"));
+                    return operatore;
+                }
             }
         }
         return null;

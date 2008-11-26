@@ -5,15 +5,11 @@ import docente.HomeDocenteForm;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
+import operatore.HomeOperatoreForm;
 import operatore.gestioneUtenti.Docente;
+import operatore.gestioneUtenti.Operatore;
 import operatore.gestioneUtenti.Studente;
 import operatore.gestioneUtenti.UtenteRegistrato;
-
-/*
- * LoginFrame.java
- *
- * Created on 25 novembre 2008, 20.48
- */
 import studente.HomeStudenteForm;
 
 
@@ -130,10 +126,13 @@ public class LoginForm extends javax.swing.JFrame {
                 home = new HomeStudenteForm((Studente)utente);
             }else if(utente instanceof Docente){
                 home = new HomeDocenteForm((Docente)utente);
+            }else if(utente instanceof Operatore){
+                home = new HomeOperatoreForm((Operatore)utente);
             }
+            home.setVisible(true);
+            this.setVisible(false);
         }       
-        home.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_loginButtonMouseClicked
 
     private void richiediAggiuntaAccountButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_richiediAggiuntaAccountButtonMouseClicked

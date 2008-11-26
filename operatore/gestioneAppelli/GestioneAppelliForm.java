@@ -1,19 +1,19 @@
 /*
- * GestionePropriAppelliControl.java
+ * GestioneAppelliForm.java
  *
- * Created on 26 novembre 2008, 1.44
+ * Created on 26 novembre 2008, 10.12
  */
 
-package docente.gestionePropriAppelli;
+package operatore.gestioneAppelli;
 
 /**
  *
  * @author  e-vampire
  */
-public class GestionePropriAppelliControl extends javax.swing.JFrame {
+public class GestioneAppelliForm extends javax.swing.JFrame {
     
-    /** Creates new form GestionePropriAppelliControl */
-    public GestionePropriAppelliControl() {
+    /** Creates new form GestioneAppelliForm */
+    public GestioneAppelliForm() {
         initComponents();
     }
     
@@ -47,7 +47,7 @@ public class GestionePropriAppelliControl extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionePropriAppelliControl().setVisible(true);
+                new GestioneAppelliForm().setVisible(true);
             }
         });
     }
