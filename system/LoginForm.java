@@ -4,6 +4,8 @@ package system;
 import docente.HomeDocenteForm;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import operatore.HomeOperatoreForm;
 import operatore.gestioneUtenti.Docente;
@@ -52,6 +54,12 @@ public class LoginForm extends javax.swing.JFrame {
         nomeUtenteLabel.setText("Nome Utente: ");
 
         passwordLabel.setText("Password: ");
+
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
+            }
+        });
 
         loginButton.setText("Login");
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -138,6 +146,12 @@ public class LoginForm extends javax.swing.JFrame {
         RichiediAggiuntaAccountForm aggiuntaAccountForm = new RichiediAggiuntaAccountForm();
         aggiuntaAccountForm.setVisible(true);
     }//GEN-LAST:event_richiediAggiuntaAccountButtonMouseClicked
+
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            loginButtonMouseClicked(new java.awt.event.MouseEvent(loginButton, 0, 0, 0, 0, 0, 0, rootPaneCheckingEnabled));
+        }
+    }//GEN-LAST:event_passwordFieldKeyPressed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

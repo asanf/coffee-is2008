@@ -1,5 +1,8 @@
 package operatore.gestioneEsami;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author  
@@ -10,7 +13,24 @@ public class EsameForm extends javax.swing.JFrame {
     public EsameForm() {
         initComponents();
         this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
-        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
+        this.setResizable(false);
+    }
+    
+    public EsameForm(Esame esame) {
+        initComponents();
+        this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
+        this.setResizable(false);
+        titleLabel.setText("Dati per l'esame di " + esame.getNome());
+        nomeField.setText(esame.getNome());
+        oreFrontaliField.setText(""+esame.getOreFrontali());
+        oreLaboratorioField.setText("" + esame.getOreLaboratoro());
+        creditiField.setText("" + esame.getCrediti());
+        semestreField.setText("" + esame.getSemestre());
+        programmaField.setText(esame.getProgramma());
     }
     
     /** This method is called from within the constructor to
@@ -31,12 +51,11 @@ public class EsameForm extends javax.swing.JFrame {
         oreFrontaliField = new javax.swing.JTextField();
         oreLaboratorioField = new javax.swing.JTextField();
         creditiField = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        programmaTextArea = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        actionEsameButton = new javax.swing.JButton();
         azzeraCampiButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         semestreField = new javax.swing.JTextField();
+        programmaField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,12 +71,14 @@ public class EsameForm extends javax.swing.JFrame {
 
         jLabel6.setText("Programma");
 
+        oreFrontaliField.setText("0");
         oreFrontaliField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 oreFrontaliFieldActionPerformed(evt);
             }
         });
 
+        oreLaboratorioField.setText("0");
         oreLaboratorioField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 oreLaboratorioFieldActionPerformed(evt);
@@ -70,14 +91,10 @@ public class EsameForm extends javax.swing.JFrame {
             }
         });
 
-        programmaTextArea.setColumns(20);
-        programmaTextArea.setRows(5);
-        jScrollPane1.setViewportView(programmaTextArea);
-
-        jButton1.setText("Invia");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        actionEsameButton.setText("Invia");
+        actionEsameButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                actionEsameButtonMouseClicked(evt);
             }
         });
 
@@ -106,30 +123,25 @@ public class EsameForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titleLabel)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(236, 236, 236)
-                                .addComponent(azzeraCampiButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(creditiField, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(semestreField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane1)
-                                        .addComponent(oreLaboratorioField, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(oreFrontaliField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(actionEsameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nomeField, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                            .addComponent(creditiField)
+                            .addComponent(semestreField, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                            .addComponent(oreLaboratorioField)
+                            .addComponent(oreFrontaliField, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                            .addComponent(programmaField)
+                            .addComponent(azzeraCampiButton, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,15 +168,15 @@ public class EsameForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(semestreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(programmaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(azzeraCampiButton)
-                    .addComponent(jButton1))
-                .addContainerGap())
+                    .addComponent(actionEsameButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -187,21 +199,21 @@ public class EsameForm extends javax.swing.JFrame {
         oreFrontaliField.setText("");
         oreLaboratorioField.setText("");
         creditiField.setText("");
-        programmaTextArea.setText("");
+        programmaField.setText("");
 }//GEN-LAST:event_azzeraCampiButtonMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void actionEsameButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actionEsameButtonMouseClicked
         Esame esame = new Esame();
         esame.setNome(nomeField.getText());
         esame.setOreFrontali(Integer.parseInt(oreFrontaliField.getText()));
         esame.setOreLaboratoro(Integer.parseInt(oreLaboratorioField.getText()));
         esame.setCrediti(Integer.parseInt(creditiField.getText()));
-        esame.setProgramma(programmaTextArea.getText());
+        esame.setProgramma(programmaField.getText());
         esame.setSemestre(Integer.parseInt(semestreField.getText()));
         EsameControl exCont = new EsameControl();
         exCont.creaEsame(esame); 
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1MouseClicked
+}//GEN-LAST:event_actionEsameButtonMouseClicked
 
     private void semestreFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semestreFieldActionPerformed
         // TODO add your handling code here:
@@ -209,22 +221,21 @@ public class EsameForm extends javax.swing.JFrame {
    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actionEsameButton;
     private javax.swing.JButton azzeraCampiButton;
     private javax.swing.JTextField creditiField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nomeField;
     private javax.swing.JTextField oreFrontaliField;
     private javax.swing.JTextField oreLaboratorioField;
-    private javax.swing.JTextArea programmaTextArea;
+    private javax.swing.JTextField programmaField;
     private javax.swing.JTextField semestreField;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
-   
+    private enum Operazione{CREA,MODIFICA,VISUALIZZA}  
 }
