@@ -1,13 +1,7 @@
-/*
- * GestioneUtentiForm.java
- *
- * Created on 26 novembre 2008, 10.11
- */
-
 package operatore.gestioneUtenti;
 
 /**
- *
+ * Classe che modella il form per la gestione degli utenti.
  * @author  e-vampire
  */
 public class GestioneUtentiForm extends javax.swing.JFrame {

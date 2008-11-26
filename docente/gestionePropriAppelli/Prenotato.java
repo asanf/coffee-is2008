@@ -8,7 +8,7 @@ package docente.gestionePropriAppelli;
 import java.io.Serializable;
 
 /**
- *
+ * Classe che modella l'entità prenotato
  * @author e-vampire
  */
 public class Prenotato implements Serializable {

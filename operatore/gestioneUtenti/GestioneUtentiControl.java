@@ -9,7 +9,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
 /**
- *
+ * Classe che modella il control per la gestione degli utenti.
  * @author 
  */
 public class GestioneUtentiControl {

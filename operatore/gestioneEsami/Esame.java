@@ -1,7 +1,7 @@
 package operatore.gestioneEsami;
 
 /**
- * 
+ * Classe che modella l'entità Esame
  * @author
  */
 public class Esame {

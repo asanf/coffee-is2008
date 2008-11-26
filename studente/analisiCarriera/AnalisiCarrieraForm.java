@@ -1,9 +1,3 @@
-/*
- * AnalisiCarrieraForm.java
- *
- * Created on 22 novembre 2008, 11.45
- */
-
 package studente.analisiCarriera;
 
 import java.awt.Dimension;
@@ -11,7 +5,7 @@ import java.awt.Toolkit;
 import operatore.gestioneUtenti.Studente;
 
 /**
- *
+ * Classe che modella il form dell'analisi della carriera di uno studente 
  * @author  e-vampire
  */
 public class AnalisiCarrieraForm extends javax.swing.JFrame {

@@ -1,13 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package operatore.gestioneUtenti;
 
 /**
- *
- * @author e-vampire
+ * Classe che modella l'entità Operatore
+ * @author
  */
 public class Operatore extends UtenteRegistrato{
     

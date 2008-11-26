@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package operatore.gestioneAppelli;
 
@@ -28,6 +24,11 @@ public class Appelli extends AbstractTableModel{
         }
     }
 
+    /**
+     * Metodo che carica i dati di un appello dal database
+     * @throws java.sql.SQLException, lanciata quando fallisce la connessione col
+     * database
+     */
     public void loadDataFromDataBase() throws SQLException{
         Connection con;
         Statement query;

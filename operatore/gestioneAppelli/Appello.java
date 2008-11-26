@@ -1,7 +1,7 @@
 package operatore.gestioneAppelli;
 
 /**
- *
+ *Classe che modella l'entità Appello
  * @author 
  */
 public class Appello {

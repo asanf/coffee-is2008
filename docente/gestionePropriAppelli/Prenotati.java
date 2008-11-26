@@ -21,6 +21,11 @@ public class Prenotati extends AbstractTableModel{
 
     private Vector<Prenotato> prenotati;
     
+    /**
+     * Inizializza una lista vuota degli studenti prenotati all'appello passato
+     * come parametro. 
+     * @param appello, l'appello passato come parametro
+     */
     public Prenotati(Appello appello){
         prenotati = new Vector<Prenotato>();
         try{
@@ -31,6 +36,11 @@ public class Prenotati extends AbstractTableModel{
         
     }
     
+    /**
+     * Metodo che carica da un file, la lista di prenotati ad un appello
+     * @throws java.io.IOException, lanciata quando c'è un errore di I/O con il file 
+     * @throws java.lang.ClassNotFoundException
+     */
     public void loadDataFromFile() throws IOException, ClassNotFoundException{
     
         // un file per ogni appello?

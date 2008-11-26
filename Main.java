@@ -4,8 +4,8 @@ import system.LoginForm;
 
 
 /**
- *
- * @author e-vampire
+ * La classe main di Coffee
+ * @author
  */
 public class Main {
 
