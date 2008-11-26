@@ -2,7 +2,8 @@
 package operatore.gestioneEsami;
 
 /**
- *
+ *Classe che modella il form per la gestione degli esami, contenente i boundary
+ * per le operazioni di creazione, modifica, 
  * @author  
  */
 public class GestioneEsamiForm extends javax.swing.JFrame {

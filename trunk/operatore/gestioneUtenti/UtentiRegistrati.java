@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 /**
- *
+ * Classe che rappresenta la lista di tutti gli utenti registrati al sistema
  * @author
  */
 public class UtentiRegistrati extends AbstractTableModel{

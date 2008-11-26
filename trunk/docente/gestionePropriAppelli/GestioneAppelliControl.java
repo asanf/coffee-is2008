@@ -6,7 +6,7 @@
 package docente.gestionePropriAppelli;
 
 /**
- *
+ *Classe che modella GerstioneAppelliControl
  * @author 
  */
 public class GestioneAppelliControl {

@@ -1,12 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package studente.gestionePropriEsami;
 
 /**
- *
+ * Classe che modella il control che si occupa di interagire con gli appello degli esami
+ * di un dato studente 
  * @author 
  */
 public class GestionePropriEsamiControl {

@@ -4,9 +4,8 @@ package operatore.gestioneEsami;
 import java.util.Vector;
 
 /**
- *
+ * Classe che modella il control dell'esame
  * @author 
- * 
  */
 public class EsameControl {
 

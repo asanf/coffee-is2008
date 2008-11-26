@@ -1,7 +1,7 @@
 package operatore.gestioneUtenti;
 
 /**
- *
+ * Classe che modella l'entità Docente
  * @author 
  */
 public class Docente extends UtenteRegistrato {
