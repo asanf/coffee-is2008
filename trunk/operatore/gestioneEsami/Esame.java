@@ -7,45 +7,29 @@ package operatore.gestioneEsami;
 public class Esame {
 
     private String nome;
-    private byte semestre;
-    private byte crediti;
-    private boolean laboratorio;
-    private String contenuti;
-    private String obiettivi;
+    private int semestre;
+    private int crediti;
+    private int oreLaboratoro;
+    private int oreFrontali;
+    private String programma;
 
-    public Esame(String nome, byte semestre, byte crediti, boolean laboratorio, String contenuti, String obiettivi) {
+    public Esame(String nome, int semestre, int crediti, int oreLaboratoro, int oreFrontali, String programma) {
         this.nome = nome;
         this.semestre = semestre;
         this.crediti = crediti;
-        this.laboratorio = laboratorio;
-        this.contenuti = contenuti;
-        this.obiettivi = obiettivi;
-    }
-    
-    
-    
-    public String getContenuti() {
-        return contenuti;
+        this.oreLaboratoro = oreLaboratoro;
+        this.oreFrontali = oreFrontali;
+        this.programma = programma;
     }
 
-    public void setContenuti(String contenuti) {
-        this.contenuti = contenuti;
-    }
+    public Esame() { this("",0,0,0,0,""); }
 
-    public byte getCrediti() {
+    public int getCrediti() {
         return crediti;
     }
 
-    public void setCrediti(byte crediti) {
+    public void setCrediti(int crediti) {
         this.crediti = crediti;
-    }
-
-    public boolean isLaboratorio() {
-        return laboratorio;
-    }
-
-    public void setLaboratorio(boolean laboratorio) {
-        this.laboratorio = laboratorio;
     }
 
     public String getNome() {
@@ -56,22 +40,39 @@ public class Esame {
         this.nome = nome;
     }
 
-    public String getObiettivi() {
-        return obiettivi;
+    public int getOreFrontali() {
+        return oreFrontali;
     }
 
-    public void setObiettivi(String obiettivi) {
-        this.obiettivi = obiettivi;
+    public void setOreFrontali(int oreFrontali) {
+        this.oreFrontali = oreFrontali;
     }
 
-    public byte getSemestre() {
+    public int getOreLaboratoro() {
+        return oreLaboratoro;
+    }
+
+    public void setOreLaboratoro(int oreLaboratoro) {
+        this.oreLaboratoro = oreLaboratoro;
+    }
+
+    public String getProgramma() {
+        return programma;
+    }
+
+    public void setProgramma(String programma) {
+        this.programma = programma;
+    }
+
+    public int getSemestre() {
         return semestre;
     }
 
-    public void setSemestre(byte semestre) {
+    public void setSemestre(int semestre) {
         this.semestre = semestre;
     }
     
     
+
     
 }

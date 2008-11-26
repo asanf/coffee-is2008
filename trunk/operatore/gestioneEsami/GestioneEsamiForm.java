@@ -1,4 +1,3 @@
-
 package operatore.gestioneEsami;
 
 /**
@@ -6,6 +5,7 @@ package operatore.gestioneEsami;
  * per le operazioni di creazione, modifica, 
  * @author  
  */
+
 public class GestioneEsamiForm extends javax.swing.JFrame {
     
     /** Creates new form GestioneEsamiForm */
@@ -71,7 +71,7 @@ public class GestioneEsamiForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void creaEsameButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creaEsameButtonMouseClicked
-        CreaEsameForm esameForm = new CreaEsameForm();
+        EsameForm esameForm = new EsameForm();
         esameForm.setVisible(true);
     }//GEN-LAST:event_creaEsameButtonMouseClicked
     
