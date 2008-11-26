@@ -2,11 +2,13 @@
 
 package operatore.gestioneUtenti;
 
+import java.io.Serializable;
+
 /**
  * Classe che modella l'utente generico per il sistema
  * @author 
  */
-public class UtenteRegistrato {
+public class UtenteRegistrato implements Serializable{
     
     private String nome;
     private String cognome;
@@ -24,6 +26,10 @@ public class UtenteRegistrato {
         this.matricola = matricola;
         this.login = login;
         this.password = password;
+    }
+
+    public UtenteRegistrato() {
+        this("","","","","","","");
     }
     
     

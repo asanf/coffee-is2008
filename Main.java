@@ -1,11 +1,7 @@
 
-import operatore.gestioneUtenti.Studente;
+import system.LoginForm;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-import studente.HomeStudenteForm;
+
 
 /**
  *
@@ -14,9 +10,8 @@ import studente.HomeStudenteForm;
 public class Main {
 
     public static void main(String[] args) {
-        Studente studente = new Studente("Antonio","Sanfelice","05102/00997");
-        HomeStudenteForm home = new HomeStudenteForm(studente);
-        home.setVisible(true);
+        LoginForm login = new LoginForm();
+        login.setVisible(true);
     }
 
 }

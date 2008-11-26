@@ -113,8 +113,8 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
     }//GEN-LAST:event_visualizzaLibrettoButtonMouseClicked
 
     private void visualizzaStatisticheButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaStatisticheButtonMouseClicked
-        VisualizzaStatisticheForm statForm = new VisualizzaStatisticheForm(studente.getMatricola());
-        statForm.setVisible(true);
+        LibrettoControl libControl = new LibrettoControl();
+        libControl.visualizzaStatistiche(studente.getMatricola());
     }//GEN-LAST:event_visualizzaStatisticheButtonMouseClicked
 
     

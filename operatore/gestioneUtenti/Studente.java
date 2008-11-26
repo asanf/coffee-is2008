@@ -5,8 +5,6 @@
 
 package operatore.gestioneUtenti;
 
-import studente.analisiCarriera.Libretto;
-
 /**
  * Classe che modella l'entità studente
  * @author 
@@ -19,10 +17,14 @@ public class Studente extends UtenteRegistrato{
         super(nome, cognome, dataNascita, indirizzo, matricola, login, password);
         this.annoImmatricolazione = annoImmatricolazione;
     }
-    public Studente(String nome, String cognome, String matricola){
-        this(nome,cognome,null,null,matricola,null,null,0);
+    public Studente(){
+        super();
+        this.annoImmatricolazione=0;
     }
     
-    public int getAnnoImmatricolazione(){ return annoImmatricolazione; };
+    public int getAnnoImmatricolazione(){ return annoImmatricolazione; }
+    
+    public void setAnnoImmatricolazione(int annoImmatricolazione)
+    { this.annoImmatricolazione = annoImmatricolazione; }
 
 }
