@@ -1,5 +1,8 @@
 package operatore.gestioneEsami;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *Classe che modella il form per la gestione degli esami, contenente i boundary
  * per le operazioni di creazione, modifica, 
@@ -13,6 +16,8 @@ public class GestioneEsamiForm extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Gestione Esami");
         this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
+         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
     }
     
     /** This method is called from within the constructor to
@@ -37,6 +42,11 @@ public class GestioneEsamiForm extends javax.swing.JFrame {
         });
 
         ricercaEsameButton.setText("Ricerca Esame");
+        ricercaEsameButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ricercaEsameButtonMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 24));
         jLabel1.setText("Gestione Esami");
@@ -74,6 +84,11 @@ public class GestioneEsamiForm extends javax.swing.JFrame {
         EsameForm esameForm = new EsameForm();
         esameForm.setVisible(true);
     }//GEN-LAST:event_creaEsameButtonMouseClicked
+
+    private void ricercaEsameButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ricercaEsameButtonMouseClicked
+        RicercaEsameForm ricercaEsame = new RicercaEsameForm();
+        ricercaEsame.setVisible(true);
+    }//GEN-LAST:event_ricercaEsameButtonMouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton creaEsameButton;
