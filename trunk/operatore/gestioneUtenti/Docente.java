@@ -6,20 +6,25 @@ package operatore.gestioneUtenti;
  */
 public class Docente extends UtenteRegistrato {
 
-    public enum Tipo {ORDINARIO,ASSOCIATO}
-    
-    private Tipo tipo;
+     
+    private String tipo;
 
-    public Docente(String nome, String cognome, String dataNascita, String indirizzo, String matricola, String login, String password, Tipo tipo) {
+    public Docente(String nome, String cognome, String dataNascita, String indirizzo, String matricola, String login, String password, String tipo) {
         super(nome, cognome, dataNascita, indirizzo, matricola, login, password);
         this.tipo = tipo;
     }
 
-    public Tipo getTipo() {
+    public Docente() {
+        super();
+        this.tipo = "";
+    }
+    
+
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(Tipo tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 

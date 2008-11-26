@@ -8,6 +8,7 @@ package studente.gestionePropriEsami;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import operatore.gestioneAppelli.Appelli;
 import operatore.gestioneAppelli.Appello;

@@ -6,27 +6,23 @@
 
 package studente;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import system.LoginForm;
 import operatore.gestioneUtenti.Studente;
 import studente.analisiCarriera.AnalisiCarrieraForm;
 import studente.gestionePropriEsami.GestionePropriEsamiForm;
+import system.HomeForm;
 
 /**
  *
- * @author  e-vampire
+ * @author  
  */
-public class HomeStudenteForm extends javax.swing.JFrame {
+public class HomeStudenteForm extends HomeForm {
     
     /** Creates new form HomeStudenteForm */
     public HomeStudenteForm(Studente studente) {
-        this.setTitle("Coffee - Coffee's an Organazier For Friendly Exams Experience");
+        super(studente);
         this.studente = studente;
         initComponents();
-        homeTitle.setText("Benvenuto " + studente.getNome());
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
-        
     }
     
     /** This method is called from within the constructor to
@@ -37,15 +33,11 @@ public class HomeStudenteForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        homeTitle = new javax.swing.JLabel();
         analisiCarrieraButton = new javax.swing.JButton();
         gestionePropriEsamiButton = new javax.swing.JButton();
-        logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        homeTitle.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
-        homeTitle.setText("Benvenuto ");
+        setResizable(false);
 
         analisiCarrieraButton.setText("Analisi Carriera");
         analisiCarrieraButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -61,13 +53,6 @@ public class HomeStudenteForm extends javax.swing.JFrame {
             }
         });
 
-        logoutButton.setText("Logout");
-        logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoutButtonMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,26 +60,18 @@ public class HomeStudenteForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(analisiCarrieraButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(gestionePropriEsamiButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(logoutButton))
-                    .addComponent(homeTitle))
-                .addContainerGap())
+                    .addComponent(analisiCarrieraButton)
+                    .addComponent(gestionePropriEsamiButton))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(homeTitle)
+                .addContainerGap(49, Short.MAX_VALUE)
+                .addComponent(analisiCarrieraButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(analisiCarrieraButton)
-                    .addComponent(gestionePropriEsamiButton)
-                    .addComponent(logoutButton))
-                .addContainerGap())
+                .addComponent(gestionePropriEsamiButton)
+                .addGap(6, 6, 6))
         );
 
         pack();
@@ -109,19 +86,12 @@ public class HomeStudenteForm extends javax.swing.JFrame {
         GestionePropriEsamiForm exForm = new GestionePropriEsamiForm();
         exForm.setVisible(true);
 }//GEN-LAST:event_gestionePropriEsamiButtonMouseClicked
-
-    private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
-        //TODO exit alla schermata di login
-        System.exit(0);
-}//GEN-LAST:event_logoutButtonMouseClicked
     
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton analisiCarrieraButton;
     private javax.swing.JButton gestionePropriEsamiButton;
-    private javax.swing.JLabel homeTitle;
-    private javax.swing.JButton logoutButton;
     // End of variables declaration//GEN-END:variables
     private Studente studente;
 }

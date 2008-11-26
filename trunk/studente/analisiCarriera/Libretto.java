@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
-import operatore.gestioneUtenti.Studente;
 
 /**
  * Classe che modella il libretto di uno studente.
@@ -16,26 +15,17 @@ public class Libretto extends AbstractTableModel {
     private Vector<RisultatoEsame> listaEsami;
 
     public Libretto(String matricola) {
-        ResultSet result = null;
-        listaEsami = new Vector<RisultatoEsame>();
+       
+        listaEsami = new Vector<RisultatoEsame>();    
         try{
-            result = loadDataFromDataBase(matricola);
-            while(result.next()){
-                RisultatoEsame tmp = new RisultatoEsame(
-                        result.getString("esame"),
-                        result.getInt("voto"),
-                        result.getBoolean("lode"),
-                        result.getString("data"));
-                listaEsami.add(tmp);
-            }
+            loadDataFromDataBase(matricola);
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Errore di connessione al Database\n"+e);
         }
-        
         
     }
     
-    public ResultSet loadDataFromDataBase(String matricola) throws SQLException{
+    public void loadDataFromDataBase(String matricola) throws SQLException{
         Connection con;
         Statement query;
         ResultSet result;
@@ -47,9 +37,16 @@ public class Libretto extends AbstractTableModel {
         con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
         query = con.createStatement();
         
-        result = query.executeQuery("SELECT * FROM libretto");
-        
-        return result;
+        result = query.executeQuery("SELECT * FROM libretto where matricola='"+matricola+"'");
+        while(result.next()){
+                RisultatoEsame tmp = new RisultatoEsame(
+                        result.getString("esame"),
+                        result.getInt("voto"),
+                        result.getBoolean("lode"),
+                        result.getString("data"));
+                listaEsami.add(tmp);
+            }
+        con.close();
     }
     
     public void saveDataOnDataBase() throws SQLException{

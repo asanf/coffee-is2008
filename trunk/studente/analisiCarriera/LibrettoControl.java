@@ -39,4 +39,11 @@ public class LibrettoControl {
         VisualizzaLibrettoForm lib = new VisualizzaLibrettoForm(studente);
         lib.setVisible(true);
     }
+    
+    public void visualizzaStatistiche(String matricola){
+        String mediaString = "" + getMediaAritmetica(matricola);
+        String laureaString = "" + getVotoDiLaureaStimato(matricola);
+        VisualizzaStatisticheForm statForm = new VisualizzaStatisticheForm(mediaString,laureaString);
+        statForm.setVisible(true);
+    }
 }

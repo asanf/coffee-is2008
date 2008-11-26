@@ -7,7 +7,7 @@ package studente.gestionePropriEsami;
 
 /**
  *
- * @author e-vampire
+ * @author 
  */
 public class GestionePropriEsamiControl {
     

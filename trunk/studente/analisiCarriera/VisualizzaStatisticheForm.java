@@ -8,10 +8,6 @@ package studente.analisiCarriera;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,11 +16,10 @@ import javax.swing.JOptionPane;
 public class VisualizzaStatisticheForm extends javax.swing.JFrame {
     
     /** Creates new form VisualizzaStatisticheForm */
-    public VisualizzaStatisticheForm(String matricola){
+    public VisualizzaStatisticheForm(String mediaAritmetica, String votoDiLaurea){
             initComponents();
-            LibrettoControl libcontrol = new LibrettoControl();         
-            mediaAritmeticaLabel.setText("" + libcontrol.getMediaAritmetica(matricola));
-            votoLaureaStimatoLabel.setText("" + libcontrol.getVotoDiLaureaStimato(matricola));
+            mediaAritmeticaLabel.setText(mediaAritmetica);
+            votoLaureaStimatoLabel.setText(votoDiLaurea);
             this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
             Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
             this.setLocation(dim.width / 2 - this.getWidth() / 2, dim.height / 2 - this.getHeight() / 2);

@@ -21,10 +21,27 @@ public class Appelli extends AbstractTableModel{
     public Appelli()
     {
         appelli = new Vector<Appello>();
-        ResultSet result = null;
         try{
-            result = loadDataFromDataBase();
-            while(result.next())
+             loadDataFromDataBase();
+        }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "Errore nella connessione al database\n"+e);
+        }
+    }
+
+    public void loadDataFromDataBase() throws SQLException{
+        Connection con;
+        Statement query;
+        ResultSet result;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        }catch(ClassNotFoundException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
+        query = con.createStatement();
+        
+        result = query.executeQuery("SELECT * FROM appello");
+        while(result.next())
             {
                     Appello tmp = new Appello(
                     result.getString("esame"),
@@ -38,26 +55,7 @@ public class Appelli extends AbstractTableModel{
                     
                     appelli.add(tmp);
             }
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
-
-    public ResultSet loadDataFromDataBase() throws SQLException{
-        Connection con;
-        Statement query;
-        ResultSet result;
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-        }catch(ClassNotFoundException e){
-            JOptionPane.showMessageDialog(null, e);
-        }
-        con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
-        query = con.createStatement();
-        
-        result = query.executeQuery("SELECT * FROM appello");
-       
-        return result;     
+        con.close();   
     }
     
     public int getColumnCount() {
