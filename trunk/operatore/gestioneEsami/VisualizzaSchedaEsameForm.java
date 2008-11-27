@@ -1,9 +1,3 @@
-/*
- * ModificaEsameForm.java
- *
- * Created on 27 novembre 2008, 9.27
- */
-
 package operatore.gestioneEsami;
 
 import java.awt.Dimension;
@@ -11,14 +5,13 @@ import java.awt.Toolkit;
 
 /**
  *
- * @author  e-vampire
+ * @author 
  */
-public class ModificaEsameForm extends javax.swing.JFrame {
+public class VisualizzaSchedaEsameForm extends javax.swing.JFrame {
     
-    /** Creates new form ModificaEsameForm */
-    public ModificaEsameForm(Esame esame) {
+    /** Creates new form VisualizzaSchedaEsame */
+    public VisualizzaSchedaEsameForm(Esame esame) {
         initComponents();
-        this.esame = esame;
         setFields(esame);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
@@ -33,52 +26,48 @@ public class ModificaEsameForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         nomeField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         creditiField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         semestreField = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         oreFrontaliField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         oreLaboratorioField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         programmaField = new javax.swing.JTextField();
-        modificaEsameButton = new javax.swing.JButton();
-        ripristinaCampiButton = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        setTitle("Modifica Esame");
-
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
-        jLabel1.setText("Modifica Esame");
+        setTitle("Scheda Esame");
 
         jLabel2.setText("Nome:");
 
+        nomeField.setEditable(false);
+
         jLabel3.setText("Crediti:");
 
+        creditiField.setEditable(false);
+
         jLabel4.setText("Semestre:");
+
+        semestreField.setEditable(false);
+
+        oreFrontaliField.setEditable(false);
 
         jLabel5.setText("Ore Frontali:");
 
         jLabel6.setText("Ore Laboratorio:");
 
+        oreLaboratorioField.setEditable(false);
+
+        programmaField.setEditable(false);
+
         jLabel7.setText("Programma:");
 
-        modificaEsameButton.setText("Modifica");
-        modificaEsameButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                modificaEsameButtonMouseClicked(evt);
-            }
-        });
-
-        ripristinaCampiButton.setText("Ripristina Campi");
-        ripristinaCampiButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ripristinaCampiButtonMouseClicked(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
+        jLabel1.setText("Dati Esame");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,18 +85,19 @@ public class ModificaEsameForm extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(programmaField, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                            .addComponent(oreLaboratorioField, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                            .addComponent(oreFrontaliField, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                            .addComponent(semestreField, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                            .addComponent(creditiField, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                            .addComponent(nomeField, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(modificaEsameButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ripristinaCampiButton)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(oreFrontaliField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                                    .addComponent(oreLaboratorioField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                                    .addComponent(programmaField, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                                    .addComponent(semestreField, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(creditiField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(nomeField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -115,57 +105,36 @@ public class ModificaEsameForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nomeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(creditiField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(semestreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(oreFrontaliField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(oreLaboratorioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(programmaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(modificaEsameButton)
-                    .addComponent(ripristinaCampiButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ripristinaCampiButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ripristinaCampiButtonMouseClicked
-        setFields(esame);
-}//GEN-LAST:event_ripristinaCampiButtonMouseClicked
-
-    private void modificaEsameButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificaEsameButtonMouseClicked
-        Esame newEsame = new Esame();
-        newEsame.setNome(nomeField.getText());
-        newEsame.setCrediti(Integer.parseInt(creditiField.getText()));
-        newEsame.setOreFrontali(Integer.parseInt(oreFrontaliField.getText()));
-        newEsame.setOreLaboratoro(Integer.parseInt(oreLaboratorioField.getText()));
-        newEsame.setSemestre(Integer.parseInt(semestreField.getText()));
-        newEsame.setProgramma(programmaField.getText());
-        EsameControl esCont = new EsameControl();
-        esCont.modificaEsame(esame, newEsame);
-        setVisible(false);
-    }//GEN-LAST:event_modificaEsameButtonMouseClicked
-    
     private void setFields(Esame esame){
         nomeField.setText(esame.getNome());
         creditiField.setText(""+esame.getCrediti());
@@ -174,6 +143,7 @@ public class ModificaEsameForm extends javax.swing.JFrame {
         oreFrontaliField.setText(""+esame.getOreFrontali());
         semestreField.setText(""+esame.getSemestre());
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField creditiField;
     private javax.swing.JLabel jLabel1;
@@ -183,13 +153,11 @@ public class ModificaEsameForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JButton modificaEsameButton;
     private javax.swing.JTextField nomeField;
     private javax.swing.JTextField oreFrontaliField;
     private javax.swing.JTextField oreLaboratorioField;
     private javax.swing.JTextField programmaField;
-    private javax.swing.JButton ripristinaCampiButton;
     private javax.swing.JTextField semestreField;
     // End of variables declaration//GEN-END:variables
-    Esame esame;
+    
 }
