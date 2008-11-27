@@ -140,8 +140,10 @@ public class RicercaEsameForm extends javax.swing.JFrame {
         if(selectedRow<0)
             JOptionPane.showMessageDialog(null, "Nessun esame selezionato");
         else{
-            EsameForm esForm = new EsameForm(esami.get(selectedRow));
+            ModificaEsameForm esForm = new ModificaEsameForm(esami.get(selectedRow));
             esForm.setVisible(true);
+            EsameControl esCont = new EsameControl();
+            esami.setData(esCont.ricercaEsame(""));
         }
 }//GEN-LAST:event_modificaEsameButtonMouseClicked
 

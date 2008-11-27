@@ -15,7 +15,7 @@ public class Esami extends AbstractTableModel{
     
     public Esami(){
         esami = new Vector<Esame>();
-         try{
+        try{
             loadDataFromDataBase();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Errore connessione jdbc\n"+e);
