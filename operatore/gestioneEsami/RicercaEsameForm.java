@@ -43,6 +43,7 @@ public class RicercaEsameForm extends javax.swing.JFrame {
         tabellaRisultati = new javax.swing.JTable();
         modificaEsameButton = new javax.swing.JButton();
         eliminaEsameButton = new javax.swing.JButton();
+        visualizzaSchedaEsameButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +82,13 @@ public class RicercaEsameForm extends javax.swing.JFrame {
             }
         });
 
+        visualizzaSchedaEsameButton.setText("Visualizza Scheda Esame");
+        visualizzaSchedaEsameButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visualizzaSchedaEsameButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,7 +107,9 @@ public class RicercaEsameForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(modificaEsameButton)
                         .addGap(18, 18, 18)
-                        .addComponent(eliminaEsameButton)))
+                        .addComponent(eliminaEsameButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(visualizzaSchedaEsameButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -118,7 +128,8 @@ public class RicercaEsameForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modificaEsameButton)
-                    .addComponent(eliminaEsameButton))
+                    .addComponent(eliminaEsameButton)
+                    .addComponent(visualizzaSchedaEsameButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -157,6 +168,16 @@ public class RicercaEsameForm extends javax.swing.JFrame {
             esami.setData(esCont.ricercaEsame(""));
         }
 }//GEN-LAST:event_eliminaEsameButtonMouseClicked
+
+    private void visualizzaSchedaEsameButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaSchedaEsameButtonMouseClicked
+        int selectedRow = tabellaRisultati.getSelectedRow();
+        if(selectedRow < 0)
+            JOptionPane.showMessageDialog(null, "Nessun esame selezionato");
+        else{
+            VisualizzaSchedaEsameForm esScheda = new VisualizzaSchedaEsameForm(esami.get(selectedRow));
+            esScheda.setVisible(true);
+        }
+    }//GEN-LAST:event_visualizzaSchedaEsameButtonMouseClicked
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -168,6 +189,7 @@ public class RicercaEsameForm extends javax.swing.JFrame {
     private javax.swing.JTextField parametroRicercaEsame;
     private javax.swing.JButton ricercaEsameButton;
     private javax.swing.JTable tabellaRisultati;
+    private javax.swing.JButton visualizzaSchedaEsameButton;
     // End of variables declaration//GEN-END:variables
     private Esami esami;
     
