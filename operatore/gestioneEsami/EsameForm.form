@@ -33,7 +33,7 @@
                               <Component id="jLabel4" alignment="1" max="32767" attributes="1"/>
                               <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="actionEsameButton" alignment="0" min="-2" pref="118" max="-2" attributes="1"/>
+                          <Component id="creaEsameButton" alignment="0" min="-2" pref="118" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -91,7 +91,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="azzeraCampiButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="actionEsameButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="creaEsameButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -152,12 +152,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="creditiFieldActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="actionEsameButton">
+    <Component class="javax.swing.JButton" name="creaEsameButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Invia"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="actionEsameButtonMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="creaEsameButtonMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="azzeraCampiButton">

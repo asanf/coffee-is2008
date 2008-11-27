@@ -2,6 +2,7 @@ package operatore.gestioneEsami;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,22 +18,7 @@ public class EsameForm extends javax.swing.JFrame {
         this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
         this.setResizable(false);
     }
-    
-    public EsameForm(Esame esame) {
-        initComponents();
-        this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
-        this.setResizable(false);
-        titleLabel.setText("Dati per l'esame di " + esame.getNome());
-        nomeField.setText(esame.getNome());
-        oreFrontaliField.setText(""+esame.getOreFrontali());
-        oreLaboratorioField.setText("" + esame.getOreLaboratoro());
-        creditiField.setText("" + esame.getCrediti());
-        semestreField.setText("" + esame.getSemestre());
-        programmaField.setText(esame.getProgramma());
-    }
-    
+      
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -51,7 +37,7 @@ public class EsameForm extends javax.swing.JFrame {
         oreFrontaliField = new javax.swing.JTextField();
         oreLaboratorioField = new javax.swing.JTextField();
         creditiField = new javax.swing.JTextField();
-        actionEsameButton = new javax.swing.JButton();
+        creaEsameButton = new javax.swing.JButton();
         azzeraCampiButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         semestreField = new javax.swing.JTextField();
@@ -91,10 +77,10 @@ public class EsameForm extends javax.swing.JFrame {
             }
         });
 
-        actionEsameButton.setText("Invia");
-        actionEsameButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        creaEsameButton.setText("Invia");
+        creaEsameButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                actionEsameButtonMouseClicked(evt);
+                creaEsameButtonMouseClicked(evt);
             }
         });
 
@@ -129,7 +115,7 @@ public class EsameForm extends javax.swing.JFrame {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(actionEsameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(creaEsameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(nomeField, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
@@ -175,7 +161,7 @@ public class EsameForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(azzeraCampiButton)
-                    .addComponent(actionEsameButton))
+                    .addComponent(creaEsameButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -202,18 +188,22 @@ public class EsameForm extends javax.swing.JFrame {
         programmaField.setText("");
 }//GEN-LAST:event_azzeraCampiButtonMouseClicked
 
-    private void actionEsameButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actionEsameButtonMouseClicked
-        Esame esame = new Esame();
-        esame.setNome(nomeField.getText());
-        esame.setOreFrontali(Integer.parseInt(oreFrontaliField.getText()));
-        esame.setOreLaboratoro(Integer.parseInt(oreLaboratorioField.getText()));
-        esame.setCrediti(Integer.parseInt(creditiField.getText()));
-        esame.setProgramma(programmaField.getText());
-        esame.setSemestre(Integer.parseInt(semestreField.getText()));
-        EsameControl exCont = new EsameControl();
-        exCont.creaEsame(esame); 
-        this.setVisible(false);
-}//GEN-LAST:event_actionEsameButtonMouseClicked
+    private void creaEsameButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creaEsameButtonMouseClicked
+        if(nomeField.getText().equals("")) 
+            JOptionPane.showMessageDialog(null, "Compilare almeno il campo nome");
+        else {
+            Esame esame = new Esame();
+            esame.setOreFrontali(Integer.parseInt(oreFrontaliField.getText()));
+            esame.setNome(nomeField.getText());
+            esame.setOreLaboratoro(Integer.parseInt(oreLaboratorioField.getText()));
+            esame.setCrediti(Integer.parseInt(creditiField.getText()));
+            esame.setProgramma(programmaField.getText());
+            esame.setSemestre(Integer.parseInt(semestreField.getText()));
+            EsameControl exCont = new EsameControl();
+            exCont.creaEsame(esame);
+            this.setVisible(false);
+        }
+}//GEN-LAST:event_creaEsameButtonMouseClicked
 
     private void semestreFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semestreFieldActionPerformed
         // TODO add your handling code here:
@@ -221,8 +211,8 @@ public class EsameForm extends javax.swing.JFrame {
    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton actionEsameButton;
     private javax.swing.JButton azzeraCampiButton;
+    private javax.swing.JButton creaEsameButton;
     private javax.swing.JTextField creditiField;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -237,5 +227,5 @@ public class EsameForm extends javax.swing.JFrame {
     private javax.swing.JTextField semestreField;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
-    private enum Operazione{CREA,MODIFICA,VISUALIZZA}  
+     
 }

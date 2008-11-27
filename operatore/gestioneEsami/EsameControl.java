@@ -36,7 +36,32 @@ public class EsameControl {
         }
     }
     
-    protected void modificaEsame(String attributo, String nuovoValore){
+    protected void modificaEsame(Esame old,Esame modified){
+          try{
+              Class.forName("com.mysql.jdbc.Driver");
+          }catch(ClassNotFoundException e){
+              JOptionPane.showMessageDialog(null, "Errore nel caricamento driver jdbc:\n"+e);
+          }
+          try{
+              Connection con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
+              Statement query = con.createStatement();
+              int result = query.executeUpdate("UPDATE esame SET " +
+                                               "nome='"+modified.getNome()+"' " +
+                                               ",ore_laboratorio="+modified.getOreLaboratoro()+" " +
+                                               ",ore_frontali="+modified.getOreFrontali()+" " +
+                                               ",crediti ="+modified.getCrediti()+" " +
+                                               ",semestre="+modified.getSemestre()+" " +
+                                               ",programma='"+modified.getProgramma()+"' " +
+                                               "WHERE nome='"+old.getNome()+"'");
+              if(result==query.EXECUTE_FAILED){
+                  JOptionPane.showMessageDialog(null, "Errore durante l'aggiornamento dell'esame");
+              }else {
+                  JOptionPane.showMessageDialog(null, "Esame modificato correttamente");
+              }
+          }catch(SQLException e){
+              JOptionPane.showMessageDialog(null, "Errore durante la connessione al database\n"+e);
+          }
+        
         
     }
     
