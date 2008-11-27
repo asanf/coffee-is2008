@@ -15,6 +15,11 @@ public class Appello {
     private String vincoli;
     private String aula;
 
+    public Appello() {
+        this(null,null,null,null,null,0,null,null);
+    }
+
+
     public Appello(String esame, String data, String docente, String tipologia, String oraInizio, int durata, String vincoli, String aula) {
         this.esame = esame;
         this.data = data;
@@ -24,6 +29,11 @@ public class Appello {
         this.durata = durata;
         this.vincoli = vincoli;
         this.aula = aula;
+    }
+    
+    @Override
+    public String toString(){
+        return(getEsame()+","+getData()+","+getDocente()+","+getTipologia()+","+getOraInizio()+","+getDurata()+","+getVincoli()+","+getAula());
     }
 
     public String getAula() {
@@ -91,5 +101,7 @@ public class Appello {
     public String getTipologia(){
         return tipologia;
     }
+
+  
     
 }
