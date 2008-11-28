@@ -96,7 +96,7 @@ public class modificaUtenteRegistratoForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(ModificaUtenteButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 367, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)
                 .addComponent(cleanButton)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -180,7 +180,7 @@ public class modificaUtenteRegistratoForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cleanButton)
                     .addComponent(ModificaUtenteButton))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -199,7 +199,6 @@ public class modificaUtenteRegistratoForm extends javax.swing.JFrame {
         usernameField.setText("");
         passwordField.setText("");
         repeatedPasswordField.setText("");
-        campoAggiuntivoField.setText("");
     }//GEN-LAST:event_cleanButtonMouseClicked
    
    
@@ -222,8 +221,6 @@ public class modificaUtenteRegistratoForm extends javax.swing.JFrame {
     private javax.swing.JTextField nomeField;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JPasswordField repeatedPasswordField;
-    private javax.swing.JButton richiediAggiuntaAccountUtenteButton;
-    private javax.swing.JButton richiediAggiuntaAccountUtenteButton1;
     private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
     UtenteRegistrato utente;
