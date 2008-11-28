@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import operatore.gestioneAppelli.Appello;
+import operatore.gestioneAppelli.AppelloControl;
 
 /**
  *
@@ -178,8 +179,8 @@ public class RichiediAggiuntaAppelloForm extends javax.swing.JFrame {
             appello.setData(dataField.getText());
             appello.setVincoli(vincoliField.getText());
             appello.setDocente(matricolaField.getText());
-            GestionePropriAppelliControl appControl = new GestionePropriAppelliControl();
-            appControl.creaAppello(appello);
+            AppelloControl appControl = new AppelloControl();
+            appControl.riceviRichiestaAggiuntaAppello(appello);
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(jLabel1, ex, "Errore di scrittura nel file!", WIDTH);
         }

@@ -1,8 +1,13 @@
 package operatore.gestioneAppelli;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.sql.*;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import operatore.gestioneAppelli.Appello;
 import operatore.gestioneUtenti.Docente;
 /**
  *
@@ -114,5 +119,21 @@ public class AppelloControl {
               JOptionPane.showMessageDialog(null, "Errore durante la connessione al database" + e);
         }
        return appelli;
+    }
+    
+    public void riceviRichiestaAggiuntaAppello(Appello appello) throws FileNotFoundException{
+        ObjectOutputStream out=null;
+        try {
+            out = new ObjectOutputStream(new FileOutputStream("richieste.dat"));
+            out.writeObject(appello);
+        } catch (IOException ex) {
+            Logger.getLogger(AppelloControl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                out.close();
+            } catch (IOException ex) {
+                Logger.getLogger(AppelloControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }
