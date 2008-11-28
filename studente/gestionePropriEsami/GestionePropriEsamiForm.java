@@ -9,6 +9,8 @@ package studente.gestionePropriEsami;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
+import operatore.gestioneAppelli.Appello;
+import operatore.gestioneUtenti.Studente;
 
 /**
  *
@@ -17,7 +19,8 @@ import javax.swing.JOptionPane;
 public class GestionePropriEsamiForm extends javax.swing.JFrame {
     
     /** Creates new form GestionePropriEsamiForm */
-    public GestionePropriEsamiForm() {
+    public GestionePropriEsamiForm(Studente studente) {
+        this.studente=studente;
         initComponents();
         this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
         this.setResizable(false);
@@ -74,7 +77,7 @@ public class GestionePropriEsamiForm extends javax.swing.JFrame {
 
     private void visualizzaAppelliDisponibiliButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaAppelliDisponibiliButtonMouseClicked
         GestionePropriEsamiControl gpec = new GestionePropriEsamiControl();
-        gpec.visualizzaAppelliDisponibili();
+        gpec.visualizzaAppelliDisponibili(studente);
     }//GEN-LAST:event_visualizzaAppelliDisponibiliButtonMouseClicked
     
     
@@ -82,5 +85,6 @@ public class GestionePropriEsamiForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton visualizzaAppelliDisponibiliButton;
     // End of variables declaration//GEN-END:variables
-    
+    private Studente studente;
+ 
 }

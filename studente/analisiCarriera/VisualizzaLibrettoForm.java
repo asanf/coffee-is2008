@@ -34,7 +34,7 @@ public class VisualizzaLibrettoForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         titleLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
-        titleLabel.setText("LIbretto di");
+        titleLabel.setText("Libretto di");
 
         listaEsami.setModel(libretto);
         listaEsami.setColumnSelectionAllowed(true);

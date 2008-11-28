@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import operatore.gestioneAppelli.Appelli;
 import operatore.gestioneAppelli.Appello;
+import operatore.gestioneUtenti.Studente;
 
 /**
  * Classe che modella la lista degli appelli a cui un dato studente può prenotarsi
@@ -14,7 +15,8 @@ import operatore.gestioneAppelli.Appello;
 public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
     
     /** Creates new form VisualizzaAppelliDisponibiliList */
-    public VisualizzaAppelliDisponibiliList() {
+    public VisualizzaAppelliDisponibiliList(Studente studente) {
+        this.studente=studente;
         initComponents();
         this.setResizable(false);
         this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
@@ -83,7 +85,9 @@ public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
         } else {
             Appelli appelli = new Appelli();
             Appello selezionato = appelli.get(selectedRow);
-            JOptionPane.showMessageDialog(null, "Ti sei prenotato all'esame di " + selezionato.getEsame() + "\n del Prof. " + selezionato.getDocente());
+            JOptionPane.showMessageDialog(null, "Ti sei prenotato all'esame di " + selezionato.getEsame() + "\n  " + selezionato.getEsame());
+            GestionePropriEsamiControl esContr=new GestionePropriEsamiControl();
+            esContr.prenotaEsame(selezionato, studente);
         }
     }//GEN-LAST:event_richiediPrenotazioneAppelloButtonMouseClicked
     
@@ -94,5 +98,5 @@ public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JButton richiediPrenotazioneAppelloButton;
     // End of variables declaration//GEN-END:variables
-
+    private Studente studente;
 }
