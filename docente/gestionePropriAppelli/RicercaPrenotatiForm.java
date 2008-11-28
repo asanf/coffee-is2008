@@ -25,7 +25,6 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
         AppelloControl appContr= new AppelloControl();
         appelli = new Appelli();
         appelli.setData(appContr.ricercaPropriAppelli(docente));
-        prenotati=new Prenotati();
         initComponents();
         this.setDefaultCloseOperation(RicercaPrenotatiForm.HIDE_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -48,7 +47,7 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         ricercaPrenotatiButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        prenotatiTable = new javax.swing.JTable();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -80,8 +79,7 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
             }
         });
 
-        jTable3.setModel(prenotati);
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(prenotatiTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,7 +121,8 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jLabel1, evt, "Nessun Appello selezionato", WIDTH);
         }
         else{
-                appelli = new Appelli();
+                prenotati=new Prenotati();
+                prenotatiTable.setModel(prenotati);
                 Appello appSel = appelli.get(selectRow);
                 GestionePropriAppelliControl prenCont = new GestionePropriAppelliControl();
                 prenotati.setData(prenCont.ricercaPrenotati(appSel));
@@ -140,7 +139,7 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable prenotatiTable;
     private javax.swing.JButton ricercaPrenotatiButton;
     // End of variables declaration//GEN-END:variables
     private Prenotati prenotati;

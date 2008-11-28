@@ -57,14 +57,10 @@ public class GestionePropriAppelliControl {
           try{
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost/coffee", "", "");
         Statement query = con.createStatement();
+        int cod=appello.getCodice();
         ResultSet result = query.executeQuery("SELECT utente_registrato.cognome, utente_registrato.nome,utente_registrato.matricola" +
-                "FROM utente_registrato" +
-                "WHERE utente_registrato.matricola= any (" +
-                "SELECT prenotati.matr_studente FROM prenotati" +
-                "WHERE cod_appello= any (SELECT codice" +
-                "FROM appello" +
-                "WHERE esame='" + appello.getEsame() + "'" +
-                ")");
+                " FROM utente_registrato, prenotati" +
+                " WHERE utente_registrato.matricola=prenotati.matr_studente and prenotati.cod_appello="+cod);
 
         while (result.next()) {
             Prenotato tmp = new Prenotato();

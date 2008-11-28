@@ -25,7 +25,7 @@ public class Prenotati extends AbstractTableModel {
     public Prenotati() {
         prenotati = new Vector<Prenotato>();
         try {
-            loadDataFromDataBase(); 
+            //loadDataFromDataBase(); 
             }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
@@ -56,8 +56,8 @@ public class Prenotati extends AbstractTableModel {
         while (result.next()) {
             Prenotato tmp = new Prenotato();
             tmp.setMatrStudente(result.getString("matr_studente"));
-            //tmp.setCognome(result.getString("cognome"));
-            //tmp.setNome(result.getString("nome"));
+            tmp.setCognome(result.getString("cognome"));
+            tmp.setNome(result.getString("nome"));
             prenotati.add(tmp);
         }
         con.close();

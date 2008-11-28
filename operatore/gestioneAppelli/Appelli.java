@@ -45,24 +45,23 @@ public class Appelli extends AbstractTableModel{
                                     "WHERE docente = matricola");
         while(result.next())
             {
-                    Appello tmp = new Appello(
-                    result.getString("codice"),
-                    result.getString("esame"),
-                    result.getString("data"),
-                    result.getString("cognome"),
-                    result.getString("tipologia"),
-                    result.getString("ora_inizio"),
-                    result.getInt("durata"),
-                    result.getString("vincoli"),
-                    result.getString("aula"));
-                    
+                    Appello tmp = new Appello();
+                    tmp.setEsame(result.getString("esame"));
+                    tmp.setData(result.getString("data"));
+                    tmp.setDocente(result.getString("docente"));
+                    tmp.setTipologia(result.getString("tipologia"));
+                    tmp.setOraInizio(result.getString("ora_inizio"));
+                    tmp.setDurata(result.getInt("durata"));
+                    tmp.setVincoli(result.getString("vincoli"));
+                    tmp.setAula(result.getString("aula"));
+                    tmp.setCodice(result.getInt("codice"));
                     appelli.add(tmp);
             }
         con.close();   
     }
     
     public int getColumnCount() {
-        return 7;
+        return 8;
     }
 
     public int getRowCount() {
@@ -79,6 +78,7 @@ public class Appelli extends AbstractTableModel{
             case 4: return tmp.getDocente();
             case 5: return tmp.getVincoli();
             case 6: return tmp.getAula();
+            case 7: return tmp.getCodice();
             default: return null;
         }
     }
@@ -93,6 +93,7 @@ public class Appelli extends AbstractTableModel{
             case 4: return "Docente";
             case 5: return "Vincoli";
             case 6: return "Aula";
+            case 7: return "Codice Appello";
             default: return null;
         }
     }
