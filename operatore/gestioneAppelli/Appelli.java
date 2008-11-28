@@ -41,13 +41,15 @@ public class Appelli extends AbstractTableModel{
         con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
         query = con.createStatement();
         
-        result = query.executeQuery("SELECT * FROM appello");
+        result = query.executeQuery("SELECT * FROM appello,utente_registrato " +
+                                    "WHERE docente = matricola");
         while(result.next())
             {
                     Appello tmp = new Appello(
+                    result.getString("codice"),
                     result.getString("esame"),
                     result.getString("data"),
-                    result.getString("docente"),
+                    result.getString("cognome"),
                     result.getString("tipologia"),
                     result.getString("ora_inizio"),
                     result.getInt("durata"),
@@ -102,6 +104,12 @@ public class Appelli extends AbstractTableModel{
     
     public Appello get(int row){
         return appelli.get(row);
+    }
+    
+    public void setData(Vector<Appello> appelli)
+    {
+        this.appelli = appelli;
+        fireTableDataChanged();
     }
     
 }
