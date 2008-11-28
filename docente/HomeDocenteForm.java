@@ -1,5 +1,6 @@
 package docente;
 
+import docente.gestionePropriAppelli.GestionePropriAppelliForm;
 import operatore.gestioneUtenti.Docente;
 import system.HomeForm;
 
@@ -12,6 +13,7 @@ public class HomeDocenteForm extends HomeForm {
     /** Crea il nuovo form HomeDocenteForm */
     public HomeDocenteForm(Docente docente) {
         super(docente);
+        this.docente=docente;
         initComponents();
     }
     
@@ -27,6 +29,11 @@ public class HomeDocenteForm extends HomeForm {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         gestionePropriAppelliButton.setText("Gestione Propri Appelli");
+        gestionePropriAppelliButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gestionePropriAppelliButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -48,8 +55,13 @@ public class HomeDocenteForm extends HomeForm {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void gestionePropriAppelliButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionePropriAppelliButtonMouseClicked
+       GestionePropriAppelliForm appForm=new GestionePropriAppelliForm(docente);
+       appForm.setVisible(true);
+    }//GEN-LAST:event_gestionePropriAppelliButtonMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton gestionePropriAppelliButton;
     // End of variables declaration//GEN-END:variables
-    
+    private Docente docente;
 }

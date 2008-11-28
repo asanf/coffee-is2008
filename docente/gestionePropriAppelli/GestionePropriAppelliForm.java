@@ -2,6 +2,7 @@ package docente.gestionePropriAppelli;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import operatore.gestioneUtenti.Docente;
 
 /**
  *
@@ -10,7 +11,8 @@ import java.awt.Toolkit;
 public class GestionePropriAppelliForm extends javax.swing.JFrame {
     
     /** Crea il nuovo form GestionePropriAppelliForm */
-    public GestionePropriAppelliForm() {
+    public GestionePropriAppelliForm(Docente docente) {
+        this.docente=docente;
         initComponents();
         this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -88,20 +90,12 @@ public class GestionePropriAppelliForm extends javax.swing.JFrame {
 }//GEN-LAST:event_richiediAggiuntaAppelloButtonMouseClicked
 
     private void ricercaPrenotatiButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ricercaPrenotatiButtonMouseClicked
-        RicercaPrenotatiForm ricPrenFrm= new RicercaPrenotatiForm();
+        RicercaPrenotatiForm ricPrenFrm= new RicercaPrenotatiForm(docente);
         ricPrenFrm.setVisible(true);
     }//GEN-LAST:event_ricercaPrenotatiButtonMouseClicked
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GestionePropriAppelliForm().setVisible(true);
-            }
-        });
-    }
+   
+   
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -109,5 +103,5 @@ public class GestionePropriAppelliForm extends javax.swing.JFrame {
     private javax.swing.JButton ricercaPrenotatiButton;
     private javax.swing.JButton richiediAggiuntaAppelloButton;
     // End of variables declaration//GEN-END:variables
-    
+    private Docente docente;
 }

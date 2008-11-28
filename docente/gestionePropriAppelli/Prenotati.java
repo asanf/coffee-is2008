@@ -51,15 +51,16 @@ public class Prenotati extends AbstractTableModel {
 
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost/coffee", "", "");
         Statement query = con.createStatement();
-        ResultSet result = query.executeQuery("SELECT * from prenotati");
+        ResultSet result = query.executeQuery("SELECT matr_studente from prenotati");
 
         while (result.next()) {
             Prenotato tmp = new Prenotato();
-            tmp.setMatrStudente(result.getString("matricola"));
-            tmp.setCognome(result.getString("cognome"));
-            tmp.setNome(result.getString("nome"));
+            tmp.setMatrStudente(result.getString("matr_studente"));
+            //tmp.setCognome(result.getString("cognome"));
+            //tmp.setNome(result.getString("nome"));
             prenotati.add(tmp);
         }
+        con.close();
     }
 
     public int getColumnCount() {
