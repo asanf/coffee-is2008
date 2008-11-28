@@ -24,8 +24,19 @@ public class GestionePropriAppelliControl {
      * @throws java.io.FileNotFoundException
      */
     protected void creaAppello(Appello appello) throws FileNotFoundException{
-        PrintStream f=new PrintStream(new FileOutputStream(new File("appelli")));
-        f.println(appello.toString());
+        ObjectOutputStream f = null;
+        try {
+            f = new ObjectOutputStream(new FileOutputStream(new File("appelli")));
+            f.writeObject(appello);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Errore scrittura file");
+        } finally {
+            try {
+                f.close();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Errore chiusura File");
+            }
+        }
     }
     
     protected Vector<Prenotato> ricercaPrenotati(Appello appello){
