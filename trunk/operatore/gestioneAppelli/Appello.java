@@ -6,6 +6,7 @@ package operatore.gestioneAppelli;
  */
 public class Appello {
    
+    private String codice;
     private String esame;
     private String data;
     private String docente;
@@ -16,11 +17,12 @@ public class Appello {
     private String aula;
 
     public Appello() {
-        this(null,null,null,null,null,0,null,null);
+        this(null,null,null,null,null,null,0,null,null);
     }
 
 
-    public Appello(String esame, String data, String docente, String tipologia, String oraInizio, int durata, String vincoli, String aula) {
+    public Appello(String codice, String esame, String data, String docente, String tipologia, String oraInizio, int durata, String vincoli, String aula) {
+        this.codice = codice;
         this.esame = esame;
         this.data = data;
         this.docente = docente;
@@ -30,12 +32,17 @@ public class Appello {
         this.vincoli = vincoli;
         this.aula = aula;
     }
-    
-    @Override
-    public String toString(){
-        return(getEsame()+","+getData()+","+getDocente()+","+getTipologia()+","+getOraInizio()+","+getDurata()+","+getVincoli()+","+getAula());
+
+    public String getCodice() {
+        return codice;
     }
 
+    public void setCodice(String codice) {
+        this.codice = codice;
+    }
+
+    
+    
     public String getAula() {
         return aula;
     }

@@ -1,6 +1,5 @@
 package studente;
 
-import system.LoginForm;
 import operatore.gestioneUtenti.Studente;
 import studente.analisiCarriera.AnalisiCarrieraForm;
 import studente.gestionePropriEsami.GestionePropriEsamiForm;
