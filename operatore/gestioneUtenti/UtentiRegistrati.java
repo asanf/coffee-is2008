@@ -18,6 +18,11 @@ public class UtentiRegistrati extends AbstractTableModel{
         utenti = new Vector<UtenteRegistrato>();
     }
     
+    public void setData(Vector<UtenteRegistrato> esami){ 
+        this.utenti = esami;
+        fireTableDataChanged();
+    }
+    
     public void loadDataFromDataBase() throws SQLException{
         Connection con;
         Statement query;
@@ -142,5 +147,7 @@ public class UtentiRegistrati extends AbstractTableModel{
         return false;
     }
 
-    
+    public UtenteRegistrato get(int row){
+        return utenti.get(row);
+    }
 }
