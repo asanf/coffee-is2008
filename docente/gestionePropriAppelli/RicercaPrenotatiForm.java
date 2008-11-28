@@ -23,6 +23,7 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
     /** Creates new form RicercaPrenotatiForm */
     public RicercaPrenotatiForm(Docente docente) {
         AppelloControl appContr= new AppelloControl();
+        appelli = new Appelli();
         appelli.setData(appContr.ricercaPropriAppelli(docente));
         prenotati=new Prenotati();
         initComponents();
