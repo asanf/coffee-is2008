@@ -8,12 +8,11 @@ package docente.gestionePropriAppelli;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import operatore.gestioneAppelli.Appelli;
 import operatore.gestioneAppelli.Appello;
+import operatore.gestioneAppelli.AppelloControl;
+import operatore.gestioneUtenti.Docente;
 
 /**
  *
@@ -22,7 +21,9 @@ import operatore.gestioneAppelli.Appello;
 public class RicercaPrenotatiForm extends javax.swing.JFrame {
     
     /** Creates new form RicercaPrenotatiForm */
-    public RicercaPrenotatiForm() {
+    public RicercaPrenotatiForm(Docente docente) {
+        AppelloControl appContr= new AppelloControl();
+        appelli.setData(appContr.ricercaPropriAppelli(docente));
         prenotati=new Prenotati();
         initComponents();
         this.setDefaultCloseOperation(RicercaPrenotatiForm.HIDE_ON_CLOSE);
@@ -64,6 +65,7 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coffee - Ricerca Prenotati Form");
 
+        JTableAppelli.setModel(appelli);
         jScrollPane1.setViewportView(JTableAppelli);
 
         jLabel1.setText("Propri Appelli:");
@@ -77,6 +79,7 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
             }
         });
 
+        jTable3.setModel(prenotati);
         jScrollPane3.setViewportView(jTable3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,7 +122,7 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jLabel1, evt, "Nessun Appello selezionato", WIDTH);
         }
         else{
-                Appelli appelli = new Appelli();
+                appelli = new Appelli();
                 Appello appSel = appelli.get(selectRow);
                 GestionePropriAppelliControl prenCont = new GestionePropriAppelliControl();
                 prenotati.setData(prenCont.ricercaPrenotati(appSel));
@@ -140,4 +143,5 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
     private javax.swing.JButton ricercaPrenotatiButton;
     // End of variables declaration//GEN-END:variables
     private Prenotati prenotati;
+    private Appelli appelli;
 }
