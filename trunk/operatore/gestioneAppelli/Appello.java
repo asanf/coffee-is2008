@@ -1,10 +1,12 @@
 package operatore.gestioneAppelli;
 
+import java.io.Serializable;
+
 /**
  *Classe che modella l'entità Appello
- * @author 
+GestioneAppelliForm * @author 
  */
-public class Appello {
+public class Appello implements Serializable {
    
     private int codice;
     private String esame;
