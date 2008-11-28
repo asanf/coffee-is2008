@@ -17,25 +17,7 @@ import java.io.*;
  */
 public class GestionePropriAppelliControl {
  
-    
-    protected void creaPrenotato(Prenotato prenotato){
-       try{
-           Class.forName("com.mysql.jdbc.Driver");
-          }catch(ClassNotFoundException e){
-              JOptionPane.showMessageDialog(null, "Errore nel caricamento driver jdbc:\n"+e);
-          }
-       
-       try{
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
-           Statement query=con.createStatement();
-          // int result=query.executeUpdate();
-       }
-       catch(SQLException e){
-              JOptionPane.showMessageDialog(null, "Errore durante la connessione al database"+e);
-          }
-       
-       }
-    
+        
     /**
      *Crea un file per la richiesta di aggiunta appello 
      * @param appello

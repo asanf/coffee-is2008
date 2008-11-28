@@ -75,7 +75,7 @@ public class HomeStudenteForm extends HomeForm {
 }//GEN-LAST:event_analisiCarrieraButtonMouseClicked
 
     private void gestionePropriEsamiButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionePropriEsamiButtonMouseClicked
-        GestionePropriEsamiForm exForm = new GestionePropriEsamiForm();
+        GestionePropriEsamiForm exForm = new GestionePropriEsamiForm(studente);
         exForm.setVisible(true);
 }//GEN-LAST:event_gestionePropriEsamiButtonMouseClicked
     
