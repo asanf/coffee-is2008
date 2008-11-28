@@ -99,13 +99,14 @@ public class AppelloControl {
               
          while(result.next()){
              Appello appello= new Appello();
-             appello.setEsame("esame");
-             appello.setData("data");
-             appello.setOraInizio("oraInizio");
-             appello.setTipologia("tipologia");
-             appello.setDocente("docente");
-             appello.setVincoli("vincoli");
-             appello.setAula("aula");
+             appello.setEsame(result.getString("esame"));
+             appello.setData(result.getString("data"));
+             appello.setOraInizio(result.getString("ora_inizio"));
+             appello.setTipologia(result.getString("tipologia"));
+             appello.setDocente(result.getString("docente"));
+             appello.setVincoli(result.getString("vincoli"));
+             appello.setAula(result.getString("aula"));
+             appello.setCodice(result.getInt("codice"));
              appelli.add(appello);             
          }
               con.close();

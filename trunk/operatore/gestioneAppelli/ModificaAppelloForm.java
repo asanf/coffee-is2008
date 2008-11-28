@@ -154,7 +154,7 @@ public class ModificaAppelloForm extends javax.swing.JFrame {
 
     private void modificaAppelloButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificaAppelloButtonMouseClicked
         AppelloControl appCont = new AppelloControl();
-        Appello newAppello = new Appello(null,
+        Appello newAppello = new Appello(0,
                                     esameField.getText(),
                                     dataField.getText(),
                                     docenteField.getText(),
