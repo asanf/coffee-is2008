@@ -1,8 +1,3 @@
-/*
- * ModificaEsameForm.java
- *
- * Created on 27 novembre 2008, 9.27
- */
 
 package operatore.gestioneEsami;
 

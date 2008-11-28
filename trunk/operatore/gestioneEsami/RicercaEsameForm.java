@@ -1,9 +1,3 @@
-/*
- * RicercaEsameForm.java
- *
- * Created on 26 novembre 2008, 22.45
- */
-
 package operatore.gestioneEsami;
 
 import java.awt.Dimension;
