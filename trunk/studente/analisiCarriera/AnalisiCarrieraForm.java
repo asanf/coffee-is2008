@@ -11,7 +11,7 @@ import operatore.gestioneUtenti.Studente;
 
 /**
  * Classe che modella il form dell'analisi della carriera di uno studente 
- * @author  e-vampire
+ * @author  
  */
 public class AnalisiCarrieraForm extends javax.swing.JFrame {
     
@@ -113,7 +113,7 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
 
     private void visualizzaStatisticheButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaStatisticheButtonMouseClicked
         try{
-            LibrettoControlInterface libControl = (LibrettoControlInterface)Naming.lookup(("rmi://localhost/AnalisiCarriera"));
+            LibrettoControlInterface libControl = (LibrettoControlInterface)Naming.lookup("rmi://localhost/AnalisiCarriera");
             libControl.visualizzaStatistiche(studente.getMatricola());
         }catch(RemoteException e){
             JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
