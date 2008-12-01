@@ -6,15 +6,20 @@ import java.io.ObjectOutputStream;
 import java.sql.*;
 import java.util.Vector;
 import javax.swing.JOptionPane;
-
+import java.rmi.*;
+import java.rmi.server.*;
 
 /**
  * Classe che modella il control per la gestione degli utenti.
  * @author 
  */
-public class GestioneUtentiControl {
+public class GestioneUtentiControl extends UnicastRemoteObject implements GestioneUtentiControlInterface{
 
-    public void riceviRichiestaAggiuntaAccount(UtenteRegistrato nuovoUtente){
+    public GestioneUtentiControl() throws RemoteException {
+        super();
+    }
+    
+    public void riceviRichiestaAggiuntaAccount(UtenteRegistrato nuovoUtente) throws RemoteException{
         ObjectOutputStream out;
         try{
             out= new ObjectOutputStream(new FileOutputStream("richiesteAccount.dat",true));
@@ -25,7 +30,7 @@ public class GestioneUtentiControl {
         
     }
     
-    public void visualizzaCodaRichieste(){
+    public void visualizzaCodaRichieste() throws RemoteException{
         
     }
     
@@ -62,7 +67,7 @@ public class GestioneUtentiControl {
         return utenti;
     } 
     
-    public boolean checkUsernameUtente(String login){
+    public boolean checkUsernameUtente(String login) throws RemoteException{
         boolean esito=false;
         try{
            Class.forName("com.mysql.jdbc.Driver");
@@ -73,9 +78,7 @@ public class GestioneUtentiControl {
            while (result.next()){
            String risultato= (result.getString("username"));
            esito = risultato.equals(login);
-           }
-           
-            
+           }       
           
         }
        catch(Exception e){
@@ -90,7 +93,7 @@ public class GestioneUtentiControl {
      * @param indice
      * @param campoAggiuntivo
      */
-    protected void creaUtenteRegistrato(UtenteRegistrato newUtente, int indice, String campoAggiuntivo){
+    public void creaUtenteRegistrato(UtenteRegistrato newUtente, int indice, String campoAggiuntivo) throws RemoteException{
       try{
            Class.forName("com.mysql.jdbc.Driver");
            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
@@ -137,7 +140,7 @@ public class GestioneUtentiControl {
       }
     }
   
-    protected void eliminaUtenteRegistrato (UtenteRegistrato utente){
+    public void eliminaUtenteRegistrato (UtenteRegistrato utente) throws RemoteException{
          try{
               Class.forName("com.mysql.jdbc.Driver");
           }catch(ClassNotFoundException e){
@@ -156,7 +159,7 @@ public class GestioneUtentiControl {
               JOptionPane.showMessageDialog(null, "Errore durante la connessione al database"+e);
           }
     }
-    protected void modificaUtenteRegistrato (UtenteRegistrato old, UtenteRegistrato utente){
+    public void modificaUtenteRegistrato (UtenteRegistrato old, UtenteRegistrato utente) throws RemoteException{
         try{
               Class.forName("com.mysql.jdbc.Driver");
           }catch(ClassNotFoundException e){
@@ -183,5 +186,9 @@ public class GestioneUtentiControl {
            catch(SQLException e){
               JOptionPane.showMessageDialog(null, "Errore durante la connessione al database"+e);
           }
+    }
+
+    public Vector<UtenteRegistrato> ricercaUtente(String matricola, String surname, String name) throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -10,12 +10,18 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import operatore.gestioneAppelli.Appello;
 import java.io.*;
+import java.rmi.*;
+import java.rmi.server.*;
 
 /**
  *Classe che modella l'oggetto Control che interagisce con l'entity appello
  * @author 
  */
-public class GestionePropriAppelliControl {
+public class GestionePropriAppelliControl extends UnicastRemoteObject implements GestionePropriAppelliControlInterface {
+    
+    public GestionePropriAppelliControl() throws RemoteException{
+        super();
+    }
  
         
     /**
@@ -23,7 +29,7 @@ public class GestionePropriAppelliControl {
      * @param appello
      * @throws java.io.FileNotFoundException
      */
-    protected void creaAppello(Appello appello) throws FileNotFoundException{
+    public void creaAppello(Appello appello) throws FileNotFoundException,RemoteException{
         ObjectOutputStream f = null;
         try {
             f = new ObjectOutputStream(new FileOutputStream(new File("appelli")));
@@ -39,7 +45,7 @@ public class GestionePropriAppelliControl {
         }
     }
     
-    protected Vector<Prenotato> ricercaPrenotati(Appello appello){
+    public Vector<Prenotato> ricercaPrenotati(Appello appello) throws RemoteException{
           try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {

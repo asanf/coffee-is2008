@@ -6,7 +6,7 @@ import operatore.gestioneUtenti.Docente;
 
 /**
  *
- * @author  e-vampire
+ * @author  
  */
 public class GestionePropriAppelliForm extends javax.swing.JFrame {
     

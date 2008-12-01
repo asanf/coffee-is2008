@@ -88,17 +88,7 @@ public class GestioneUtentiForm extends javax.swing.JFrame {
         RicercaUtenteForm form = new RicercaUtenteForm ();
         form.setVisible(true);
 }//GEN-LAST:event_ricercaUtenteButtonMouseClicked
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GestioneUtentiForm().setVisible(true);
-            }
-        });
-    }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton creaUtenteButton;

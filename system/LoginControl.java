@@ -4,11 +4,17 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import operatore.gestioneUtenti.UtenteRegistrato;
 import operatore.gestioneUtenti.UtentiRegistrati;
+import java.rmi.*;
+import java.rmi.server.*;
 /**
  *
  * @author 
  */
-public class LoginControl {
+public class LoginControl extends UnicastRemoteObject implements LoginControlInterface {
+    
+    public LoginControl() throws RemoteException {
+        super();
+    }
     
     public UtenteRegistrato checkLogin(String username,String password){
         if(username.equals("g.cristo") && password.equals("m4r14"))

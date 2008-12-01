@@ -8,10 +8,14 @@ package docente.gestionePropriAppelli;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 import operatore.gestioneAppelli.Appelli;
 import operatore.gestioneAppelli.Appello;
-import operatore.gestioneAppelli.AppelloControl;
+import operatore.gestioneAppelli.AppelloControlInterface;
 import operatore.gestioneUtenti.Docente;
 
 /**
@@ -22,13 +26,25 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
     
     /** Creates new form RicercaPrenotatiForm */
     public RicercaPrenotatiForm(Docente docente) {
-        AppelloControl appContr= new AppelloControl();
-        appelli = new Appelli();
-        appelli.setData(appContr.ricercaPropriAppelli(docente));
-        initComponents();
-        this.setDefaultCloseOperation(RicercaPrenotatiForm.HIDE_ON_CLOSE);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
+       
+            AppelloControlInterface appContr = null;
+            appelli = new Appelli();
+            try {
+                appContr = (AppelloControlInterface) Naming.lookup("rmi://localhost/GestioneAppelli");
+                appelli.setData(appContr.ricercaPropriAppelli(docente));
+            }catch(RemoteException e){
+                JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+            }catch(MalformedURLException e){
+                JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+            }catch(NotBoundException e){
+                JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+        }
+                       
+            initComponents();
+            this.setDefaultCloseOperation(RicercaPrenotatiForm.HIDE_ON_CLOSE);
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            this.setLocation(dim.width / 2 - this.getWidth() / 2, dim.height / 2 - this.getHeight() / 2);
+     
     }
     
     /** This method is called from within the constructor to
@@ -124,8 +140,13 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
                 prenotati=new Prenotati();
                 prenotatiTable.setModel(prenotati);
                 Appello appSel = appelli.get(selectRow);
-                GestionePropriAppelliControl prenCont = new GestionePropriAppelliControl();
-                prenotati.setData(prenCont.ricercaPrenotati(appSel));
+                try{
+                    GestionePropriAppelliControlInterface prenCont = null;
+                    prenCont = (GestionePropriAppelliControlInterface)Naming.lookup("rmi://localhost/GestionePropriAppelli");
+                    prenotati.setData(prenCont.ricercaPrenotati(appSel));
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+                }
             }
 }//GEN-LAST:event_ricercaPrenotatiButtonMouseClicked
     

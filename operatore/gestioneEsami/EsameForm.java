@@ -2,6 +2,10 @@ package operatore.gestioneEsami;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 /**
@@ -58,24 +62,8 @@ public class EsameForm extends javax.swing.JFrame {
         jLabel6.setText("Programma");
 
         oreFrontaliField.setText("0");
-        oreFrontaliField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                oreFrontaliFieldActionPerformed(evt);
-            }
-        });
 
         oreLaboratorioField.setText("0");
-        oreLaboratorioField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                oreLaboratorioFieldActionPerformed(evt);
-            }
-        });
-
-        creditiField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                creditiFieldActionPerformed(evt);
-            }
-        });
 
         creaEsameButton.setText("Invia");
         creaEsameButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,11 +82,6 @@ public class EsameForm extends javax.swing.JFrame {
         jLabel7.setText("Semestre:");
 
         semestreField.setText("1");
-        semestreField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                semestreFieldActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,18 +151,6 @@ public class EsameForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void oreFrontaliFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oreFrontaliFieldActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_oreFrontaliFieldActionPerformed
-
-    private void oreLaboratorioFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oreLaboratorioFieldActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_oreLaboratorioFieldActionPerformed
-
-    private void creditiFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditiFieldActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_creditiFieldActionPerformed
-
     private void azzeraCampiButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_azzeraCampiButtonMouseClicked
         nomeField.setText("");
         oreFrontaliField.setText("");
@@ -199,15 +170,19 @@ public class EsameForm extends javax.swing.JFrame {
             esame.setCrediti(Integer.parseInt(creditiField.getText()));
             esame.setProgramma(programmaField.getText());
             esame.setSemestre(Integer.parseInt(semestreField.getText()));
-            EsameControl exCont = new EsameControl();
-            exCont.creaEsame(esame);
+            try{
+                EsameControlInterface exCont = (EsameControlInterface)Naming.lookup("rmi://localhost/GestionePropriAppelli");
+                exCont.creaEsame(esame);
+            }catch(RemoteException e){
+                JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+            }catch(MalformedURLException e){
+                JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+            }catch(NotBoundException e){
+                JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+        }
             this.setVisible(false);
         }
 }//GEN-LAST:event_creaEsameButtonMouseClicked
-
-    private void semestreFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semestreFieldActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_semestreFieldActionPerformed
    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

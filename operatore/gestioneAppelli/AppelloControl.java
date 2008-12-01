@@ -9,17 +9,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import operatore.gestioneUtenti.Docente;
+import java.rmi.*;
+import java.rmi.server.*;
 /**
  *Classe che modella l'oggetta control che interagisce con l'entity Appello
  * @author 
  */
-public class AppelloControl {
+public class AppelloControl extends UnicastRemoteObject implements AppelloControlInterface {
 
-    public void aggiungiAppello(Appello appello){
+    public AppelloControl() throws RemoteException{
+        super();
+    }
+    
+    public void aggiungiAppello(Appello appello) throws RemoteException{
         
     }
     
-    public void modificaAppello(Appello old, Appello modified){
+    public void modificaAppello(Appello old, Appello modified) throws RemoteException{
         try{
               Class.forName("com.mysql.jdbc.Driver");
           }catch(ClassNotFoundException e){
@@ -50,7 +56,7 @@ public class AppelloControl {
           }
     }
     
-    public Vector<Appello> ricercaAppello(String attributo, String valore){
+    public Vector<Appello> ricercaAppello(String attributo, String valore) throws RemoteException{
         Connection con;
         Statement query;
         ResultSet result;
@@ -85,7 +91,7 @@ public class AppelloControl {
         return appelli; 
     }
     
-    public Vector<Appello> ricercaPropriAppelli(Docente docente) {
+    public Vector<Appello> ricercaPropriAppelli(Docente docente) throws RemoteException {
         Connection con;
         Statement query;
         ResultSet result;
@@ -121,19 +127,8 @@ public class AppelloControl {
        return appelli;
     }
     
-    public void riceviRichiestaAggiuntaAppello(Appello appello) throws FileNotFoundException{
+    public void riceviRichiestaAggiuntaAppello(Appello appello) throws FileNotFoundException,RemoteException{
         ObjectOutputStream out=null;
-        try {
-            out = new ObjectOutputStream(new FileOutputStream("richieste.dat"));
-            out.writeObject(appello);
-        } catch (IOException ex) {
-            Logger.getLogger(AppelloControl.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                out.close();
-            } catch (IOException ex) {
-                Logger.getLogger(AppelloControl.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        // scrivere codice ordinato per la scrittura su file di appello
     }
 }

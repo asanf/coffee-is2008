@@ -3,6 +3,10 @@ package operatore.gestioneAppelli;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 /**
@@ -114,8 +118,16 @@ public class RicercaAppelliForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ricercaAppelliButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ricercaAppelliButtonMouseClicked
-        AppelloControl appCont = new AppelloControl();
-        appelli.setData(appCont.ricercaAppello((String)parametroRicerca.getSelectedItem(), valoreDaCercare.getText()));   
+        try{
+            AppelloControlInterface appCont = (AppelloControlInterface)Naming.lookup("rmi://localhost/GestioneAppelli");
+            appelli.setData(appCont.ricercaAppello((String)parametroRicerca.getSelectedItem(), valoreDaCercare.getText()));   
+        }catch(RemoteException e){
+            JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+        }catch(MalformedURLException e){
+            JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+        }catch(NotBoundException e){
+            JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+        }
 }//GEN-LAST:event_ricercaAppelliButtonMouseClicked
 
     private void valoreDaCercareKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valoreDaCercareKeyPressed
@@ -131,7 +143,16 @@ public class RicercaAppelliForm extends javax.swing.JFrame {
         else{
             ModificaAppelloForm modAppForm = new ModificaAppelloForm(appelli.get(selectedRow));
             modAppForm.setVisible(true);
-            appelli.setData(new AppelloControl().ricercaAppello("esame", ""));
+        try{
+            AppelloControlInterface appCont = (AppelloControlInterface)Naming.lookup("rmi://localhost/GestioneAppelli");
+            appelli.setData(appCont.ricercaAppello("esame", ""));
+        }catch(RemoteException e){
+            JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+        }catch(MalformedURLException e){
+            JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+        }catch(NotBoundException e){
+            JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+        }
         }
         
     }//GEN-LAST:event_modificaAppelloButtonMouseClicked

@@ -2,6 +2,10 @@ package operatore.gestioneUtenti;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 /**
@@ -307,10 +311,18 @@ public class CreaUtenteForm extends javax.swing.JFrame {
                 newUtente.setIndirizzo(indirizzoField.getText());
                 newUtente.setPassword(passwordField.getText());
                 
-                GestioneUtentiControl control = new GestioneUtentiControl ();
                 int indice = tipoAccountBox.getSelectedIndex();
                 String campoAggiuntivo = campoAggiuntivoField.getText();
-                control.creaUtenteRegistrato(newUtente, indice, campoAggiuntivo);
+                try{
+                    GestioneUtentiControlInterface control = (GestioneUtentiControlInterface)Naming.lookup("rmi://localhost/GestioneUtenti");
+                    control.creaUtenteRegistrato(newUtente, indice, campoAggiuntivo);
+                }catch(RemoteException e){
+                    JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+                }catch(MalformedURLException e){
+                    JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+                }catch(NotBoundException e){
+                    JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+                }
                 this.setVisible(false);
             }
         }
@@ -320,12 +332,21 @@ public class CreaUtenteForm extends javax.swing.JFrame {
 }
 
     private void controDisponibilitàButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_controDisponibilitàButtonMouseClicked
+        boolean esito = true;
         if (usernameField.getText().equals("")) {JOptionPane.showMessageDialog(null,"Il campo nome utente deve essere compilato", "Errore nell'inserimento dei dati",JOptionPane.ERROR_MESSAGE);}
             else {
-            GestioneUtentiControl control = new GestioneUtentiControl();
-            boolean esito =control.checkUsernameUtente(usernameField.getText());
-                if (esito==true) {JOptionPane.showMessageDialog(null,"Il nome utente è già utilizzato, modificarlo.", "Errore nell'inserimento dei dati",JOptionPane.ERROR_MESSAGE);}
-            else{JOptionPane.showMessageDialog(null, "Il nome utente scelto è disponibile","Usarname disponibile",JOptionPane.INFORMATION_MESSAGE);}
+                try{
+                    GestioneUtentiControlInterface control = (GestioneUtentiControlInterface)Naming.lookup("rmi://localhost/GestioneUtenti");
+                    esito =control.checkUsernameUtente(usernameField.getText());
+                }catch(RemoteException e){
+                    JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+                }catch(MalformedURLException e){
+                    JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+                }catch(NotBoundException e){
+                    JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+                }
+                        if (esito==true) {JOptionPane.showMessageDialog(null,"Il nome utente è già utilizzato, modificarlo.", "Errore nell'inserimento dei dati",JOptionPane.ERROR_MESSAGE);}
+                        else{JOptionPane.showMessageDialog(null, "Il nome utente scelto è disponibile","Usarname disponibile",JOptionPane.INFORMATION_MESSAGE);}
             richiediAggiuntaAccountUtenteButton.setEnabled(!esito);}
 }//GEN-LAST:event_controDisponibilitàButtonMouseClicked
     

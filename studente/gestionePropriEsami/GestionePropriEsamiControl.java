@@ -4,13 +4,20 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 import operatore.gestioneAppelli.Appello;
 import operatore.gestioneUtenti.Studente;
+import java.rmi.*;
+import java.rmi.server.*;
+
 
 /**
  * Classe che modella l'oggetto control che si occupa di interagire con gli appello degli esami
  * di un dato studente 
  * @author 
  */
-public class GestionePropriEsamiControl {
+public class GestionePropriEsamiControl extends UnicastRemoteObject implements GestionePropriEsamiControlInterface{
+    
+    public GestionePropriEsamiControl() throws RemoteException{
+        super();
+    }
     
     public void richiediPrenotazioneAppello(){
         
