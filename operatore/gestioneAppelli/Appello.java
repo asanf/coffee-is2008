@@ -11,6 +11,7 @@ public class Appello implements Serializable {
     private int codice;
     private String esame;
     private String data;
+    private int crediti;
     private String docente;
     private String tipologia;
     private String oraInizio;
@@ -19,11 +20,11 @@ public class Appello implements Serializable {
     private String aula;
 
     public Appello() {
-        this(0,null,null,null,null,null,0,null,null);
+        this(0,null,null,null,null,null,0,null,null,0);
     }
 
 
-    public Appello(int codice, String esame, String data, String docente, String tipologia, String oraInizio, int durata, String vincoli, String aula) {
+    public Appello(int codice, String esame, String data, String docente, String tipologia, String oraInizio, int durata, String vincoli, String aula, int crediti) {
         this.codice = codice;
         this.esame = esame;
         this.data = data;
@@ -33,6 +34,7 @@ public class Appello implements Serializable {
         this.durata = durata;
         this.vincoli = vincoli;
         this.aula = aula;
+        this.crediti = crediti;
     }
 
     public int getCodice() {
@@ -111,6 +113,11 @@ public class Appello implements Serializable {
         return tipologia;
     }
 
-  
+    public int getCrediti(){
+        return crediti;
+    }
     
+    public void setCrediti(int crediti){
+        this.crediti = crediti;
+    }
 }

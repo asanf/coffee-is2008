@@ -1,9 +1,3 @@
-/*
- * RichiediAggiuntaAppelloForm.java
- *
- * Created on 27 novembre 2008, 10.12
- */
-
 package docente.gestionePropriAppelli;
 
 import java.io.FileNotFoundException;
@@ -17,7 +11,7 @@ import operatore.gestioneAppelli.AppelloControlInterface;
 
 /**
  *
- * @author  serenity
+ * @author  
  */
 public class RichiediAggiuntaAppelloForm extends javax.swing.JFrame {
     
@@ -192,7 +186,7 @@ public class RichiediAggiuntaAppelloForm extends javax.swing.JFrame {
             }catch(MalformedURLException e){
                 JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
             }
-        JOptionPane.showMessageDialog(jLabel1, evt, "La richiesta è stato inviata!", WIDTH);
+        JOptionPane.showMessageDialog(null,"La richiesta è stato inviata!");
         
 }//GEN-LAST:event_inviaDatiButtonMouseClicked
 

@@ -16,8 +16,11 @@ public interface GestionePropriAppelliControlInterface extends Remote{
      * @param appello
      * @throws java.io.FileNotFoundException
      */
-    void creaAppello(Appello appello) throws FileNotFoundException,RemoteException;
 
     Vector<Prenotato> ricercaPrenotati(Appello appello) throws RemoteException;
+    
+    void RegistraVoto(Appello appello, Prenotato prenotato) throws RemoteException;
+    
+    void RegistraAssenza(Appello appello, Prenotato prenotato, int voto, boolean lode, String data) throws RemoteException;
 
 }

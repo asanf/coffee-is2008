@@ -1,8 +1,5 @@
 package studente.analisiCarriera;
 
-import java.util.Date;
-import operatore.gestioneAppelli.Appello;
-
 
 /**
  * Classe che modella l'esito di un appello per un dato studente
