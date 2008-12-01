@@ -5,13 +5,15 @@
 
 package docente.gestionePropriAppelli;
 
+import java.io.Serializable;
+
 
 
 /**
  * Classe che modella l'entità prenotato
  * @author 
  */
-public class Prenotato  {
+public class Prenotato implements Serializable {
     
     private String nome;
     private String cognome;

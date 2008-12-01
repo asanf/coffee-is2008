@@ -23,27 +23,6 @@ public class GestionePropriAppelliControl extends UnicastRemoteObject implements
         super();
     }
  
-        
-    /**
-     *Crea un file per la richiesta di aggiunta appello 
-     * @param appello
-     * @throws java.io.FileNotFoundException
-     */
-    public void creaAppello(Appello appello) throws FileNotFoundException,RemoteException{
-        ObjectOutputStream f = null;
-        try {
-            f = new ObjectOutputStream(new FileOutputStream(new File("appelli")));
-            f.writeObject(appello);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Errore scrittura file");
-        } finally {
-            try {
-                f.close();
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Errore chiusura File");
-            }
-        }
-    }
     
     public Vector<Prenotato> ricercaPrenotati(Appello appello) throws RemoteException{
           try {
@@ -75,6 +54,26 @@ public class GestionePropriAppelliControl extends UnicastRemoteObject implements
         return prenotati;
      }
 
+    public void RegistraAssenza(Appello appello, Prenotato prenotato) throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void RegistraVoto(Appello appello, Prenotato prenotato, int voto, boolean lode, String data) throws RemoteException {
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Errore caricamento driver jdbc:\n"+e);
+        }
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
+        Statement query = con.createStatement();
+        int result = query.executeUpdate("INSERT INTO libretto(matricola,esame,voto,lode,data)" +
+                                         "VALUES ('" + prenotato.getMatrStudente() +
+                                         "','" + appello.getEsame() + "'," + voto + 
+                                         "," + lode?1:0 + ",'" +data +"')");
+        
+    }
+
+    
     
     
 
