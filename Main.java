@@ -1,5 +1,6 @@
 
-import system.LoginForm;
+import operatore.gestioneUtenti.Studente;
+import studente.HomeStudenteForm;
 
 
 
@@ -10,8 +11,12 @@ import system.LoginForm;
 public class Main {
 
     public static void main(String[] args) {
-        LoginForm login = new LoginForm();
-        login.setVisible(true);
+        Studente studente = new Studente();
+        studente.setCognome("Sanfelice");
+        studente.setNome("Antonio");
+        studente.setMatricola("0510200997");
+        HomeStudenteForm homeStud = new HomeStudenteForm(studente);
+        homeStud.setVisible(true);
     }
 
 }

@@ -56,9 +56,9 @@ public class UtentiRegistrati extends AbstractTableModel{
         ResultSet result;
         
         try{
-            Class.forName("com.mysql.jdbc.Driver");          
-        }catch(ClassNotFoundException e){
-            JOptionPane.showMessageDialog(null, "Errore nel caricamenteo del Driver JDBC");
+            Class.forName("com.mysql.jdbc.Driver").newInstance();          
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Errore nel caricamenteo del Driver JDBC:\n" + e);
             return null;
         }
         con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
