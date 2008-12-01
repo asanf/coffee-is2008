@@ -6,7 +6,7 @@ import operatore.gestioneAppelli.Appello;
 import operatore.gestioneUtenti.Studente;
 
 /**
- * Classe che modella il control che si occupa di interagire con gli appello degli esami
+ * Classe che modella l'oggetto control che si occupa di interagire con gli appello degli esami
  * di un dato studente 
  * @author 
  */

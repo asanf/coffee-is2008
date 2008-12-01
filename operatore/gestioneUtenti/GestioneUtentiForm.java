@@ -1,5 +1,8 @@
 package operatore.gestioneUtenti;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  * Classe che modella il form per la gestione degli utenti.
  * @author  e-vampire
@@ -10,6 +13,9 @@ public class GestioneUtentiForm extends javax.swing.JFrame {
     public GestioneUtentiForm() {
         initComponents();
         this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
+        this.setResizable(false);
     }
     
     /** Questo metodo è chiamato all'interno del costruttore per inizializzare

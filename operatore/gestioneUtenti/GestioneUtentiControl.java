@@ -29,7 +29,7 @@ public class GestioneUtentiControl {
         
     }
     
-    public Vector <UtenteRegistrato> ricercaUtente(String matricola, String surname,String name){
+    public Vector <UtenteRegistrato> ricercaUtenteRegistrato(String matricola, String surname,String name){
         Connection con;
         Statement query;
         ResultSet result;
@@ -76,7 +76,7 @@ public class GestioneUtentiControl {
            }
            
             
-           System.out.println(esito);
+          
         }
        catch(Exception e){
            e.printStackTrace();
@@ -137,7 +137,7 @@ public class GestioneUtentiControl {
       }
     }
   
-    protected void eliminaUtente (UtenteRegistrato utente){
+    protected void eliminaUtenteRegistrato (UtenteRegistrato utente){
          try{
               Class.forName("com.mysql.jdbc.Driver");
           }catch(ClassNotFoundException e){
@@ -153,6 +153,34 @@ public class GestioneUtentiControl {
                   JOptionPane.showMessageDialog(null, "Utente eliminato correttamente");
               }
           }catch(SQLException e){
+              JOptionPane.showMessageDialog(null, "Errore durante la connessione al database"+e);
+          }
+    }
+    protected void modificaUtenteRegistrato (UtenteRegistrato old, UtenteRegistrato utente){
+        try{
+              Class.forName("com.mysql.jdbc.Driver");
+          }catch(ClassNotFoundException e){
+              JOptionPane.showMessageDialog(null, "Errore nel caricamento driver jdbc:\n"+e);
+          }
+          try{
+              Connection con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
+              Statement query = con.createStatement();
+              int result = query.executeUpdate("UPDATE utente_registrato SET " +
+                      "nome='" + utente.getNome() + "'" +
+                      ",cognome='" + utente.getCognome() +"'" +
+                      ",data_nascita='" + utente.getDataNascita()+ "'" +
+                       ",indirizzo='" + utente.getIndirizzo() + "'"+
+                       ",username='" + utente.getLogin() + "'" +
+                       ",matricola='" + utente.getMatricola() + "'" +
+                       ",password='" + utente.getPassword()+"'"+
+                       "WHERE nome='" + old.getNome()+"'");
+              if(result==query.EXECUTE_FAILED){
+                  JOptionPane.showMessageDialog(null, "Errore durante l'aggiornamento dell'utente");
+              }else {
+                  JOptionPane.showMessageDialog(null, "Utente modificato correttamente");
+              }
+          }
+           catch(SQLException e){
               JOptionPane.showMessageDialog(null, "Errore durante la connessione al database"+e);
           }
     }

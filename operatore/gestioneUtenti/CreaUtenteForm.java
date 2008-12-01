@@ -1,5 +1,7 @@
 package operatore.gestioneUtenti;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +15,9 @@ public class CreaUtenteForm extends javax.swing.JFrame {
    
     public CreaUtenteForm() {
         initComponents();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
+        this.setResizable(false);
     }
     
     /** Questo metodo è chimamato all'interno del costruttore per inizializzare
@@ -284,7 +289,12 @@ public class CreaUtenteForm extends javax.swing.JFrame {
 
     private void richiediAggiuntaAccountUtenteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_richiediAggiuntaAccountUtenteButtonMouseClicked
         
-        if (passwordField.getText().length()<6 || passwordField.getText().length()>10) JOptionPane.showMessageDialog(null,"Password non valida, inserire una password di minimo 6 caratteri e massimo 10", "Errore nell'inserimento dei dati",JOptionPane.ERROR_MESSAGE);
+        if (richiediAggiuntaAccountUtenteButton.isEnabled()) {
+            System.out.println("Tenta l'insrimento");
+            if (passwordField.getText().length()<6 || passwordField.getText().length()>10) {
+            JOptionPane.showMessageDialog(null,"Password non valida, inserire una password di minimo 6 caratteri e massimo 10", "Errore nell'inserimento dei dati",JOptionPane.ERROR_MESSAGE);
+            return;
+            }   
         if (passwordField.getText().compareTo(repeatedPasswordField.getText()) !=0 ) JOptionPane.showMessageDialog(null,"Password non ripetuta correttamente","Errore nell'inserimento dei dati",JOptionPane.ERROR_MESSAGE);//GEN-LAST:event_richiediAggiuntaAccountUtenteButtonMouseClicked
             else{
            
@@ -302,8 +312,11 @@ public class CreaUtenteForm extends javax.swing.JFrame {
                 String campoAggiuntivo = campoAggiuntivoField.getText();
                 control.creaUtenteRegistrato(newUtente, indice, campoAggiuntivo);
                 this.setVisible(false);
-            
+            }
         }
+        else
+        {  System.out.println("ESCE DIRETTAMENTE");
+            return;}
 }
 
     private void controDisponibilitàButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_controDisponibilitàButtonMouseClicked

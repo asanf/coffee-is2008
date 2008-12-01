@@ -36,6 +36,7 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
         visualizzaStatisticheButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("C o f f e e - Analisi Carriera");
 
         AnalisiCarrieraTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 24));
         AnalisiCarrieraTitleLabel.setText("Analisi Carriera");
@@ -98,7 +99,7 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void visualizzaLibrettoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizzaLibrettoButtonActionPerformed
-        //librettoForm.setVisible(true);
+ 
 }//GEN-LAST:event_visualizzaLibrettoButtonActionPerformed
 
     private void visualizzaLibrettoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaLibrettoButtonMouseClicked

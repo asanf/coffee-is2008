@@ -40,6 +40,7 @@ public class GestionePropriEsamiForm extends javax.swing.JFrame {
         visualizzaAppelliDisponibiliButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("C o f f e e - Gestione Propri Esami");
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
         jLabel1.setText("Gestione Propri Esami");

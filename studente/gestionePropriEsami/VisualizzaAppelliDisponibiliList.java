@@ -37,6 +37,7 @@ public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
         richiediPrenotazioneAppelloButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("C o f f e e - Appelli Disponibili");
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
         jLabel1.setText("Appelli Disponibili");

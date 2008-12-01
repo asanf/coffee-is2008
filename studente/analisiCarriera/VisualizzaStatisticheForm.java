@@ -10,9 +10,10 @@ import java.awt.Toolkit;
 public class VisualizzaStatisticheForm extends javax.swing.JFrame {
     
     /** Creates new form VisualizzaStatisticheForm */
-    public VisualizzaStatisticheForm(String mediaAritmetica, String votoDiLaurea){
+    public VisualizzaStatisticheForm(String mediaAritmetica,String mediaPonderata, String votoDiLaurea){
             initComponents();
             mediaAritmeticaLabel.setText(mediaAritmetica);
+            mediaPonderataLabel.setText(mediaPonderata);
             votoLaureaStimatoLabel.setText(votoDiLaurea);
             this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
             Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -32,8 +33,11 @@ public class VisualizzaStatisticheForm extends javax.swing.JFrame {
         promptVotoLaurea = new javax.swing.JLabel();
         mediaAritmeticaLabel = new javax.swing.JLabel();
         votoLaureaStimatoLabel = new javax.swing.JLabel();
+        promptmediaPonderata = new javax.swing.JLabel();
+        mediaPonderataLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("C o f f e e - Statistiche degli esami");
 
         statisticheTitle.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
         statisticheTitle.setText("Statistiche");
@@ -41,6 +45,8 @@ public class VisualizzaStatisticheForm extends javax.swing.JFrame {
         promptMediaAritmetica.setText("Media Aritmetica: ");
 
         promptVotoLaurea.setText("Voto di laurea atteso: ");
+
+        promptmediaPonderata.setText("Media Ponderata: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,27 +59,33 @@ public class VisualizzaStatisticheForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(promptMediaAritmetica)
+                            .addComponent(promptmediaPonderata)
                             .addComponent(promptVotoLaurea))
                         .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(votoLaureaStimatoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(mediaAritmeticaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(votoLaureaStimatoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                            .addComponent(mediaPonderataLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mediaAritmeticaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statisticheTitle)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(promptMediaAritmetica)
-                    .addComponent(mediaAritmeticaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(mediaAritmeticaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(promptMediaAritmetica))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(mediaPonderataLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(promptmediaPonderata))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(promptVotoLaurea)
                     .addComponent(votoLaureaStimatoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -82,8 +94,10 @@ public class VisualizzaStatisticheForm extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel mediaAritmeticaLabel;
+    private javax.swing.JLabel mediaPonderataLabel;
     private javax.swing.JLabel promptMediaAritmetica;
     private javax.swing.JLabel promptVotoLaurea;
+    private javax.swing.JLabel promptmediaPonderata;
     private javax.swing.JLabel statisticheTitle;
     private javax.swing.JLabel votoLaureaStimatoLabel;
     // End of variables declaration//GEN-END:variables

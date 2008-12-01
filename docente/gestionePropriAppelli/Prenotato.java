@@ -13,9 +13,10 @@ package docente.gestionePropriAppelli;
  */
 public class Prenotato  {
     
+    private String nome;
     private String cognome;
     private String matrStudente;
-    private String nome;
+    
    
     public Prenotato(String matricola,String cognome,String nome){
         this.matrStudente=matricola;
