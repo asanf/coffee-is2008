@@ -2,7 +2,10 @@ package studente.gestionePropriEsami;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.sql.SQLException;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 import operatore.gestioneAppelli.Appelli;
 import operatore.gestioneAppelli.Appello;
@@ -86,9 +89,17 @@ public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
         } else {
             Appelli appelli = new Appelli();
             Appello selezionato = appelli.get(selectedRow);
-            JOptionPane.showMessageDialog(null, "Ti sei prenotato all'esame di " + selezionato.getEsame() + "\n  " + selezionato.getEsame());
-            GestionePropriEsamiControl esContr=new GestionePropriEsamiControl();
-            esContr.prenotaEsame(selezionato, studente);
+            try{
+                GestionePropriEsamiControlInterface esContr = (GestionePropriEsamiControlInterface)Naming.lookup("rmi://localhost/GestionePropriEsami");
+                esContr.prenotaEsame(selezionato, studente);
+                JOptionPane.showMessageDialog(null, "Ti sei prenotato all'esame di " + selezionato.getEsame() + "\n  " + selezionato.getEsame());
+            }catch(RemoteException e){
+                JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+            }catch(MalformedURLException e){
+                JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+            }catch(NotBoundException e){
+                JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+        }
         }
     }//GEN-LAST:event_richiediPrenotazioneAppelloButtonMouseClicked
     
