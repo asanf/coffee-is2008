@@ -1,5 +1,8 @@
 package operatore.gestioneUtenti;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author  rhadamantis
@@ -11,14 +14,20 @@ public class modificaUtenteRegistratoForm extends javax.swing.JFrame {
         initComponents();
         this.utente=utente;
         setFields(utente);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
+        this.setResizable(false);
     }
     
-    private void setFields(UtenteRegistrato utente){
+    public void setFields(UtenteRegistrato utente){
         nomeField.setText(utente.getNome());
         cognomeField.setText(utente.getCognome());
         indirizzoField.setText(utente.getIndirizzo());
         dataNascitaField.setText(utente.getDataNascita());
-        
+        matricolaField.setText(utente.getMatricola());
+        usernameField.setText(utente.getLogin());
+        passwordField.setText(utente.getPassword());
+        repeatedPasswordField.setText(utente.getPassword());
     }
     
     /** This method is called from within the constructor to
@@ -41,13 +50,14 @@ public class modificaUtenteRegistratoForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         dataNascitaField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        passwordField = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
-        repeatedPasswordField = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         usernameField = new javax.swing.JTextField();
         cleanButton = new javax.swing.JButton();
         ModificaUtenteButton = new javax.swing.JButton();
+        RipristinaCampiButton = new javax.swing.JButton();
+        passwordField = new javax.swing.JTextField();
+        repeatedPasswordField = new javax.swing.JTextField();
 
         setTitle("Modifica Utente");
 
@@ -84,6 +94,23 @@ public class modificaUtenteRegistratoForm extends javax.swing.JFrame {
         });
 
         ModificaUtenteButton.setText("Modifica");
+        ModificaUtenteButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ModificaUtenteButtonMouseClicked(evt);
+            }
+        });
+        ModificaUtenteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificaUtenteButtonActionPerformed(evt);
+            }
+        });
+
+        RipristinaCampiButton.setText("Ripristina Campi");
+        RipristinaCampiButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RipristinaCampiButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,12 +120,6 @@ public class modificaUtenteRegistratoForm extends javax.swing.JFrame {
                 .addGap(114, 114, 114)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                 .addGap(230, 230, 230))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ModificaUtenteButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)
-                .addComponent(cleanButton)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,37 +135,47 @@ public class modificaUtenteRegistratoForm extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addGap(62, 62, 62))
                             .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ModificaUtenteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cognomeField, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                    .addComponent(indirizzoField, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                    .addComponent(passwordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(matricolaField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(cognomeField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                    .addComponent(indirizzoField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeField, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+                    .addComponent(passwordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(repeatedPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel7))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(matricolaField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dataNascitaField, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(repeatedPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dataNascitaField, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(cleanButton)
+                        .addGap(16, 16, 16)
+                        .addComponent(RipristinaCampiButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -173,13 +204,14 @@ public class modificaUtenteRegistratoForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(repeatedPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cleanButton)
-                    .addComponent(ModificaUtenteButton))
+                    .addComponent(ModificaUtenteButton)
+                    .addComponent(RipristinaCampiButton)
+                    .addComponent(cleanButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -199,11 +231,42 @@ public class modificaUtenteRegistratoForm extends javax.swing.JFrame {
         usernameField.setText("");
         passwordField.setText("");
         repeatedPasswordField.setText("");
+
     }//GEN-LAST:event_cleanButtonMouseClicked
+
+    private void ModificaUtenteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificaUtenteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ModificaUtenteButtonActionPerformed
+
+    private void ModificaUtenteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificaUtenteButtonMouseClicked
+        UtenteRegistrato newUtente = new UtenteRegistrato();
+        newUtente.setCognome(cognomeField.getText());
+        newUtente.setDataNascita(dataNascitaField.getText());
+        newUtente.setIndirizzo(indirizzoField.getText());
+        newUtente.setLogin(usernameField.getText());
+        newUtente.setMatricola(matricolaField.getText());
+        newUtente.setNome(nomeField.getText());
+        newUtente.setPassword(passwordField.getText());
+        GestioneUtentiControl control = new GestioneUtentiControl ();
+        control.modificaUtenteRegistrato(utente, newUtente);
+        setVisible(false);
+    }//GEN-LAST:event_ModificaUtenteButtonMouseClicked
+
+    private void RipristinaCampiButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RipristinaCampiButtonMouseClicked
+        nomeField.setText(utente.getNome());
+        cognomeField.setText(utente.getCognome());
+        matricolaField.setText(utente.getMatricola());
+        dataNascitaField.setText(utente.getDataNascita());
+        indirizzoField.setText(utente.getIndirizzo());
+        usernameField.setText(utente.getLogin());
+        passwordField.setText(utente.getPassword());
+        repeatedPasswordField.setText(utente.getPassword());
+}//GEN-LAST:event_RipristinaCampiButtonMouseClicked
    
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ModificaUtenteButton;
+    private javax.swing.JButton RipristinaCampiButton;
     private javax.swing.JButton cleanButton;
     private javax.swing.JTextField cognomeField;
     private javax.swing.JTextField dataNascitaField;
@@ -219,8 +282,8 @@ public class modificaUtenteRegistratoForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField matricolaField;
     private javax.swing.JTextField nomeField;
-    private javax.swing.JPasswordField passwordField;
-    private javax.swing.JPasswordField repeatedPasswordField;
+    private javax.swing.JTextField passwordField;
+    private javax.swing.JTextField repeatedPasswordField;
     private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
     UtenteRegistrato utente;

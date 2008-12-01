@@ -5,7 +5,7 @@ package operatore.gestioneUtenti;
 import java.io.Serializable;
 
 /**
- * Classe che modella l'utente generico per il sistema
+ * Classe che modella l'utente generico del sistema
  * @author 
  */
 public class UtenteRegistrato implements Serializable{

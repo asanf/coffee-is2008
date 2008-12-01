@@ -29,6 +29,7 @@ public class HomeStudenteForm extends HomeForm {
         gestionePropriEsamiButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("C o f f e e - Home Studente");
         setResizable(false);
 
         analisiCarrieraButton.setText("Analisi Carriera");

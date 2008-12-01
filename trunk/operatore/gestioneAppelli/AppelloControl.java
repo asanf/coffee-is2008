@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import operatore.gestioneUtenti.Docente;
 /**
- *
+ *Classe che modella l'oggetta control che interagisce con l'entity Appello
  * @author 
  */
 public class AppelloControl {

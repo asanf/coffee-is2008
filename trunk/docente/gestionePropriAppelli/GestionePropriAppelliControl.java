@@ -12,7 +12,7 @@ import operatore.gestioneAppelli.Appello;
 import java.io.*;
 
 /**
- *Classe che modella GerstioneAppelliControl
+ *Classe che modella l'oggetto Control che interagisce con l'entity appello
  * @author 
  */
 public class GestionePropriAppelliControl {

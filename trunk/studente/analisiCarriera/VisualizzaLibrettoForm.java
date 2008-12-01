@@ -14,7 +14,7 @@ public class VisualizzaLibrettoForm extends javax.swing.JFrame {
         libretto = new Libretto(studente.getMatricola());
         initComponents();
         titleLabel.setText("Libretto di " + studente.getCognome() +" " +studente.getNome());
-        this.setTitle("Coffee - Libretto");
+        
         this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2);
@@ -32,6 +32,7 @@ public class VisualizzaLibrettoForm extends javax.swing.JFrame {
         listaEsami = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("C o f f e e - Vista del Libretto");
 
         titleLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
         titleLabel.setText("Libretto di");

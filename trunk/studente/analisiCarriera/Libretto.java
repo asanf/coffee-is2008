@@ -41,6 +41,7 @@ public class Libretto extends AbstractTableModel {
         while(result.next()){
                 RisultatoEsame tmp = new RisultatoEsame(
                         result.getString("esame"),
+                        result.getInt("crediti"),
                         result.getInt("voto"),
                         result.getBoolean("lode"),
                         result.getString("data"));
@@ -49,9 +50,6 @@ public class Libretto extends AbstractTableModel {
         con.close();
     }
     
-    public void saveDataOnDataBase() throws SQLException{
-        //TODO implementare update
-    }
     
     
     public int getNumEsami(){
@@ -75,9 +73,10 @@ public class Libretto extends AbstractTableModel {
     public String getColumnName(int column){
         switch(column){
             case 0: return "Esame";
-            case 1: return "Voto";
-            case 2: return "Lode";
-            case 3: return "Data";
+            case 1: return "Crediti";
+            case 2: return "Voto";
+            case 3: return "Lode";
+            case 4: return "Data";
             default: return "";
         }
     }
@@ -92,9 +91,10 @@ public class Libretto extends AbstractTableModel {
         
         switch(columns){
             case 0: return tmp.getEsame();
-            case 1: return tmp.getVoto();
-            case 2: return tmp.isLode();
-            case 3: return tmp.getData();
+            case 1: return tmp.getCrediti();
+            case 2: return tmp.getVoto();
+            case 3: return tmp.isLode();
+            case 4: return tmp.getData();
             default: return "";
         }
     }

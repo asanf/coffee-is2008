@@ -5,7 +5,7 @@ import java.util.Vector;
 import java.sql.*;
 import javax.swing.JOptionPane;
 /**
- * Classe che modella il control dell'esame
+ * Classe che modella l'oggetto control che interagisce con l'entity esame
  * @author 
  */
 public class EsameControl {
