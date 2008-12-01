@@ -5,6 +5,10 @@ import docente.HomeDocenteForm;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 import operatore.HomeOperatoreForm;
 import operatore.gestioneUtenti.Docente;
@@ -121,23 +125,33 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
-        LoginControl loginControl = new LoginControl();
-        UtenteRegistrato utente = loginControl.checkLogin(usernameTextField.getText(), passwordField.getText());
-        HomeForm home = null;
-        if(utente == null){
-            JOptionPane.showMessageDialog(null,"Nome utente o Password NON validi");
-        }else{
-            JOptionPane.showMessageDialog(null, "Benvenuto/a "+ utente.getNome() + " " + utente.getCognome() + "\nOra verrai reindirizzato alla tua home");
-            if(utente instanceof Studente){
-                home = new HomeStudenteForm((Studente)utente);
-            }else if(utente instanceof Docente){
-                home = new HomeDocenteForm((Docente)utente);
-            }else if(utente instanceof Operatore){
-                home = new HomeOperatoreForm((Operatore)utente);
+        LoginControlInterface loginControl = null;
+        try{
+            loginControl = (LoginControlInterface)Naming.lookup("rmi://localhost/Login");
+        
+            UtenteRegistrato utente = loginControl.checkLogin(usernameTextField.getText(), passwordField.getText());
+            HomeForm home = null;
+            if(utente == null){
+                JOptionPane.showMessageDialog(null,"Nome utente o Password NON validi");
+            }else{
+                JOptionPane.showMessageDialog(null, "Benvenuto/a "+ utente.getNome() + " " + utente.getCognome() + "\nOra verrai reindirizzato alla tua home");
+                if(utente instanceof Studente){
+                    home = new HomeStudenteForm((Studente)utente);
+                }else if(utente instanceof Docente){
+                    home = new HomeDocenteForm((Docente)utente);
+                }else if(utente instanceof Operatore){
+                    home = new HomeOperatoreForm((Operatore)utente);
+                }
+                home.setVisible(true);
+                this.setVisible(false);
             }
-            home.setVisible(true);
-            this.setVisible(false);
-        }       
+        }catch(RemoteException e){
+            JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+        }catch(MalformedURLException e){
+            JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+        }catch(NotBoundException e){
+            JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+        }
         
     }//GEN-LAST:event_loginButtonMouseClicked
 
@@ -148,7 +162,7 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            loginButtonMouseClicked(new java.awt.event.MouseEvent(loginButton, 0, 0, 0, 0, 0, 0, rootPaneCheckingEnabled));
+            loginButton.doClick();
         }
     }//GEN-LAST:event_passwordFieldKeyPressed
     

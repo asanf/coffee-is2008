@@ -2,6 +2,10 @@ package operatore.gestioneEsami;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 /**
@@ -131,13 +135,21 @@ public class RicercaEsameForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ricercaEsameButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ricercaEsameButtonMouseClicked
-        EsameControl esCont = new EsameControl();
-        esami.setData(esCont.ricercaEsame(parametroRicercaEsame.getText()));
+        try{
+            EsameControlInterface esCont = (EsameControlInterface)Naming.lookup("rmi://localhost/GestioneEsami");
+            esami.setData(esCont.ricercaEsame(parametroRicercaEsame.getText()));
+        }catch(RemoteException e){
+            JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+        }catch(MalformedURLException e){
+            JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+        }catch(NotBoundException e){
+            JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+        }
     }//GEN-LAST:event_ricercaEsameButtonMouseClicked
 
     private void parametroRicercaEsameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_parametroRicercaEsameKeyPressed
         if(evt.getKeyCode()==java.awt.event.KeyEvent.VK_ENTER)
-            ricercaEsameButtonMouseClicked(new java.awt.event.MouseEvent(ricercaEsameButton,0,0,0,0,0,0,true));
+            ricercaEsameButton.doClick();
     }//GEN-LAST:event_parametroRicercaEsameKeyPressed
 
     private void modificaEsameButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificaEsameButtonMouseClicked
@@ -147,19 +159,37 @@ public class RicercaEsameForm extends javax.swing.JFrame {
         else{
             ModificaEsameForm esForm = new ModificaEsameForm(esami.get(selectedRow));
             esForm.setVisible(true);
-            EsameControl esCont = new EsameControl();
-            esami.setData(esCont.ricercaEsame(""));
+            try{
+                EsameControlInterface esCont = (EsameControlInterface)Naming.lookup(("rmi://localhost/GestioneEsami"));
+                esami.setData(esCont.ricercaEsame(""));
+            }catch(RemoteException e){
+                JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+            }catch(MalformedURLException e){
+                JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+            }catch(NotBoundException e){
+                JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+            }
         }
 }//GEN-LAST:event_modificaEsameButtonMouseClicked
 
     private void eliminaEsameButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminaEsameButtonMouseClicked
-        EsameControl esCont = new EsameControl();
+
         int selectedRow = tabellaRisultati.getSelectedRow();
         if(selectedRow < 0)
             JOptionPane.showMessageDialog(null, "Nessun esame selezionato");
         else{
-            esCont.eliminaEsame(esami.get(selectedRow));
-            esami.setData(esCont.ricercaEsame(""));
+             try{   
+                EsameControlInterface esCont = (EsameControlInterface)Naming.lookup("rmi://localhost/GestioneEsami");
+                esCont.eliminaEsame(esami.get(selectedRow));
+                esami.setData(esCont.ricercaEsame(""));
+             }catch(RemoteException e){
+                JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+             }catch(MalformedURLException e){
+                JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+             }catch(NotBoundException e){
+                JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+             }
+            
         }
 }//GEN-LAST:event_eliminaEsameButtonMouseClicked
 

@@ -65,11 +65,6 @@ public class VisualizzaSchedaUtenteForm extends javax.swing.JFrame {
         usernameField.setEditable(false);
 
         matricolaField.setEditable(false);
-        matricolaField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matricolaFieldActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("Data di nascita: ");
 
@@ -131,7 +126,7 @@ public class VisualizzaSchedaUtenteForm extends javax.swing.JFrame {
                     .addComponent(indirizzoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(dataNascitaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(78, 78, 78)
@@ -151,10 +146,6 @@ public class VisualizzaSchedaUtenteForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void matricolaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricolaFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_matricolaFieldActionPerformed
     public void setFields(UtenteRegistrato utente){
         nomeField.setText(utente.getNome());
         cognomeField.setText(utente.getCognome());

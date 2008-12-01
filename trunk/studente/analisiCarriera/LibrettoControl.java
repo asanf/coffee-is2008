@@ -1,4 +1,6 @@
 package studente.analisiCarriera;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.*;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
@@ -8,14 +10,19 @@ import operatore.gestioneUtenti.Studente;
  * Oggetto control che si occupa di recuperare dati dall'entity Libretto
  * @author e-vampire
  */
-public class LibrettoControl {
+public class LibrettoControl extends UnicastRemoteObject implements LibrettoControlInterface{
 
+    public LibrettoControl() throws RemoteException{
+        super();
+    }
+    
+    
      /**
       * Metodo che calcola la media aritmetica per un dato libretto
       * @param libretto Il libretto per cui si vuol calcolare la media
       * @return La media aritmetica
       */
-    public float getMediaAritmetica(String matricola){
+    public float getMediaAritmetica(String matricola) throws RemoteException{
         
         int sumVoti = 0;
               
@@ -32,7 +39,7 @@ public class LibrettoControl {
         return sumVoti/lib.getNumEsami();
     }
     
-    public float getMediaPonderata(String matricola){
+    public float getMediaPonderata(String matricola) throws RemoteException{
         int sumVotiPerCredito=0;
         int sumCrediti=0;
         Libretto lib = new Libretto(matricola);
@@ -50,17 +57,17 @@ public class LibrettoControl {
      * @param libretto Il libretto contenente gli esami sostenuto
      * @return Il voto di laurea in centodecimi
      */
-    public int getVotoDiLaureaStimato(String matricola){
+    public int getVotoDiLaureaStimato(String matricola) throws RemoteException{
         return (int)(getMediaAritmetica(matricola)*110)/30;
     }
     
-    public void visualizzaLibretto(Studente studente){
+    public void visualizzaLibretto(Studente studente) throws RemoteException{
         VisualizzaLibrettoForm lib = new VisualizzaLibrettoForm(studente);
         lib.setVisible(true);
     }
     
-    public void visualizzaStatistiche(String matricola){
-        if (getMediaAritmetica(matricola)==-1){
+    public void visualizzaStatistiche(String matricola) throws RemoteException{
+        if (getMediaAritmetica(matricola)<0){
         return;    
         }
         String mediaString = "" + getMediaAritmetica(matricola);

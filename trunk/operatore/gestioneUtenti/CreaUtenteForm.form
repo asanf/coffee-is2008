@@ -26,19 +26,19 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
-              <Component id="NomeFormLabel" pref="323" max="32767" attributes="0"/>
+              <Component id="NomeFormLabel" pref="325" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="359" max="32767" attributes="0"/>
+              <EmptySpace pref="361" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="tipoAccountBox" pref="152" max="32767" attributes="1"/>
+                      <Component id="tipoAccountBox" pref="154" max="32767" attributes="1"/>
                       <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -110,14 +110,14 @@
                       <EmptySpace min="12" pref="12" max="12" attributes="0"/>
                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="usernameField" alignment="0" pref="146" max="32767" attributes="1"/>
+                  <Component id="usernameField" alignment="0" pref="148" max="32767" attributes="1"/>
                   <Component id="controDisponibilitàButton" alignment="1" max="32767" attributes="1"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="matricolaField" min="-2" pref="145" max="-2" attributes="1"/>
                   </Group>
-                  <Component id="passwordField" alignment="1" pref="146" max="32767" attributes="1"/>
-                  <Component id="repeatedPasswordField" alignment="1" pref="146" max="32767" attributes="1"/>
+                  <Component id="passwordField" alignment="1" pref="148" max="32767" attributes="1"/>
+                  <Component id="repeatedPasswordField" alignment="1" pref="148" max="32767" attributes="1"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>

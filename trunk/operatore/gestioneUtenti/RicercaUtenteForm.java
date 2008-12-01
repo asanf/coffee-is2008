@@ -2,11 +2,15 @@ package operatore.gestioneUtenti;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author  rhadamantis
+ * @author  
  */
 public class RicercaUtenteForm extends javax.swing.JFrame {
     
@@ -39,7 +43,7 @@ public class RicercaUtenteForm extends javax.swing.JFrame {
         nomeField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabellaRisultati = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        visualizzaSchedaUtenteButton = new javax.swing.JButton();
 
         setTitle("C o f f e e - Modifica Utente Registrato");
 
@@ -85,10 +89,10 @@ public class RicercaUtenteForm extends javax.swing.JFrame {
         tabellaRisultati.setModel(utenti);
         jScrollPane1.setViewportView(tabellaRisultati);
 
-        jButton1.setText("Visualizza scheda Utente");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        visualizzaSchedaUtenteButton.setText("Visualizza scheda Utente");
+        visualizzaSchedaUtenteButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                visualizzaSchedaUtenteButtonMouseClicked(evt);
             }
         });
 
@@ -107,7 +111,7 @@ public class RicercaUtenteForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(modificaUtenteButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(visualizzaSchedaUtenteButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(eliminaUtenteButton))
                     .addGroup(layout.createSequentialGroup()
@@ -150,7 +154,7 @@ public class RicercaUtenteForm extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modificaUtenteButton)
-                    .addComponent(jButton1)
+                    .addComponent(visualizzaSchedaUtenteButton)
                     .addComponent(eliminaUtenteButton))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
@@ -163,8 +167,16 @@ public class RicercaUtenteForm extends javax.swing.JFrame {
 }//GEN-LAST:event_matricolaFieldKeyPressed
 
     private void ricercaUtenteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ricercaUtenteButtonMouseClicked
-        GestioneUtentiControl control = new GestioneUtentiControl ();
-        utenti.setData(control.ricercaUtenteRegistrato(matricolaField.getText(), cognomeField.getText(),nomeField.getText()));
+        try{
+            GestioneUtentiControlInterface control = (GestioneUtentiControlInterface)Naming.lookup("rmi://localhost/GestioneUtenti");
+            utenti.setData(control.ricercaUtenteRegistrato(matricolaField.getText(), cognomeField.getText(),nomeField.getText()));
+        }catch(RemoteException e){
+            JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+        }catch(MalformedURLException e){
+            JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+        }catch(NotBoundException e){
+            JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+        }
         
 }//GEN-LAST:event_ricercaUtenteButtonMouseClicked
 
@@ -175,23 +187,39 @@ public class RicercaUtenteForm extends javax.swing.JFrame {
         else{
             modificaUtenteRegistratoForm esForm = new modificaUtenteRegistratoForm(utenti.get(selectedRow));
             esForm.setVisible(true);
-            GestioneUtentiControl control = new GestioneUtentiControl();
-            utenti.setData(control.ricercaUtenteRegistrato("", "", ""));
+            try{
+                GestioneUtentiControlInterface control = (GestioneUtentiControlInterface)Naming.lookup("rmi://localhost/GestioneUtenti");
+                utenti.setData(control.ricercaUtenteRegistrato("", "", ""));
+            }catch(RemoteException e){
+                JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+            }catch(MalformedURLException e){
+                JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+            }catch(NotBoundException e){
+                JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+            }
         }
 }//GEN-LAST:event_modificaUtenteButtonMouseClicked
 
     private void eliminaUtenteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminaUtenteButtonMouseClicked
-       GestioneUtentiControl control = new GestioneUtentiControl();
        int selectedRow = tabellaRisultati.getSelectedRow();
        if(selectedRow < 0){
             JOptionPane.showMessageDialog(null, "Nessun utente selezionato","Errore nella selezione dell'utente", JOptionPane.ERROR_MESSAGE);}
        else {
-       control.eliminaUtenteRegistrato(utenti.get(selectedRow));
-       utenti.setData(control.ricercaUtenteRegistrato("", "", ""));
+           try{
+               GestioneUtentiControlInterface control = (GestioneUtentiControlInterface)Naming.lookup("rmi://localhost/GestioneUtenti");
+               control.eliminaUtenteRegistrato(utenti.get(selectedRow));
+               utenti.setData(control.ricercaUtenteRegistrato("", "", ""));
+           }catch(RemoteException e){
+               JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+           }catch(MalformedURLException e){
+               JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+           }catch(NotBoundException e){
+               JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+           }
        }
 }//GEN-LAST:event_eliminaUtenteButtonMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void visualizzaSchedaUtenteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaSchedaUtenteButtonMouseClicked
            int selectedRow = tabellaRisultati.getSelectedRow();
         if(selectedRow < 0)
             JOptionPane.showMessageDialog(null, "Nessun utente selezionato");
@@ -199,14 +227,13 @@ public class RicercaUtenteForm extends javax.swing.JFrame {
             VisualizzaSchedaUtenteForm esScheda = new VisualizzaSchedaUtenteForm(utenti.get(selectedRow));
             esScheda.setVisible(true);
         }
-    }//GEN-LAST:event_jButton1MouseClicked
+}//GEN-LAST:event_visualizzaSchedaUtenteButtonMouseClicked
     
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cognomeField;
     private javax.swing.JButton eliminaUtenteButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -218,6 +245,7 @@ public class RicercaUtenteForm extends javax.swing.JFrame {
     private javax.swing.JTextField nomeField;
     private javax.swing.JButton ricercaUtenteButton;
     private javax.swing.JTable tabellaRisultati;
+    private javax.swing.JButton visualizzaSchedaUtenteButton;
     // End of variables declaration//GEN-END:variables
     private UtentiRegistrati utenti;
 }

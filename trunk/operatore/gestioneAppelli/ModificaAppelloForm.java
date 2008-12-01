@@ -2,6 +2,9 @@ package operatore.gestioneAppelli;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.rmi.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -153,7 +156,7 @@ public class ModificaAppelloForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificaAppelloButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificaAppelloButtonMouseClicked
-        AppelloControl appCont = new AppelloControl();
+        
         Appello newAppello = new Appello(0,
                                     esameField.getText(),
                                     dataField.getText(),
@@ -163,7 +166,16 @@ public class ModificaAppelloForm extends javax.swing.JFrame {
                                     Integer.parseInt(durataField.getText()),
                                     vincoliField.getText(),
                                     aulaField.getText());
-        appCont.modificaAppello(appello, newAppello);
+        try{
+            AppelloControlInterface appCont = (AppelloControlInterface)Naming.lookup(("rmi://localhost/GestioneAppelli"));
+            appCont.modificaAppello(appello, newAppello);
+        }catch(RemoteException e){
+            JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+        }catch(MalformedURLException e){
+            JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+        }catch(NotBoundException e){
+            JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+        }
         this.setVisible(false);
 }//GEN-LAST:event_modificaAppelloButtonMouseClicked
     

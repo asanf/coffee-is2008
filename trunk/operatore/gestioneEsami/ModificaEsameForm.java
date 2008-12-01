@@ -3,10 +3,15 @@ package operatore.gestioneEsami;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author  e-vampire
+ * @author 
  */
 public class ModificaEsameForm extends javax.swing.JFrame {
     
@@ -156,8 +161,16 @@ public class ModificaEsameForm extends javax.swing.JFrame {
         newEsame.setOreLaboratoro(Integer.parseInt(oreLaboratorioField.getText()));
         newEsame.setSemestre(Integer.parseInt(semestreField.getText()));
         newEsame.setProgramma(programmaField.getText());
-        EsameControl esCont = new EsameControl();
-        esCont.modificaEsame(esame, newEsame);
+        try{
+            EsameControlInterface esCont = (EsameControlInterface)Naming.lookup("rmi://localhost/GestioneEsami");
+            esCont.modificaEsame(esame, newEsame);
+        }catch(RemoteException e){
+            JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+        }catch(MalformedURLException e){
+            JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+        }catch(NotBoundException e){
+            JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+        }
         setVisible(false);
     }//GEN-LAST:event_modificaEsameButtonMouseClicked
     

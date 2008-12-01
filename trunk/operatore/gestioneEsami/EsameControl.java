@@ -4,14 +4,20 @@ package operatore.gestioneEsami;
 import java.util.Vector;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import java.rmi.*;
+import java.rmi.server.*;
 /**
  * Classe che modella l'oggetto control che interagisce con l'entity esame
  * @author 
  */
-public class EsameControl {
+public class EsameControl extends UnicastRemoteObject implements EsameControlInterface{
 
     
-    protected void creaEsame(Esame esame){
+    public EsameControl() throws RemoteException{
+        super();
+    }
+    
+    public void creaEsame(Esame esame) throws RemoteException{
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
@@ -36,7 +42,7 @@ public class EsameControl {
         }
     }
     
-    protected void modificaEsame(Esame old,Esame modified){
+    public void modificaEsame(Esame old,Esame modified) throws RemoteException{
           try{
               Class.forName("com.mysql.jdbc.Driver");
           }catch(ClassNotFoundException e){
@@ -65,7 +71,7 @@ public class EsameControl {
         
     }
     
-    protected void eliminaEsame(Esame esame){
+    public void eliminaEsame(Esame esame) throws RemoteException{
           try{
               Class.forName("com.mysql.jdbc.Driver");
           }catch(ClassNotFoundException e){
@@ -85,7 +91,7 @@ public class EsameControl {
           }
     }
     
-    public Vector<Esame> ricercaEsame(String nomeEsame){
+    public Vector<Esame> ricercaEsame(String nomeEsame) throws RemoteException{
         Connection con;
         Statement query;
         ResultSet result;

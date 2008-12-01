@@ -7,9 +7,13 @@
 package docente.gestionePropriAppelli;
 
 import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 import operatore.gestioneAppelli.Appello;
-import operatore.gestioneAppelli.AppelloControl;
+import operatore.gestioneAppelli.AppelloControlInterface;
 
 /**
  *
@@ -168,7 +172,6 @@ public class RichiediAggiuntaAppelloForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inviaDatiButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inviaDatiButtonMouseClicked
-        try {
             appello = new Appello();
             appello.setEsame(nomeField.getText());
             appello.setTipologia(tipoField.getText());
@@ -177,25 +180,22 @@ public class RichiediAggiuntaAppelloForm extends javax.swing.JFrame {
             appello.setData(dataField.getText());
             appello.setVincoli(vincoliField.getText());
             appello.setDocente(matricolaField.getText());
-            AppelloControl appControl = new AppelloControl();
-            appControl.riceviRichiestaAggiuntaAppello(appello);
-        } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(jLabel1, ex, "Errore di scrittura nel file!", WIDTH);
-        }
+            try{
+                AppelloControlInterface appControl = (AppelloControlInterface)Naming.lookup("rmi://localhost/GestioneAppelli");
+                appControl.riceviRichiestaAggiuntaAppello(appello);
+            }catch(RemoteException e){
+                JOptionPane.showMessageDialog(null, "Errore durante la creazione dell'oggetto remoto:"+e.getMessage());
+            }catch(NotBoundException e){
+                JOptionPane.showMessageDialog(null, "Nessun bind per GestioneAppelli:\n"+e.getMessage());
+            }catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(jLabel1, ex, "Errore di scrittura nel file!", WIDTH);
+            }catch(MalformedURLException e){
+                JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+            }
         JOptionPane.showMessageDialog(jLabel1, evt, "La richiesta è stato inviata!", WIDTH);
         
 }//GEN-LAST:event_inviaDatiButtonMouseClicked
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RichiediAggiuntaAppelloForm().setVisible(true);
-            }
-        });
-    }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField dataField;
