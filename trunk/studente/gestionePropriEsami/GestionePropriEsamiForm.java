@@ -8,8 +8,11 @@ package studente.gestionePropriEsami;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
-import operatore.gestioneAppelli.Appello;
 import operatore.gestioneUtenti.Studente;
 
 /**
@@ -77,8 +80,16 @@ public class GestionePropriEsamiForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void visualizzaAppelliDisponibiliButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaAppelliDisponibiliButtonMouseClicked
-        GestionePropriEsamiControl gpec = new GestionePropriEsamiControl();
-        gpec.visualizzaAppelliDisponibili(studente);
+        try{    
+            GestionePropriEsamiControlInterface gpec = (GestionePropriEsamiControlInterface)Naming.lookup("rmi://localhost/GestionePropriEsami");
+            gpec.visualizzaAppelliDisponibili(studente);
+        }catch(RemoteException e){
+            JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+        }catch(MalformedURLException e){
+            JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+        }catch(NotBoundException e){
+            JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+        }
     }//GEN-LAST:event_visualizzaAppelliDisponibiliButtonMouseClicked
     
     

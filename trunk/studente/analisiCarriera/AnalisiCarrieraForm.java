@@ -2,6 +2,11 @@ package studente.analisiCarriera;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import javax.swing.JOptionPane;
 import operatore.gestioneUtenti.Studente;
 
 /**
@@ -51,11 +56,6 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
                 visualizzaLibrettoButtonMouseClicked(evt);
             }
         });
-        visualizzaLibrettoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visualizzaLibrettoButtonActionPerformed(evt);
-            }
-        });
 
         visualizzaStatisticheButton.setText("Visualizza Statistiche");
         visualizzaStatisticheButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -98,18 +98,30 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void visualizzaLibrettoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizzaLibrettoButtonActionPerformed
- 
-}//GEN-LAST:event_visualizzaLibrettoButtonActionPerformed
-
     private void visualizzaLibrettoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaLibrettoButtonMouseClicked
-        LibrettoControl libcont = new LibrettoControl();
-        libcont.visualizzaLibretto(studente);
+        try{
+            LibrettoControlInterface libcont = (LibrettoControlInterface)Naming.lookup("rmi://localhost/AnalisiCarriera");
+            libcont.visualizzaLibretto(studente);
+        }catch(RemoteException e){
+            JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+        }catch(MalformedURLException e){
+            JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+        }catch(NotBoundException e){
+            JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+        }
     }//GEN-LAST:event_visualizzaLibrettoButtonMouseClicked
 
     private void visualizzaStatisticheButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaStatisticheButtonMouseClicked
-        LibrettoControl libControl = new LibrettoControl();
-        libControl.visualizzaStatistiche(studente.getMatricola());
+        try{
+            LibrettoControlInterface libControl = (LibrettoControlInterface)Naming.lookup(("rmi://localhost/AnalisiCarriera"));
+            libControl.visualizzaStatistiche(studente.getMatricola());
+        }catch(RemoteException e){
+            JOptionPane.showMessageDialog(null, "Errore remoto:\n"+e.getMessage());
+        }catch(MalformedURLException e){
+            JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
+        }catch(NotBoundException e){
+            JOptionPane.showMessageDialog(null, "Nessun Bound per GestioneAppelli:\n"+e.getMessage());
+        }    
     }//GEN-LAST:event_visualizzaStatisticheButtonMouseClicked
 
     
