@@ -6,6 +6,7 @@ import studente.analisiCarriera.LibrettoControl;
 import studente.gestionePropriEsami.GestionePropriEsamiControl;
 import java.rmi.*;
 import java.rmi.server.*;
+import java.util.Scanner;
 import system.LoginControl;
 
 public class CoffeeServer {
@@ -50,6 +51,11 @@ public class CoffeeServer {
             System.out.println("Errore nell'avvio del server: "+e.getMessage());
         }
         
+        System.out.println("Digita \"quit\" per spegnere il server:");
+        Scanner scanner = new Scanner(System.in);
+        String command = scanner.nextLine();
+        if(command.equals("quit"))
+            System.exit(0);
         
     }
 

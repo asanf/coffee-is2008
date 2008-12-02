@@ -8,16 +8,19 @@ import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 import operatore.gestioneAppelli.Appello;
 import operatore.gestioneAppelli.AppelloControlInterface;
+import operatore.gestioneUtenti.Docente;
 
 /**
  *
  * @author  
  */
 public class RichiediAggiuntaAppelloForm extends javax.swing.JFrame {
+    private Docente docente;
     
     /** Creates new form RichiediAggiuntaAppelloForm */
-    public RichiediAggiuntaAppelloForm() {
+    public RichiediAggiuntaAppelloForm(Docente docente) {
         initComponents();
+        this.docente = docente;
     }
     
     /** This method is called from within the constructor to
@@ -41,11 +44,8 @@ public class RichiediAggiuntaAppelloForm extends javax.swing.JFrame {
         durataField = new javax.swing.JTextField();
         oraField = new javax.swing.JTextField();
         inviaDatiButton = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        matricolaField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coffee - Richiedi Aggiunta Appello");
 
         jLabel1.setText("Nome esame:");
@@ -67,8 +67,6 @@ public class RichiediAggiuntaAppelloForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("matricola");
-
         jLabel8.setFont(new java.awt.Font("DejaVu Sans", 1, 14));
         jLabel8.setText("Richiedi Aggiunta Appello");
 
@@ -77,62 +75,37 @@ public class RichiediAggiuntaAppelloForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel7)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel3)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(matricolaField)
-                            .addComponent(oraField)
-                            .addComponent(durataField)
-                            .addComponent(vincoliField)
-                            .addComponent(dataField)
-                            .addComponent(tipoField)
-                            .addComponent(nomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(48, 48, 48))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(inviaDatiButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(309, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(oraField)
+                    .addComponent(durataField)
+                    .addComponent(vincoliField)
+                    .addComponent(dataField)
+                    .addComponent(tipoField)
+                    .addComponent(nomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(inviaDatiButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(284, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(matricolaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,7 +130,7 @@ public class RichiediAggiuntaAppelloForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(oraField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inviaDatiButton)
                 .addContainerGap())
         );
@@ -173,7 +146,7 @@ public class RichiediAggiuntaAppelloForm extends javax.swing.JFrame {
             appello.setOraInizio(oraField.getText());
             appello.setData(dataField.getText());
             appello.setVincoli(vincoliField.getText());
-            appello.setDocente(matricolaField.getText());
+            appello.setDocente(docente.getMatricola());
             try{
                 AppelloControlInterface appControl = (AppelloControlInterface)Naming.lookup("rmi://localhost/GestioneAppelli");
                 appControl.riceviRichiestaAggiuntaAppello(appello);
@@ -187,6 +160,7 @@ public class RichiediAggiuntaAppelloForm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "URL errato:\n"+e.getMessage());
             }
         JOptionPane.showMessageDialog(null,"La richiesta è stato inviata!");
+        this.setVisible(false);
         
 }//GEN-LAST:event_inviaDatiButtonMouseClicked
 
@@ -201,9 +175,7 @@ public class RichiediAggiuntaAppelloForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField matricolaField;
     private javax.swing.JTextField nomeField;
     private javax.swing.JTextField oraField;
     private javax.swing.JTextField tipoField;

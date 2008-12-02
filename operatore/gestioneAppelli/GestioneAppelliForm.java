@@ -25,7 +25,7 @@ public class GestioneAppelliForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        visualizzaRichiesteAggiuntaAppelloForm = new javax.swing.JButton();
         ricercaAppelliButton = new javax.swing.JButton();
 
         setTitle("Coffee - Gestione Appelli");
@@ -33,7 +33,12 @@ public class GestioneAppelliForm extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
         jLabel1.setText("Gestione Appelli");
 
-        jButton1.setText("Visualizza Richieste Aggiunta Appello");
+        visualizzaRichiesteAggiuntaAppelloForm.setText("Visualizza Richieste Aggiunta Appello");
+        visualizzaRichiesteAggiuntaAppelloForm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visualizzaRichiesteAggiuntaAppelloFormMouseClicked(evt);
+            }
+        });
 
         ricercaAppelliButton.setText("Ricerca Appelli");
         ricercaAppelliButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -50,7 +55,7 @@ public class GestioneAppelliForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(visualizzaRichiesteAggiuntaAppelloForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ricercaAppelliButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -60,7 +65,7 @@ public class GestioneAppelliForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(visualizzaRichiesteAggiuntaAppelloForm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ricercaAppelliButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -74,11 +79,16 @@ public class GestioneAppelliForm extends javax.swing.JFrame {
         ricercaAppelli.setVisible(true);
 }//GEN-LAST:event_ricercaAppelliButtonMouseClicked
 
+    private void visualizzaRichiesteAggiuntaAppelloFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visualizzaRichiesteAggiuntaAppelloFormMouseClicked
+        VisualizzaRichiesteAggiuntaAppelloForm richiesteForm = new VisualizzaRichiesteAggiuntaAppelloForm();
+        richiesteForm.setVisible(true);
+}//GEN-LAST:event_visualizzaRichiesteAggiuntaAppelloFormMouseClicked
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton ricercaAppelliButton;
+    private javax.swing.JButton visualizzaRichiesteAggiuntaAppelloForm;
     // End of variables declaration//GEN-END:variables
     
 }
