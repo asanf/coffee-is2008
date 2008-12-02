@@ -7,8 +7,8 @@ import operatore.gestioneUtenti.UtentiRegistrati;
 import java.rmi.*;
 import java.rmi.server.*;
 /**
- *
- * @author 
+ * Classe che modella l'oggetto control che si occupa di gestire la Login degli utenti registrati
+ * @author Antonio Sanfelice
  */
 public class LoginControl extends UnicastRemoteObject implements LoginControlInterface {
     

@@ -8,10 +8,7 @@ import operatore.gestioneUtenti.Operatore;
 import operatore.gestioneUtenti.Studente;
 import operatore.gestioneUtenti.UtenteRegistrato;
 
-/**
- *
- * @author  
- */
+
 public class RichiediAggiuntaAccountForm extends javax.swing.JFrame {
     
     /** Creates new form RichiediAggiuntaAccountForm */
