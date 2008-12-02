@@ -11,7 +11,7 @@ import java.rmi.server.*;
 /**
  * Classe che modella l'oggetto control che si occupa di interagire con gli appello degli esami
  * di un dato studente 
- * @author 
+ * @author Demia Massaro
  */
 public class GestionePropriEsamiControl extends UnicastRemoteObject implements GestionePropriEsamiControlInterface{
     
@@ -19,15 +19,20 @@ public class GestionePropriEsamiControl extends UnicastRemoteObject implements G
         super();
     }
     
-    public void richiediPrenotazioneAppello(){
-        
-    }
-    
+    /**
+     * Visualizza tutti gli appelli disponibili
+     * @param studente, lo studente che eventualmente si prenota ad un appello
+     */
     public void visualizzaAppelliDisponibili(Studente studente){
         VisualizzaAppelliDisponibiliList appDisp = new VisualizzaAppelliDisponibiliList(studente);
         appDisp.setVisible(true);
     }
     
+    /**
+     * Prentoa un appello ad un dato studente
+     * @param appello, l'appello a cui prenotarsi
+     * @param studente, lo studente che si prenota all'appello
+     */
     public void prenotaEsame(Appello appello,Studente studente){
          try{
            Class.forName("com.mysql.jdbc.Driver");
