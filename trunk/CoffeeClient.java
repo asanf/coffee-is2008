@@ -8,7 +8,7 @@ import studente.HomeStudenteForm;
  * La classe main di Coffee
  * @author
  */
-public class Main {
+public class CoffeeClient {
 
     public static void main(String[] args) {
         Studente studente = new Studente();

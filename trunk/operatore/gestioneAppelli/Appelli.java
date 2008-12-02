@@ -1,6 +1,8 @@
 
 package operatore.gestioneAppelli;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 import java.sql.*;
@@ -110,6 +112,22 @@ public class Appelli extends AbstractTableModel{
     public void setData(Vector<Appello> appelli)
     {
         this.appelli = appelli;
+        fireTableDataChanged();
+    }
+    
+    public void caricaRichieste(){
+        String fileName = "richieste_aggiunta_appello.dat";
+        ObjectInputStream in = null;
+        try{
+            in = new ObjectInputStream(new FileInputStream(fileName));
+            Appello tmp = (Appello)in.readObject();
+            while(tmp!=null){
+                appelli.add(tmp);
+                tmp = (Appello)in.readObject();
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Errore apertura file "+ e);
+        }
         fireTableDataChanged();
     }
     
