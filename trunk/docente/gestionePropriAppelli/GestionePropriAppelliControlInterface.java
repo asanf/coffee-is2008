@@ -6,15 +6,15 @@ import operatore.gestioneAppelli.Appello;
 import java.rmi.*;
 import java.rmi.server.*;
 /**
- *
- * @author 
+ * Contiene le interfacce dei metodi di GestionePropriAppelliControl
+ * @author Antonio Sanfelice
  */
 public interface GestionePropriAppelliControlInterface extends Remote{
 
     /**
      * Crea un file per la richiesta di aggiunta appello
-     * @param appello
-     * @throws java.io.FileNotFoundException
+     * @param appello, l'appello per cui viene effettuata la richiesta.
+     * @throws java.io.FileNotFoundException, lanciata se c'è un errore con il file
      */
 
     Vector<Prenotato> ricercaPrenotati(Appello appello) throws RemoteException;
