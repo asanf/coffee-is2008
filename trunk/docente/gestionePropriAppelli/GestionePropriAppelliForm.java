@@ -32,7 +32,6 @@ public class GestionePropriAppelliForm extends javax.swing.JFrame {
         ricercaPrenotatiButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coffee - Gestione Propri Appelli");
 
         richiediAggiuntaAppelloButton.setText("Richiedi Aggiunta Appello");
