@@ -13,11 +13,11 @@ import operatore.gestioneUtenti.Studente;
 
 /**
  * Classe che modella la lista degli appelli a cui un dato studente può prenotarsi
- * @author  e-vampire
+ * @author Demia Massaro
  */
 public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
     
-    /** Creates new form VisualizzaAppelliDisponibiliList */
+  
     public VisualizzaAppelliDisponibiliList(Studente studente) {
         this.studente=studente;
         initComponents();
@@ -80,7 +80,7 @@ public class VisualizzaAppelliDisponibiliList extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void richiediPrenotazioneAppelloButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_richiediPrenotazioneAppelloButtonMouseClicked
 
         int selectedRow = jTable1.getSelectedRow();
