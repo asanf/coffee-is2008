@@ -5,11 +5,11 @@ import java.awt.Toolkit;
 
 /**
  * Classe che modella la vista delle statische degli esami per un dato studente  
- * @author  e-vampire
+ * @author  Demia Massaro
  */
 public class VisualizzaStatisticheForm extends javax.swing.JFrame {
     
-    /** Creates new form VisualizzaStatisticheForm */
+    
     public VisualizzaStatisticheForm(String mediaAritmetica,String mediaPonderata, String votoDiLaurea){
             initComponents();
             mediaAritmeticaLabel.setText(mediaAritmetica);

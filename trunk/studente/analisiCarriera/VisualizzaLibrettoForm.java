@@ -5,7 +5,7 @@ import operatore.gestioneUtenti.Studente;
 
 /**
  * Classe che rappresenta una vista del libretto di uno studente
- * @author  e-vampire
+ * @author  Demia Massaro
  */
 public class VisualizzaLibrettoForm extends javax.swing.JFrame {
     
