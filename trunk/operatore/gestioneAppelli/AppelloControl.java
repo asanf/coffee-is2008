@@ -130,6 +130,7 @@ public class AppelloControl extends UnicastRemoteObject implements AppelloContro
         try{
             out = new ObjectOutputStream(new FileOutputStream(fileName,true));
             out.writeObject(appello);
+            out.close();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Errore durante il salvataggio della richiesta!\nRiprovare.");
         }
