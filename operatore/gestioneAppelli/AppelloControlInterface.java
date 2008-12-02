@@ -7,8 +7,8 @@ import java.rmi.*;
 import java.rmi.*;
 
 /**
- *
- * @author 
+ * Contiene le interfacce dei metodi di AppelloControl
+ * @author Antonio Sanfelice
  */
 public interface AppelloControlInterface extends Remote{
 

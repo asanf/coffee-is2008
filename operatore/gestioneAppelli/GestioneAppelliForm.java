@@ -1,4 +1,3 @@
-
 package operatore.gestioneAppelli;
 
 import java.awt.Dimension;
@@ -6,7 +5,7 @@ import java.awt.Toolkit;
 
 /**
  * Classe che modella il form per la gestione degli appelli
- * @author  
+ * @author  Antonio Sanfelice
  */
 public class GestioneAppelliForm extends javax.swing.JFrame {
     

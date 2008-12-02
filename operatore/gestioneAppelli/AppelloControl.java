@@ -10,7 +10,7 @@ import java.rmi.*;
 import java.rmi.server.*;
 /**
  *Classe che modella l'oggetta control che interagisce con l'entity Appello
- * @author 
+ * @author Antonio Sanfelice
  */
 public class AppelloControl extends UnicastRemoteObject implements AppelloControlInterface {
 
@@ -18,10 +18,21 @@ public class AppelloControl extends UnicastRemoteObject implements AppelloContro
         super();
     }
     
+    /**
+     * Inserisce un appello nel database
+     * @param appello, l'appello da inserire nel database
+     * @throws java.rmi.RemoteException, lanciata quando si verifica una errore nella connessione remota
+     */
     public void aggiungiAppello(Appello appello) throws RemoteException{
         
     }
     
+    /**
+     * Modifica un appello già esistente
+     * @param old, l'appello esitente
+     * @param modified, l'appello modificato
+     * @throws java.rmi.RemoteException
+     */
     public void modificaAppello(Appello old, Appello modified) throws RemoteException{
         try{
               Class.forName("com.mysql.jdbc.Driver");
@@ -53,6 +64,13 @@ public class AppelloControl extends UnicastRemoteObject implements AppelloContro
           }
     }
     
+    /**
+     * Ricerca gli appelli esitenti nel database
+     * @param attributo, l'attributo su cui viene effettuata la ricerca
+     * @param valore, il valore dell'attributo su cui viene effettuata la ricerca
+     * @return, un vettore con gli appelli trovati
+     * @throws java.rmi.RemoteException, lanciata quando si verifica un errore nella connessione remota
+     */
     public Vector<Appello> ricercaAppello(String attributo, String valore) throws RemoteException{
         Connection con;
         Statement query;
@@ -87,7 +105,12 @@ public class AppelloControl extends UnicastRemoteObject implements AppelloContro
         }
         return appelli; 
     }
-    
+    /**
+     * Ricerca gli appelli di un dato docente
+     * @param docente, il docente di cui si vogliono ricercare gli appello
+     * @return un vettore con gli appelli del docente passato
+     * @throws java.rmi.RemoteException, lanciata quando si verifica un errore di connessione remota
+     */
     public Vector<Appello> ricercaPropriAppelli(Docente docente) throws RemoteException {
         Connection con;
         Statement query;
@@ -124,6 +147,12 @@ public class AppelloControl extends UnicastRemoteObject implements AppelloContro
        return appelli;
     }
     
+    /**
+     * Apre il file in append e aggiunge l'appello da inserire nel database 
+     * @param appello, 
+     * @throws java.io.FileNotFoundException
+     * @throws java.rmi.RemoteException
+     */
     public void riceviRichiestaAggiuntaAppello(Appello appello) throws FileNotFoundException,RemoteException{
         ObjectOutputStream out=null;
         String fileName = "richieste_aggiunta_appello.dat";

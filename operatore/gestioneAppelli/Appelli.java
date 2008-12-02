@@ -1,4 +1,3 @@
-
 package operatore.gestioneAppelli;
 
 import java.io.FileInputStream;
@@ -10,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Classe che modella una lista di appelli, visualizzabile tramite una JTable
- * @author
+ * @author Antonio Sanfelice
  */
 public class Appelli extends AbstractTableModel{
 
@@ -115,6 +114,9 @@ public class Appelli extends AbstractTableModel{
         fireTableDataChanged();
     }
     
+    /**
+     * Carica il file delle richieste per la creazione di un nuovo appello
+     */
     public void caricaRichieste(){
         String fileName = "richieste_aggiunta_appello.dat";
         ObjectInputStream in = null;
