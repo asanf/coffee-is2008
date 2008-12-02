@@ -63,9 +63,14 @@ public class GestionePropriAppelliControl extends UnicastRemoteObject implements
      * @throws java.rmi.RemoteException, lanciata quando c'è un errore nella connessione remota
      */
     public void RegistraAssenza(Appello appello, Prenotato prenotato) throws RemoteException {
-        String nomeFile = "assenze_"+appello.getEsame()+"_"+appello.getData()+".dat";
+        String nomeFile = "assenze_"+appello.getEsame().replace(" ", "_")+"_"+appello.getData()+".dat";
         ObjectOutputStream assenze = null;
+        File outFile = new File(nomeFile);
+        
         try{
+            if(!outFile.exists()){
+                outFile.createNewFile();
+            }
             assenze= new ObjectOutputStream(new FileOutputStream(nomeFile,true));
             assenze.writeObject(prenotato);
         }catch(Exception e){
@@ -92,12 +97,11 @@ public class GestionePropriAppelliControl extends UnicastRemoteObject implements
         try{
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
         Statement query = con.createStatement();
-        int isLode = lode?1:0;
         int result;
         result = query.executeUpdate("INSERT INTO libretto(matricola,esame,voto,lode,data)" +
                                      " VALUES('"+prenotato.getMatrStudente()+"','" 
                                      + appello.getEsame() + "'," + voto + 
-                                     "," + isLode + ",'" +data +"')");
+                                     "," + lode + ",'" +data +"')");
         if(result == query.EXECUTE_FAILED)
             JOptionPane.showMessageDialog(null, "Errore durante la registrazione del voto");
         else

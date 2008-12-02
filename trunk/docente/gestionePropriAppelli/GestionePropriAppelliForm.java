@@ -85,7 +85,7 @@ public class GestionePropriAppelliForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void richiediAggiuntaAppelloButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_richiediAggiuntaAppelloButtonMouseClicked
-        RichiediAggiuntaAppelloForm aggAppFrm=new RichiediAggiuntaAppelloForm();
+        RichiediAggiuntaAppelloForm aggAppFrm=new RichiediAggiuntaAppelloForm(docente);
         aggAppFrm.setVisible(true);
 }//GEN-LAST:event_richiediAggiuntaAppelloButtonMouseClicked
 

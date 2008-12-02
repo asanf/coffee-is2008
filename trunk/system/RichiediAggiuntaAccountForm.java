@@ -47,7 +47,7 @@ public class RichiediAggiuntaAccountForm extends javax.swing.JFrame {
         richiediAggiuntaAccountButton = new javax.swing.JButton();
         cleanButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Coffee - Richiedi Nuovo Account");
 
         jLabel1.setText("Nome: ");
 

@@ -25,7 +25,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="0" max="32767" attributes="1"/>
+                  <Component id="visualizzaRichiesteAggiuntaAppelloForm" alignment="0" max="32767" attributes="1"/>
                   <Component id="ricercaAppelliButton" alignment="0" max="32767" attributes="1"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -38,7 +38,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="visualizzaRichiesteAggiuntaAppelloForm" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="ricercaAppelliButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -55,10 +55,13 @@
         <Property name="text" type="java.lang.String" value="Gestione Appelli"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="visualizzaRichiesteAggiuntaAppelloForm">
       <Properties>
         <Property name="text" type="java.lang.String" value="Visualizza Richieste Aggiunta Appello"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="visualizzaRichiesteAggiuntaAppelloFormMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ricercaAppelliButton">
       <Properties>
