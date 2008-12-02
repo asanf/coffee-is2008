@@ -41,8 +41,6 @@ public class RicercaEsameForm extends javax.swing.JFrame {
         eliminaEsameButton = new javax.swing.JButton();
         visualizzaSchedaEsameButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
         jLabel1.setText("Ricerca Esame");
 

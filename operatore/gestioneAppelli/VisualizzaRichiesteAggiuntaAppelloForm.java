@@ -31,8 +31,6 @@ public class VisualizzaRichiesteAggiuntaAppelloForm extends javax.swing.JFrame {
         richiesteTable = new javax.swing.JTable();
         aggiungiAppelloButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
         jLabel1.setText("Richieste in Attesa");
 
