@@ -30,8 +30,6 @@ public class GestioneEsamiForm extends javax.swing.JFrame {
         ricercaEsameButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         creaEsameButton.setText("Crea Esame");
         creaEsameButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -79,7 +77,7 @@ public class GestioneEsamiForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void creaEsameButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creaEsameButtonMouseClicked
-        EsameForm esameForm = new EsameForm();
+        CreaEsameForm esameForm = new CreaEsameForm();
         esameForm.setVisible(true);
     }//GEN-LAST:event_creaEsameButtonMouseClicked
 
