@@ -4,12 +4,12 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 /**
- *
- * @author 
+ * Classe che gestisce il form per la visualizzazione dei dati di um esame
+ * @author Vincenzo Alessandro Cavaso
  */
 public class VisualizzaSchedaEsameForm extends javax.swing.JFrame {
     
-    /** Creates new form VisualizzaSchedaEsame */
+    
     public VisualizzaSchedaEsameForm(Esame esame) {
         initComponents();
         setFields(esame);
