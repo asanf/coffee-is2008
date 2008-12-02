@@ -5,8 +5,8 @@ import operatore.gestioneUtenti.GestioneUtentiForm;
 import operatore.gestioneUtenti.Operatore;
 import system.HomeForm;
 /**
- *
- * @author  e-vampire
+ * Classe che gestisce la home di Operatore
+ * @author Vincenzo Alessandro Cavaso
  */
 public class HomeOperatoreForm extends HomeForm {
     

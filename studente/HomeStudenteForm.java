@@ -6,8 +6,8 @@ import studente.gestionePropriEsami.GestionePropriEsamiForm;
 import system.HomeForm;
 
 /**
- *
- * @author  
+ * Classe che gestiosce il form per la home di studente
+ * @author  Demia Massaro
  */
 public class HomeStudenteForm extends HomeForm {
     

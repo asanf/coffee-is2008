@@ -6,7 +6,7 @@ import system.HomeForm;
 
 /**
  * Classe che gestisce la home di Docente
- * @author  
+ * @author Antonio Sanfelice
  */
 public class HomeDocenteForm extends HomeForm {
     
@@ -18,7 +18,7 @@ public class HomeDocenteForm extends HomeForm {
     }
     
     /**
-     * HO CANCELLATO LA TRADUZIONE
+     * Metodo richiamato nel costruttore per inizializzare il form
      * Codice generato da NetBeans
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -20,12 +20,12 @@ import studente.HomeStudenteForm;
 
 
 /**
- *
- * @author  
+ * Classe che gestiosce il form di inserimento dati per il login
+ * @author  Antonio Sanfelice
  */
 public class LoginForm extends javax.swing.JFrame {
     
-    /** Creates new form LoginFrame */
+    
     public LoginForm() {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
