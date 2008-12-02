@@ -2,7 +2,7 @@ package operatore.gestioneUtenti;
 
 /**
  * Classe che modella l'entità Docente
- * @author 
+ * @author Antonio Sanfelice
  */
 public class Docente extends UtenteRegistrato {
 
@@ -20,10 +20,18 @@ public class Docente extends UtenteRegistrato {
     }
     
 
+    /**
+     * Restituisce il tipo di contratto del docente
+     * @return, il tipo di contratto del docente
+     */
     public String getTipo() {
         return tipo;
     }
 
+    /**
+     * Imposta il tipo di contratto del docente
+     * @param tipo, il tipo di contratto del docente
+     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }

@@ -7,7 +7,7 @@ package operatore.gestioneUtenti;
 
 /**
  * Classe che modella l'entità studente
- * @author 
+ * @author Demia Massaro
  */
 public class Studente extends UtenteRegistrato{
     
@@ -22,8 +22,16 @@ public class Studente extends UtenteRegistrato{
         this.annoImmatricolazione=0;
     }
     
+    /**
+     * Restituisce l'anno di immatricolazione dello studente
+     * @return, l'anno di immatricolazione dello studente
+     */
     public int getAnnoImmatricolazione(){ return annoImmatricolazione; }
     
+    /**
+     * Imposta l'anno di immatricolazione dello studente
+     * @param annoImmatricolazione, l'anno di immatricolazione dello studente
+     */
     public void setAnnoImmatricolazione(int annoImmatricolazione)
     { this.annoImmatricolazione = annoImmatricolazione; }
 

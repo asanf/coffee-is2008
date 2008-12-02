@@ -5,7 +5,7 @@ import java.awt.Toolkit;
 
 /**
  * Classe che modella il form per la gestione degli utenti.
- * @author  e-vampire
+ * @author  Vincenzo Alessandro Cavaso
  */
 public class GestioneUtentiForm extends javax.swing.JFrame {
     

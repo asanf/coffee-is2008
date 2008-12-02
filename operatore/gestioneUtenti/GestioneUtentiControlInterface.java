@@ -5,19 +5,14 @@ import java.util.Vector;
 import java.rmi.*;
 
 /**
- *
- * @author 
+ * Classe che gestisce le interfacce per GestioneUtentiControl
+ * @author Vincenzo Alessandro Cavaso
  */
 public interface GestioneUtentiControlInterface extends Remote{
 
     boolean checkUsernameUtente(String login) throws RemoteException;
 
-    /**
-     * Regista un nuovo utente all'interno del database
-     * @param newUtente
-     * @param indice
-     * @param campoAggiuntivo
-     */
+  
     void creaUtenteRegistrato(UtenteRegistrato newUtente, int indice, String campoAggiuntivo) throws RemoteException;
 
     void eliminaUtenteRegistrato(UtenteRegistrato utente) throws RemoteException;
