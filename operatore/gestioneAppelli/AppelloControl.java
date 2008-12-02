@@ -1,5 +1,6 @@
 package operatore.gestioneAppelli;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.sql.*;
 import java.util.Vector;
@@ -125,6 +126,12 @@ public class AppelloControl extends UnicastRemoteObject implements AppelloContro
     
     public void riceviRichiestaAggiuntaAppello(Appello appello) throws FileNotFoundException,RemoteException{
         ObjectOutputStream out=null;
-        // scrivere codice ordinato per la scrittura su file di appello
+        String fileName = "richieste_aggiunta_appello.dat";
+        try{
+            out = new ObjectOutputStream(new FileOutputStream(fileName,true));
+            out.writeObject(appello);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Errore durante il salvataggio della richiesta!\nRiprovare.");
+        }
     }
 }
