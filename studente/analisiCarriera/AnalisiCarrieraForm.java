@@ -38,7 +38,6 @@ public class AnalisiCarrieraForm extends javax.swing.JFrame {
         visualizzaLibrettoButton = new javax.swing.JButton();
         visualizzaStatisticheButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("C o f f e e - Analisi Carriera");
 
         AnalisiCarrieraTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 24));

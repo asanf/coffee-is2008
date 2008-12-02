@@ -31,7 +31,6 @@ public class VisualizzaLibrettoForm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaEsami = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("C o f f e e - Vista del Libretto");
 
         titleLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
