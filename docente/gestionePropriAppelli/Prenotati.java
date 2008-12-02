@@ -7,7 +7,7 @@ import java.sql.*;
 
 /**
  *
- * @author 
+ * @author Antonio Sanfelice
  */
 public class Prenotati extends AbstractTableModel {
 
@@ -27,14 +27,16 @@ public class Prenotati extends AbstractTableModel {
         }
     }
     
-     public void setData(Vector<Prenotato> prenotati){ 
+     
+    public void setData(Vector<Prenotato> prenotati){ 
         this.prenotati = prenotati;
         fireTableDataChanged();
     }   
     
 
     /**
-     * 
+     *Metodo che carica i i dati degli studenti prenotati ad un appello dal dababase
+     *@throws, SQLException, lanciata quando si verifica un errore di connessione al database
      */
     public void loadDataFromDataBase() throws SQLException {
         try {

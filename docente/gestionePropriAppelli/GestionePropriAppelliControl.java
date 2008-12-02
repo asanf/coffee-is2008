@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package docente.gestionePropriAppelli;
 
 import java.sql.*;
@@ -15,7 +10,7 @@ import java.rmi.server.*;
 
 /**
  *Classe che modella l'oggetto Control che interagisce con l'entity appello
- * @author 
+ * @author Antonio Sanfelice
  */
 public class GestionePropriAppelliControl extends UnicastRemoteObject implements GestionePropriAppelliControlInterface {
     
@@ -24,6 +19,12 @@ public class GestionePropriAppelliControl extends UnicastRemoteObject implements
     }
  
     
+    /**
+     * Ricerca gli studenti prenotati ad un dato appello
+     * @param appello, l'appello si cui ricercare gli studenti prenotati
+     * @return un vettore con tutti gli studenti prenotati all'appello passato come paramentro
+     * @throws java.rmi.RemoteException, lanciata quando c'è un errore nella connessione remota
+     */
     public Vector<Prenotato> ricercaPrenotati(Appello appello) throws RemoteException{
           try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -53,7 +54,14 @@ public class GestionePropriAppelliControl extends UnicastRemoteObject implements
              }
         return prenotati;
      }
-
+     
+    /**
+     * Metodo che permette di registrare l'assenza di uno studente ad un dato appello in cui
+     * si è registrato
+     * @param appello, l'appello a cui lo studente si è prenotato
+     * @param prenotato, lo studente a cui viene registrata l'eventuale assenza
+     * @throws java.rmi.RemoteException, lanciata quando c'è un errore nella connessione remota
+     */
     public void RegistraAssenza(Appello appello, Prenotato prenotato) throws RemoteException {
         String nomeFile = "assenze_"+appello.getEsame()+"_"+appello.getData()+".dat";
         ObjectOutputStream assenze = null;
@@ -64,7 +72,17 @@ public class GestionePropriAppelliControl extends UnicastRemoteObject implements
             JOptionPane.showMessageDialog(null, "Errore file "+nomeFile+":\n"+e);
         }
     }
-
+    
+    /**
+     * Metodo che permette di registrare il voto di uno studente ad un appello a cui
+     * si è prenotato
+     * @param appello, l'appello a cui lo studente si è prenotato
+     * @param prenotato, lo studente a cui viene registrato il voto
+     * @param voto, il voto che viene registrato allo studente
+     * @param lode, l'evenutale lode che viene registrata allo studente
+     * @param data, la data in cui si è svolto l'appello
+     * @throws java.rmi.RemoteException, lanciata quando c'è un errore nella connessione remota
+     */
     public void RegistraVoto(Appello appello, Prenotato prenotato, int voto, boolean lode, String data) throws RemoteException {
         try{
             Class.forName("com.mysql.jdbc.Driver");
