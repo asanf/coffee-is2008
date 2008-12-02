@@ -8,7 +8,7 @@ import operatore.gestioneUtenti.Studente;
 
 /**
  * Oggetto control che si occupa di recuperare dati dall'entity Libretto
- * @author e-vampire
+ * @author Demia Massaro
  */
 public class LibrettoControl extends UnicastRemoteObject implements LibrettoControlInterface{
 
@@ -38,7 +38,12 @@ public class LibrettoControl extends UnicastRemoteObject implements LibrettoCont
         }
         return sumVoti/lib.getNumEsami();
     }
-    
+    /**
+     * Restituisce la media ponderata di uno studente
+     * @param matricola, la matricola dello studente
+     * @return, la media ponderata dello studente
+     * @throws java.rmi.RemoteException, lanciata quando si verifica un errore nella connessione remota
+     */
     public float getMediaPonderata(String matricola) throws RemoteException{
         int sumVotiPerCredito=0;
         int sumCrediti=0;

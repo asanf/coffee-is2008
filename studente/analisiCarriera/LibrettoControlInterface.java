@@ -4,8 +4,8 @@ import operatore.gestioneUtenti.Studente;
 import java.rmi.*;
 import java.rmi.server.*;
 /**
- *
- * @author 
+ * Classe che gestiocse le interfacce par LibrettoControl
+ * @author Demia Massaro
  */
 public interface LibrettoControlInterface extends Remote{
 
@@ -24,7 +24,7 @@ public interface LibrettoControlInterface extends Remote{
     int getVotoDiLaureaStimato(String matricola) throws RemoteException;
 
     void visualizzaLibretto(Studente studente) throws RemoteException;
-
+    
     void visualizzaStatistiche(String matricola) throws RemoteException;
     
     float getMediaPonderata(String matricola) throws RemoteException;
