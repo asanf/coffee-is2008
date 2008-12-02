@@ -9,8 +9,8 @@ import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author  
+ * Classe che gestisce il form per la crazione di un form
+ * @author  Vincenzo Alessandro Cavaso
  */
 public class EsameForm extends javax.swing.JFrame {
     

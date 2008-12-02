@@ -6,8 +6,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 /**
- *
- * @author 
+ *Classe che modella una lista di esami, visualizzabile tramite una JTable
+ * @author Vincenzo Alessandro Cavaso
  */
 public class Esami extends AbstractTableModel{
     
@@ -27,6 +27,10 @@ public class Esami extends AbstractTableModel{
         fireTableDataChanged();
     }
     
+    /**
+     * Carica i dati degli esami dal database
+     * @throws java.sql.SQLException
+     */
     public void loadDataFromDataBase() throws SQLException{
         try{
             Class.forName("com.mysql.jdbc.Driver");

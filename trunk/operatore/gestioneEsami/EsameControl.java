@@ -8,7 +8,7 @@ import java.rmi.*;
 import java.rmi.server.*;
 /**
  * Classe che modella l'oggetto control che interagisce con l'entity esame
- * @author 
+ * @author Vincenzo Alessandro Cavaso
  */
 public class EsameControl extends UnicastRemoteObject implements EsameControlInterface{
 
@@ -17,6 +17,11 @@ public class EsameControl extends UnicastRemoteObject implements EsameControlInt
         super();
     }
     
+    /**
+     * Inserisce un esame nel database
+     * @param esame, l'esame da inserire nel database
+     * @throws java.rmi.RemoteException, lanciata qunado si verifica un errore di connessione remota
+     */
     public void creaEsame(Esame esame) throws RemoteException{
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -42,6 +47,12 @@ public class EsameControl extends UnicastRemoteObject implements EsameControlInt
         }
     }
     
+    /**
+     * Modifica un esame nel database
+     * @param old, l'esame presente nel database che verrà sostituito
+     * @param modified, l'esame con i dati modificati
+     * @throws java.rmi.RemoteException, lanciata quando si verifica un errore di connessione remota
+     */
     public void modificaEsame(Esame old,Esame modified) throws RemoteException{
           try{
               Class.forName("com.mysql.jdbc.Driver");
@@ -70,7 +81,11 @@ public class EsameControl extends UnicastRemoteObject implements EsameControlInt
         
         
     }
-    
+    /**
+     * Elimina un esame dal database
+     * @param esame, l'esame da rimuovere
+     * @throws java.rmi.RemoteException
+     */
     public void eliminaEsame(Esame esame) throws RemoteException{
           try{
               Class.forName("com.mysql.jdbc.Driver");
@@ -90,7 +105,12 @@ public class EsameControl extends UnicastRemoteObject implements EsameControlInt
               JOptionPane.showMessageDialog(null, "Errore durante la connessione al database"+e);
           }
     }
-    
+    /**
+     * Ricerca un esame nel database
+     * @param nomeEsame, il nome dell'esame da ricercare
+     * @return, un vettore con il risultato della ricerca
+     * @throws java.rmi.RemoteException, lanciata quando si verifica un errore nella connessione
+     */
     public Vector<Esame> ricercaEsame(String nomeEsame) throws RemoteException{
         Connection con;
         Statement query;
