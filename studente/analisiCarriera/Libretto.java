@@ -37,7 +37,7 @@ public class Libretto extends AbstractTableModel {
         con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
         query = con.createStatement();
         
-        result = query.executeQuery("SELECT * FROM libretto where matricola='"+matricola+"'");
+        result = query.executeQuery("SELECT * FROM libretto,esame where esame = nome AND matricola='"+matricola+"'");
         while(result.next()){
                 RisultatoEsame tmp = new RisultatoEsame(
                         result.getString("esame"),
