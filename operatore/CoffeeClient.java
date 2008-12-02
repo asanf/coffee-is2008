@@ -1,20 +1,15 @@
-import operatore.gestioneUtenti.Studente;
-import studente.HomeStudenteForm;
+import system.LoginForm;
 
 
 
 /**
- * La classe main di Coffee 
+ * La classe main del client Coffee 
  */
 public class CoffeeClient {
 
     public static void main(String[] args) {
-        Studente studente = new Studente();
-        studente.setCognome("Sanfelice");
-        studente.setNome("Antonio");
-        studente.setMatricola("0510200997");
-        HomeStudenteForm homeStud = new HomeStudenteForm(studente);
-        homeStud.setVisible(true);
+        LoginForm login = new LoginForm();
+        login.setVisible(true);
     }
 
 }
