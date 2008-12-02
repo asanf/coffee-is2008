@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
 /**
  * Classe che modella il libretto di uno studente.
  * E' una vista dell'entità libretto presente nel database.
- * @author
+ * @author Demia Massaro
  */
 public class Libretto extends AbstractTableModel {
 
@@ -25,7 +25,12 @@ public class Libretto extends AbstractTableModel {
         
     }
     
-    public void loadDataFromDataBase(String matricola) throws SQLException{
+        /**
+         * Carica i dati del libretto di uno studente
+         * @param matricola, la matricola dello studente
+         * @throws java.sql.SQLException, lanciata quando si verifica un errore nella connessione al database
+         */
+        public void loadDataFromDataBase(String matricola) throws SQLException{
         Connection con;
         Statement query;
         ResultSet result;
