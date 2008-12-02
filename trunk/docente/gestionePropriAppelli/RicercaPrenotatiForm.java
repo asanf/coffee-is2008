@@ -58,12 +58,14 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
-        JTableAppelli = new javax.swing.JTable();
+        appelliTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         ricercaPrenotatiButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         prenotatiTable = new javax.swing.JTable();
+        registraVotoButton = new javax.swing.JButton();
+        registraAssenzaButton = new javax.swing.JToggleButton();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,8 +83,8 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coffee - Ricerca Prenotati Form");
 
-        JTableAppelli.setModel(appelli);
-        jScrollPane1.setViewportView(JTableAppelli);
+        appelliTable.setModel(appelli);
+        jScrollPane1.setViewportView(appelliTable);
 
         jLabel1.setText("Propri Appelli:");
 
@@ -97,20 +99,39 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
 
         jScrollPane3.setViewportView(prenotatiTable);
 
+        registraVotoButton.setText("Registra Voto");
+        registraVotoButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registraVotoButtonMouseClicked(evt);
+            }
+        });
+
+        registraAssenzaButton.setText("Registra Assenza");
+        registraAssenzaButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registraAssenzaButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ricercaPrenotatiButton)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, 0, 0, Short.MAX_VALUE)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(ricercaPrenotatiButton)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, 0, 0, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(registraVotoButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(registraAssenzaButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,14 +146,18 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
                 .addComponent(ricercaPrenotatiButton)
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(registraVotoButton)
+                    .addComponent(registraAssenzaButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ricercaPrenotatiButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ricercaPrenotatiButtonMouseClicked
-        int selectRow=JTableAppelli.getSelectedRow();
+        int selectRow=appelliTable.getSelectedRow();
         if(selectRow<0){
             JOptionPane.showMessageDialog(jLabel1, evt, "Nessun Appello selezionato", WIDTH);
         }
@@ -149,11 +174,44 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
                 }
             }
 }//GEN-LAST:event_ricercaPrenotatiButtonMouseClicked
+
+    private void registraVotoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registraVotoButtonMouseClicked
+        int appelloSelezionato=appelliTable.getSelectedRow();
+        int prenotatoSelezionato=prenotatiTable.getSelectedRow();
+        if(appelloSelezionato<0 || prenotatoSelezionato<0){
+            JOptionPane.showMessageDialog(null,"Appello o Prenotato non selezionati");
+        }
+        else{
+            RegistraVotoForm registraVotoForm = new RegistraVotoForm(appelli.get(appelloSelezionato),prenotati.get(prenotatoSelezionato));
+            registraVotoForm.setVisible(true);
+        }
+    }//GEN-LAST:event_registraVotoButtonMouseClicked
+
+    private void registraAssenzaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registraAssenzaButtonMouseClicked
+        int appelloSelezionato=appelliTable.getSelectedRow();
+        int prenotatoSelezionato=prenotatiTable.getSelectedRow();
+        if(appelloSelezionato<0 || prenotatoSelezionato<0){
+            JOptionPane.showMessageDialog(null,"Appello o Prenotato non selezionati");
+        }
+        else{
+            try{
+            GestionePropriAppelliControlInterface gpac = (GestionePropriAppelliControlInterface)Naming.lookup("rmi://localhost/GestionePropriAppelli");
+            gpac.RegistraAssenza(appelli.get(appelloSelezionato), prenotati.get(prenotatoSelezionato));
+        }catch(RemoteException e){
+            JOptionPane.showMessageDialog(null, "Errore connessione remota:\n"+e);
+        }catch(MalformedURLException e){
+            JOptionPane.showMessageDialog(null, "URL oggetto remoto errato:\n"+e);
+        }catch(NotBoundException e){
+            JOptionPane.showMessageDialog(null, "Nessun bound per l'oggetto richiesto:\n"+e);
+        }
+        }
+        
+    }//GEN-LAST:event_registraAssenzaButtonMouseClicked
     
    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable JTableAppelli;
+    private javax.swing.JTable appelliTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -161,6 +219,8 @@ public class RicercaPrenotatiForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable prenotatiTable;
+    private javax.swing.JToggleButton registraAssenzaButton;
+    private javax.swing.JButton registraVotoButton;
     private javax.swing.JButton ricercaPrenotatiButton;
     // End of variables declaration//GEN-END:variables
     private Prenotati prenotati;

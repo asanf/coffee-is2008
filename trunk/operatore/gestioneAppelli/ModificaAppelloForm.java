@@ -47,6 +47,8 @@ public class ModificaAppelloForm extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         aulaField = new javax.swing.JTextField();
         modificaAppelloButton = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        creditiField = new javax.swing.JTextField();
 
         setTitle("Coffee - Modifica Appello");
 
@@ -78,6 +80,8 @@ public class ModificaAppelloForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setText("Crediti:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,6 +90,9 @@ public class ModificaAppelloForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(modificaAppelloButton)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -93,7 +100,8 @@ public class ModificaAppelloForm extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel7))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel10))
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(vincoliField, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
@@ -104,10 +112,8 @@ public class ModificaAppelloForm extends javax.swing.JFrame {
                                 .addComponent(docenteField)
                                 .addComponent(esameField, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
                             .addComponent(oraInizioField, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                            .addComponent(aulaField, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(modificaAppelloButton))
+                            .addComponent(aulaField, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(creditiField, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -147,8 +153,13 @@ public class ModificaAppelloForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(aulaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(modificaAppelloButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addComponent(modificaAppelloButton))
+                    .addComponent(creditiField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -165,7 +176,8 @@ public class ModificaAppelloForm extends javax.swing.JFrame {
                                     oraInizioField.getText(),
                                     Integer.parseInt(durataField.getText()),
                                     vincoliField.getText(),
-                                    aulaField.getText());
+                                    aulaField.getText(),
+                                    Integer.parseInt(creditiField.getText()));
         try{
             AppelloControlInterface appCont = (AppelloControlInterface)Naming.lookup(("rmi://localhost/GestioneAppelli"));
             appCont.modificaAppello(appello, newAppello);
@@ -191,11 +203,13 @@ public class ModificaAppelloForm extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField aulaField;
+    private javax.swing.JTextField creditiField;
     private javax.swing.JTextField dataField;
     private javax.swing.JTextField docenteField;
     private javax.swing.JTextField durataField;
     private javax.swing.JTextField esameField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

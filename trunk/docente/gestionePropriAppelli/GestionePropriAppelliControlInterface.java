@@ -19,8 +19,8 @@ public interface GestionePropriAppelliControlInterface extends Remote{
 
     Vector<Prenotato> ricercaPrenotati(Appello appello) throws RemoteException;
     
-    void RegistraVoto(Appello appello, Prenotato prenotato) throws RemoteException;
+    void RegistraVoto(Appello appello, Prenotato prenotato, int voto, boolean lode, String data) throws RemoteException;
     
-    void RegistraAssenza(Appello appello, Prenotato prenotato, int voto, boolean lode, String data) throws RemoteException;
+    void RegistraAssenza(Appello appello, Prenotato prenotato) throws RemoteException;
 
 }
