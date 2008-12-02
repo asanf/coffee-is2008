@@ -55,7 +55,14 @@ public class GestionePropriAppelliControl extends UnicastRemoteObject implements
      }
 
     public void RegistraAssenza(Appello appello, Prenotato prenotato) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String nomeFile = "assenze_"+appello.getEsame()+"_"+appello.getData()+".dat";
+        ObjectOutputStream assenze = null;
+        try{
+            assenze= new ObjectOutputStream(new FileOutputStream(nomeFile,true));
+            assenze.writeObject(prenotato);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Errore file "+nomeFile+":\n"+e);
+        }
     }
 
     public void RegistraVoto(Appello appello, Prenotato prenotato, int voto, boolean lode, String data) throws RemoteException {
@@ -64,13 +71,23 @@ public class GestionePropriAppelliControl extends UnicastRemoteObject implements
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Errore caricamento driver jdbc:\n"+e);
         }
+        try{
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost/coffee","","");
         Statement query = con.createStatement();
-        int result = query.executeUpdate("INSERT INTO libretto(matricola,esame,voto,lode,data)" +
-                                         "VALUES ('" + prenotato.getMatrStudente() +
-                                         "','" + appello.getEsame() + "'," + voto + 
-                                         "," + lode?1:0 + ",'" +data +"')");
-        
+        int isLode = lode?1:0;
+        int result;
+        result = query.executeUpdate("INSERT INTO libretto(matricola,esame,voto,lode,data)" +
+                                     " VALUES('"+prenotato.getMatrStudente()+"','" 
+                                     + appello.getEsame() + "'," + voto + 
+                                     "," + isLode + ",'" +data +"')");
+        if(result == query.EXECUTE_FAILED)
+            JOptionPane.showMessageDialog(null, "Errore durante la registrazione del voto");
+        else
+            JOptionPane.showMessageDialog(null,"Voto registrato correttamente");
+        con.close();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null,"Errore durante la registrazione del voto");
+        }
     }
 
     
