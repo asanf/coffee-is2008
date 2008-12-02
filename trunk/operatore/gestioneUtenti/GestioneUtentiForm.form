@@ -33,7 +33,7 @@
                   <Component id="creaUtenteButton" alignment="0" max="32767" attributes="1"/>
                   <Component id="ricercaUtenteButton" alignment="0" max="32767" attributes="1"/>
               </Group>
-              <EmptySpace pref="284" max="32767" attributes="0"/>
+              <EmptySpace pref="286" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -11,7 +11,7 @@ import java.rmi.server.*;
 
 /**
  * Classe che modella il control per la gestione degli utenti.
- * @author 
+ * @author Vincenzo Alessandro Cavaso
  */
 public class GestioneUtentiControl extends UnicastRemoteObject implements GestioneUtentiControlInterface{
 
@@ -19,6 +19,11 @@ public class GestioneUtentiControl extends UnicastRemoteObject implements Gestio
         super();
     }
     
+    /**
+     * 
+     * @param nuovoUtente
+     * @throws java.rmi.RemoteException
+     */
     public void riceviRichiestaAggiuntaAccount(UtenteRegistrato nuovoUtente) throws RemoteException{
         ObjectOutputStream out;
         try{
@@ -34,6 +39,13 @@ public class GestioneUtentiControl extends UnicastRemoteObject implements Gestio
         
     }
     
+    /**
+     * Ricerca un utente registrato nel database
+     * @param matricola, la matricola dell'utente ricercato
+     * @param surname, il cognome dell'utente ricercato
+     * @param name, il nome dell'utente ricercatp
+     * @return, un vettore con i risultati della ricerca
+     */
     public Vector <UtenteRegistrato> ricercaUtenteRegistrato(String matricola, String surname,String name){
         Connection con;
         Statement query;
@@ -89,9 +101,9 @@ public class GestioneUtentiControl extends UnicastRemoteObject implements Gestio
     
     /**
      * Regista un nuovo utente all'interno del database
-     * @param newUtente
-     * @param indice
-     * @param campoAggiuntivo
+     * @param newUtente, l'utente registrato all'interno del database
+     * @param indice, l'indice che rappresenta il tipo di utente
+     * @param campoAggiuntivo, il valore dell'attributo specifico del tipo dell'utente
      */
     public void creaUtenteRegistrato(UtenteRegistrato newUtente, int indice, String campoAggiuntivo) throws RemoteException{
       try{
@@ -140,6 +152,11 @@ public class GestioneUtentiControl extends UnicastRemoteObject implements Gestio
       }
     }
   
+    /**
+     * Elimina un utente registrato dal database
+     * @param utente, l'utente da eliminare
+     * @throws java.rmi.RemoteException, lanciata quando si verifica un errore nella connessione remota
+     */
     public void eliminaUtenteRegistrato (UtenteRegistrato utente) throws RemoteException{
          try{
               Class.forName("com.mysql.jdbc.Driver");
@@ -159,6 +176,13 @@ public class GestioneUtentiControl extends UnicastRemoteObject implements Gestio
               JOptionPane.showMessageDialog(null, "Errore durante la connessione al database"+e);
           }
     }
+    
+    /**
+     * Modifica un utente nel database
+     * @param old,l'utente presente nel database che deve essere modificato
+     * @param utente, l'utente modificato da inserire nel database
+     * @throws java.rmi.RemoteException, lanciata quando si verifica un errore di connessione remota
+     */
     public void modificaUtenteRegistrato (UtenteRegistrato old, UtenteRegistrato utente) throws RemoteException{
         try{
               Class.forName("com.mysql.jdbc.Driver");

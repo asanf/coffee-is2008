@@ -9,12 +9,12 @@ import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author  
+ * Classe che gestiosce il form per la ricerca di un utente
+ * @author  Vincenzo Alessandro Cavaso
  */
 public class RicercaUtenteForm extends javax.swing.JFrame {
     
-    /** Creates new form RicercaUtenteForm */
+    
     public RicercaUtenteForm() {
         utenti = new UtentiRegistrati();
         initComponents();

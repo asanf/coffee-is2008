@@ -9,12 +9,11 @@ import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author  rhadamantis
+ *  Classe che gestiosce il form per la crazione di un utente
+ * @author  Vincenzo Alessandro Cavaso
  */
 public class CreaUtenteForm extends javax.swing.JFrame {
     
-    /** Creates new form CreaUtenteForm */
 
    
     public CreaUtenteForm() {

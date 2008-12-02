@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  * Classe che rappresenta la lista di tutti gli utenti registrati al sistema
- * @author
+ * @author Vincenzo Alessandro Cavaso
  */
 public class UtentiRegistrati extends AbstractTableModel{
     
@@ -23,6 +23,10 @@ public class UtentiRegistrati extends AbstractTableModel{
         fireTableDataChanged();
     }
     
+    /**
+     * Carica i dati degli utenti dal database
+     * @throws java.sql.SQLException, lanciata quando si verifica un errore di connessione col database
+     */
     public void loadDataFromDataBase() throws SQLException{
         Connection con;
         Statement query;
@@ -50,6 +54,13 @@ public class UtentiRegistrati extends AbstractTableModel{
         con.close();
     }
 
+    /**
+     * Ricerca un utente registrato dal database
+     * @param username, la username dell'utente ricercato 
+     * @param password, la passeword dell'utente ricercato
+     * @return, l'utente ricercato
+     * @throws java.sql.SQLException, lanciata quando si verifica un errore di connessione col database
+     */
     public UtenteRegistrato getUtente(String username, String password) throws SQLException{
         Connection con;
         Statement query;
