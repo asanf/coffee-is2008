@@ -1,0 +1,1 @@
+Software per la gestione della vita universitaria
