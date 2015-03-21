@@ -12,6 +12,6 @@ and more, providing features for students, teachers and administrative office pe
 All the documentation is in Italian language.
 
 ## Authors
-Vincenzo Cavaso
-Demia Massaro
-Antonio Sanfelice[http://github.com/asanf]
+ - Vincenzo Cavaso
+ - Demia Massaro
+ - [Antonio Sanfelice](http://github.com/asanf)
