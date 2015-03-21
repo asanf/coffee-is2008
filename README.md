@@ -1,4 +1,4 @@
-# coffee-is2008
+# Coffee
 
 Coffee's an Organizer for a Friendly Exam Experience.
 
